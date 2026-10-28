@@ -1,0 +1,40 @@
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build site with clean URLs
+        run: |
+          mkdir _site
+          cp -r img _brand support.js image-slot.js elitlux-products.js elovela-products.js _site/
+          cp "Elitlux Storefront (cream).dc.html" _site/index.html
+          cp "Elitlux Storefront.dc.html"          _site/navy.html
+          cp "Elovela Storefront v4.dc.html"       _site/elovela.html
+          touch _site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
