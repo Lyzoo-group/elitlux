@@ -1,0 +1,42 @@
+{%- liquid
+  assign img = section.settings.image
+  if img == blank and section.settings.image_product != blank
+    assign img = section.settings.image_product.featured_media.preview_image
+  endif
+  assign alt = section.settings.image_alt
+  if alt == blank and img != blank
+    assign alt = img.alt
+  endif
+-%}
+<div class="page-width">
+  <div class="banner__media" style="aspect-ratio: {{ section.settings.ratio }}">
+    {%- if img != blank -%}
+      {{ img | image_url: width: 2400 | image_tag: loading: 'lazy', widths: '800, 1200, 1600, 2000, 2400', sizes: '(min-width: 1280px) 1184px, 92vw', class: 'media-fill', alt: alt }}
+    {%- else -%}
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Wide image",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "product", "id": "image_product", "label": "Or use a product's main photo" },
+    { "type": "text", "id": "image_alt", "label": "Image description" },
+    {
+      "type": "select",
+      "id": "ratio",
+      "label": "Shape",
+      "options": [
+        { "value": "21 / 9", "label": "Panoramic" },
+        { "value": "16 / 9", "label": "Wide" },
+        { "value": "3 / 2", "label": "Classic" }
+      ],
+      "default": "21 / 9"
+    }
+  ],
+  "presets": [ { "name": "Wide image" } ]
+}
+{% endschema %}

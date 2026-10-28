@@ -1,0 +1,83 @@
+{%- liquid
+  assign split = false
+  if section.settings.layout == 'split'
+    assign split = true
+  endif
+-%}
+<section class="{% if section.settings.background == 'linen' %}bg-linen{% endif %}" aria-labelledby="Columns-{{ section.id }}">
+  <div class="page-width section{% if split %} columns__wrap--split{% endif %}">
+    <div class="stack-12"{% unless split %} style="margin-bottom:48px"{% endunless %}>
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 id="Columns-{{ section.id }}" class="h2">{{ section.settings.heading }}{% if section.settings.heading_em != blank %} <em>{{ section.settings.heading_em }}</em>{% endif %}</h2>
+    </div>
+    <ul class="columns{% if section.settings.line == 'oat' %} columns--oat{% endif %}" role="list">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}>
+          <h3 class="{% if split %}serif-22{% else %}serif-24{% endif %}">{{ block.settings.title }}</h3>
+          {%- if block.settings.text != blank -%}<p class="muted">{{ block.settings.text }}</p>{%- endif -%}
+          {%- if block.settings.link_label != blank and block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}" class="small" style="font-weight:600"{% if block.settings.new_tab %} target="_blank" rel="noopener"{% endif %}>{{ block.settings.link_label }}</a>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Text columns",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Our values" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What we stand for" },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part" },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "stacked", "label": "Heading above columns" },
+        { "value": "split", "label": "Heading beside columns" }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "select",
+      "id": "line",
+      "label": "Line colour",
+      "options": [
+        { "value": "brass", "label": "Brass" },
+        { "value": "oat", "label": "Oat" }
+      ],
+      "default": "brass"
+    },
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Background",
+      "options": [
+        { "value": "none", "label": "Down White" },
+        { "value": "linen", "label": "Linen" }
+      ],
+      "default": "none"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Soft by design" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Every product starts with how it feels." },
+        { "type": "text", "id": "link_label", "label": "Link label" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "checkbox", "id": "new_tab", "label": "Open link in a new tab", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Text columns", "blocks": [ { "type": "column" }, { "type": "column" }, { "type": "column" } ] }
+  ]
+}
+{% endschema %}

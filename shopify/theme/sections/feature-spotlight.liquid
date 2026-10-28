@@ -1,0 +1,63 @@
+<div class="divider" aria-hidden="true" style="background:#FBF9F4"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path fill="#08382F" d="M0 70 C 240 10 520 4 760 44 C 1000 84 1220 100 1440 36 L1440 110 L0 110 Z"></path></svg></div>
+<section class="spot bg-forest" aria-labelledby="Spotlight-{{ section.id }}">
+  <div class="page-width spot__inner">
+    <div class="spot__media">
+      <div class="spot__arch">{% render 'pic', file: section.settings.image_file, alt: section.settings.image_alt, class: 'media-fill', style: 'object-position:60% center', loading: 'lazy', sizes: '50vw' %}</div>
+      {%- if section.settings.round_file != blank -%}<div class="spot__round">{% render 'pic', file: section.settings.round_file, alt: section.settings.round_alt, class: 'media-fill', style: '', loading: 'lazy', sizes: '200px' %}</div>{%- endif -%}
+      {%- if section.settings.inset_file != blank -%}<div class="spot__inset">{% render 'pic', file: section.settings.inset_file, alt: section.settings.inset_alt, class: 'media-fill', style: '', loading: 'lazy', sizes: '240px' %}</div>{%- endif -%}
+    </div>
+    <div class="spot__copy">
+      <p class="eyebrow eyebrow--accent">{{ section.settings.eyebrow }}</p>
+      <h2 id="Spotlight-{{ section.id }}" class="h2-lg">{{ section.settings.heading }}{% if section.settings.heading_em != blank %} <em>{{ section.settings.heading_em }}</em>{% endif %}</h2>
+      <p class="lede">{{ section.settings.text }}</p>
+      {%- if section.blocks.size > 0 -%}
+        <dl class="spot__stats">{%- for block in section.blocks -%}<div {{ block.shopify_attributes }}><dd>{{ block.settings.value }}</dd><dt>{{ block.settings.label }}</dt></div>{%- endfor -%}</dl>
+      {%- endif -%}
+      <ul class="ticks" role="list">
+        <li>{% render 'icon', name: 'check', size: 20 %}Breathable and hypoallergenic</li>
+        <li>{% render 'icon', name: 'check', size: 20 %}Secure, non-slip fit</li>
+        <li>{% render 'icon', name: 'check', size: 20 %}Machine washable</li>
+      </ul>
+      {%- if section.settings.quote != blank -%}
+      <figure class="spot__quote">
+        <div class="spot__quote-head"><span class="stars stars--sm" role="img" aria-label="Rated {{ section.settings.quote_rating }} out of 5"><span class="stars__fill" style="width:{{ section.settings.quote_rating | times: 20 }}%"></span></span><span class="small"><strong>{{ section.settings.quote_rating }} out of 5</strong> · Amazon UK</span></div>
+        <blockquote>{{ section.settings.quote }}</blockquote>
+        <figcaption>{{ section.settings.quote_who }}</figcaption>
+      </figure>
+      {%- endif -%}
+      {%- assign p = section.settings.product -%}
+      {%- if p != blank -%}
+        <div class="price-note">
+          <a href="{{ p.url }}" class="btn btn--light">{{ section.settings.button_label }}{% render 'icon', name: 'arrow', size: 18 %}</a>
+          <p class="small">From <strong>{{ p.price_min | money }}</strong></p>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+<div class="divider" aria-hidden="true" style="background:#08382F"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path fill="#FBF9F4" d="M0 28 C 300 96 640 110 920 62 C 1150 22 1310 18 1440 54 L1440 110 L0 110 Z"></path></svg></div>
+{% schema %}
+{
+  "name": "Product spotlight",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "text", "id": "image_file", "label": "Arched photo (filename)", "default": "topper-bed-marble.jpg" },
+    { "type": "text", "id": "image_alt", "label": "Arched photo description", "default": "Cloud Topper on a bed in warm evening light" },
+    { "type": "text", "id": "round_file", "label": "Round photo (filename)", "default": "topper-hand-press.jpg" },
+    { "type": "text", "id": "round_alt", "label": "Round photo description", "default": "Hand pressing into the quilted Cloud Topper" },
+    { "type": "text", "id": "inset_file", "label": "Inset photo (filename)", "default": "topper-strap.jpg" },
+    { "type": "text", "id": "inset_alt", "label": "Inset description", "default": "Hands fitting the Cloud Topper strap under a mattress" },
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Cloud Topper · Hero range" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Your bed," },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part", "default": "made new." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "10cm of plump, even softness that adds comfort and support, with no new mattress needed." },
+    { "type": "textarea", "id": "quote", "label": "Review quote", "default": "“Made all the difference to my flat mattress. Haven't slept this good for ages”" },
+    { "type": "text", "id": "quote_who", "label": "Reviewer", "default": "Suzy · Verified purchase · Double" },
+    { "type": "text", "id": "quote_rating", "label": "Rating", "default": "4.6" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Shop the topper" }
+  ],
+  "blocks": [ { "type": "row", "name": "Big number", "settings": [ { "type": "text", "id": "value", "label": "Number", "default": "10cm" }, { "type": "text", "id": "label", "label": "Label", "default": "deep, quilted fill" } ] } ],
+  "presets": [ { "name": "Product spotlight" } ]
+}
+{% endschema %}

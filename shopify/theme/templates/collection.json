@@ -1,0 +1,34 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "show_image": true,
+        "per_page": 24
+      }
+    },
+    "reviews": {
+      "type": "reviews-marquee",
+      "settings": {
+        "two_rows": true,
+        "eyebrow": "Cloud Topper reviews · Amazon UK",
+        "heading": "“Like sleeping on",
+        "heading_em": "a cloud.”",
+        "rating": "4.6",
+        "rating_note": "out of 5 on Amazon UK"
+      }
+    },
+    "offer": {
+      "type": "offer-band",
+      "settings": {
+        "image_alt": "Bed with sage bedding in window light",
+        "image_file": "bedroom-sage-window.jpg"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "reviews",
+    "offer"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "cart_type": "drawer",
+      "require_variant_selection": true,
+      "amazon_url": "https://www.amazon.co.uk/stores/Elovela/"
+    }
+  }
+}

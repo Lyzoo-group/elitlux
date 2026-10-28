@@ -1,0 +1,72 @@
+{%- assign hints = section.settings.suggestions | split: ',' -%}
+<section class="page-width section" aria-labelledby="SearchTitle">
+  <h1 id="SearchTitle" class="h1">Search</h1>
+  <form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
+    <label for="SearchInput" class="visually-hidden">Search products</label>
+    {%- render 'icon', name: 'search' -%}
+    <input id="SearchInput" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ section.settings.placeholder | escape }}" autocomplete="off"{% unless search.performed %} autofocus{% endunless %}>
+    <input type="hidden" name="type" value="product">
+    <input type="hidden" name="options[prefix]" value="last">
+  </form>
+
+  {%- if search.performed -%}
+    <p class="small muted" style="margin-top:20px" aria-live="polite">{{ search.results_count }} {% if search.results_count == 1 %}result{% else %}results{% endif %} for “{{ search.terms | escape }}”</p>
+    {%- if search.results_count == 0 -%}
+      <div class="empty-state">
+        <p class="serif-24">Nothing matches “{{ search.terms | escape }}”.</p>
+        <p class="muted">Try a simpler word like topper, pillow, protector or duvet, or ask us. We’re here 24/7.</p>
+        {%- if pages.contact.url != blank -%}<a href="{{ pages.contact.url }}" class="btn btn--secondary">Contact us</a>{%- endif -%}
+      </div>
+    {%- else -%}
+      {%- paginate search.results by 24 -%}
+        <ul class="grid-products" role="list" style="margin-top:32px">
+          {%- for item in search.results -%}
+            <li>
+              {%- if item.object_type == 'product' -%}
+                {% render 'product-card', product: item %}
+              {%- else -%}
+                <a href="{{ item.url }}" class="result-link">
+                  <span class="eyebrow">{{ item.object_type | capitalize }}</span>
+                  <span class="serif-22">{{ item.title }}</span>
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+        {%- if paginate.pages > 1 -%}
+          <nav class="pagination" aria-label="Pages">
+            {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">Previous</a>{%- endif -%}
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}
+                <a href="{{ part.url }}">{{ part.title }}</a>
+              {%- elsif part.title == paginate.current_page -%}
+                <span class="current" aria-current="page">{{ part.title }}</span>
+              {%- else -%}
+                <span class="deco">{{ part.title }}</span>
+              {%- endif -%}
+            {%- endfor -%}
+            {%- if paginate.next -%}<a href="{{ paginate.next.url }}">Next</a>{%- endif -%}
+          </nav>
+        {%- endif -%}
+      {%- endpaginate -%}
+    {%- endif -%}
+  {%- elsif hints.size > 0 -%}
+    <div class="search-hints">
+      <p class="small muted">Try</p>
+      {%- for hint in hints -%}
+        {%- assign term = hint | strip -%}
+        <a href="{{ routes.search_url }}?q={{ term | url_encode }}&amp;type=product">{{ term }}</a>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Search page",
+  "settings": [
+    { "type": "text", "id": "placeholder", "label": "Search box text", "default": "Search toppers, pillows, protectors…" },
+    { "type": "text", "id": "suggestions", "label": "Suggested searches", "default": "Topper, Pillow, Protector, Duvet, Cushion", "info": "Separate with commas." }
+  ]
+}
+{% endschema %}

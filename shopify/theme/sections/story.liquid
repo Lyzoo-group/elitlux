@@ -1,0 +1,49 @@
+<section class="story2" aria-labelledby="Story-{{ section.id }}">
+  <div class="page-width story2__inner">
+    <div class="story2__photos">
+      <div class="story2__tall">{% render 'pic', file: section.settings.photo_a, alt: section.settings.photo_a_alt, class: 'media-fill', style: '', loading: 'lazy', sizes: '35vw' %}</div>
+      <div class="story2__stack">
+        <figure><span class="story2__sq">{% render 'pic', file: section.settings.photo_b, alt: section.settings.photo_b_alt, class: 'media-fill', style: '', loading: 'lazy', sizes: '25vw' %}</span><figcaption class="eyebrow">{{ section.settings.photo_b_cap }}</figcaption></figure>
+        <figure><span class="story2__wide">{% render 'pic', file: section.settings.photo_c, alt: section.settings.photo_c_alt, class: 'media-fill', style: '', loading: 'lazy', sizes: '25vw' %}</span><figcaption class="eyebrow">{{ section.settings.photo_c_cap }}</figcaption></figure>
+      </div>
+    </div>
+    <div class="story2__copy">
+      <div class="story2__rule"><span aria-hidden="true"></span><p class="eyebrow">{{ section.settings.eyebrow }}</p></div>
+      <h2 id="Story-{{ section.id }}" class="h2-lg">{{ section.settings.heading }}{% if section.settings.heading_em != blank %} <em>{{ section.settings.heading_em }}</em>{% endif %}</h2>
+      <p class="story2__lede">{{ section.settings.text }}</p>
+      <p class="muted">{{ section.settings.text_2 }}</p>
+      {%- if section.blocks.size > 0 -%}
+        <ol class="story2__list" role="list">
+          {%- for block in section.blocks -%}<li {{ block.shopify_attributes }}><span class="story2__num">0{{ forloop.index }}</span><div><p class="story2__item">{{ block.settings.title }}</p><p class="small muted">{{ block.settings.text }}</p></div></li>{%- endfor -%}
+        </ol>
+      {%- endif -%}
+      {%- if section.settings.link_label != blank -%}<a href="{{ section.settings.link | default: routes.root_url }}" class="btn btn--secondary story2__btn">{{ section.settings.link_label }}{% render 'icon', name: 'arrow', size: 18 %}</a>{%- endif -%}
+    </div>
+  </div>
+</section>
+<div class="divider" aria-hidden="true" style="background:#FBF9F4"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path fill="#08382F" d="M0 28 C 300 96 640 110 920 62 C 1150 22 1310 18 1440 54 L1440 110 L0 110 Z"></path></svg></div>
+{% schema %}
+{
+  "name": "Our story",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "photo_a", "label": "Tall photo (filename)", "default": "bed-morning-light.jpg" },
+    { "type": "text", "id": "photo_a_alt", "label": "Tall photo description", "default": "Unmade white bed in soft morning light" },
+    { "type": "text", "id": "photo_b", "label": "Square photo (filename)", "default": "pillow-feathers.jpg" },
+    { "type": "text", "id": "photo_b_alt", "label": "Square photo description", "default": "Pillow beside a pile of soft feather fill" },
+    { "type": "text", "id": "photo_b_cap", "label": "Square photo caption", "default": "Honest inside" },
+    { "type": "text", "id": "photo_c", "label": "Wide photo (filename)", "default": "pillow-fabric-detail.jpg" },
+    { "type": "text", "id": "photo_c_alt", "label": "Wide photo description", "default": "Close-up of a pillow corner and seam" },
+    { "type": "text", "id": "photo_c_cap", "label": "Wide photo caption", "default": "Soft by design" },
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Our story" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Hotel-quality comfort" },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part", "default": "for every home." },
+    { "type": "textarea", "id": "text", "label": "Italic line", "default": "Pillows, toppers, protectors and support pillows that bring the feeling of a hotel bed home." },
+    { "type": "textarea", "id": "text_2", "label": "Paragraph", "default": "Elovela is a UK sleep and comfort brand. We’re honest about what’s inside, easy to care for, and delivered free across the UK." },
+    { "type": "text", "id": "link_label", "label": "Button", "default": "About Elovela" },
+    { "type": "url", "id": "link", "label": "Button link" }
+  ],
+  "blocks": [ { "type": "value", "name": "Value", "settings": [ { "type": "text", "id": "title", "label": "Title", "default": "Soft by design" }, { "type": "text", "id": "text", "label": "Text", "default": "It starts with how it feels." } ] } ],
+  "presets": [ { "name": "Our story", "blocks": [ { "type": "value" } ] } ]
+}
+{% endschema %}

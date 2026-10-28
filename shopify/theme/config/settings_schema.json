@@ -1,0 +1,67 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Elovela",
+    "theme_version": "1.0.0",
+    "theme_author": "Elovela",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com"
+  },
+  {
+    "name": "Colours",
+    "settings": [
+      { "type": "color", "id": "color_background", "label": "Background (Down White)", "default": "#FBF9F4" },
+      { "type": "color", "id": "color_linen", "label": "Soft panels (Linen)", "default": "#F4EFE6" },
+      { "type": "color", "id": "color_text", "label": "Text (Ink)", "default": "#1E2A26" },
+      { "type": "color", "id": "color_muted", "label": "Secondary text (Stone)", "default": "#66736D" },
+      { "type": "color", "id": "color_border", "label": "Lines (Natural Oat)", "default": "#DCCFBA" },
+      { "type": "color", "id": "color_primary", "label": "Primary (Forest)", "default": "#08382F" },
+      { "type": "color", "id": "color_primary_hover", "label": "Primary hover", "default": "#2C4A43" },
+      { "type": "color", "id": "color_brass", "label": "Accent (Brushed Brass)", "default": "#B08D57" },
+      { "type": "color", "id": "color_pine", "label": "Dark sections (Midnight Pine)", "default": "#04241E" }
+    ]
+  },
+  {
+    "name": "Brand messages",
+    "settings": [
+      { "type": "image_picker", "id": "favicon", "label": "Favicon", "info": "Square PNG, at least 32 × 32px. The Elovela leaf is used until you add one." },
+      { "type": "text", "id": "delivery_message", "label": "Delivery message", "default": "Free UK delivery on every order", "info": "Shown on product pages, in the bag and in menus. Keep it true to your shipping rates." },
+      { "type": "text", "id": "help_message", "label": "Help message", "default": "Help, 24/7" },
+      { "type": "url", "id": "amazon_url", "label": "Amazon store link" }
+    ]
+  },
+  {
+    "name": "Contact details",
+    "settings": [
+      { "type": "paragraph", "content": "Shown in the footer and on the Contact page. Anything left blank is hidden." },
+      { "type": "text", "id": "support_email", "label": "Support email" },
+      { "type": "text", "id": "support_phone", "label": "Phone / WhatsApp" },
+      { "type": "text", "id": "support_hours", "label": "Hours", "default": "24 hours, 7 days a week" },
+      { "type": "textarea", "id": "business_address", "label": "Registered business address", "default": "Clyde Offices, 2nd Floor\n48 West George Street\nGlasgow G2 1BP" }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_facebook", "label": "Facebook" },
+      { "type": "url", "id": "social_tiktok", "label": "TikTok" }
+    ]
+  },
+  {
+    "name": "Bag and sizes",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "When someone adds to bag",
+        "options": [
+          { "value": "drawer", "label": "Open the bag drawer" },
+          { "value": "page", "label": "Go to the bag page" }
+        ],
+        "default": "drawer"
+      },
+      { "type": "checkbox", "id": "require_variant_selection", "label": "Ask shoppers to choose a size before adding to bag", "default": true, "info": "Stops the first size being added by mistake." }
+    ]
+  }
+]

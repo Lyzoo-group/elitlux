@@ -1,0 +1,38 @@
+{%- paginate blog.articles by 12 -%}
+  <section class="page-width section" aria-labelledby="BlogTitle">
+    <h1 id="BlogTitle" class="h1 section-title">{{ blog.title }}</h1>
+    {%- if blog.articles.size > 0 -%}
+      <ul class="articles" role="list">
+        {%- for article in blog.articles -%}
+          <li>
+            <a href="{{ article.url }}" class="article-card">
+              <div class="article-card__media">
+                {%- if article.image != blank -%}
+                  {{ article.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400, 600, 900', sizes: '(min-width: 1000px) 380px, 92vw', class: 'media-fill', alt: article.image.alt }}
+                {%- endif -%}
+              </div>
+              <p class="eyebrow">{{ article.published_at | date: '%d %B %Y' }}</p>
+              <h2 class="serif-24">{{ article.title }}</h2>
+              {%- if article.excerpt_or_content != blank -%}<p class="small muted">{{ article.excerpt_or_content | strip_html | truncatewords: 26 }}</p>{%- endif -%}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <p class="muted">No stories yet.</p>
+    {%- endif -%}
+    {%- if paginate.pages > 1 -%}
+      <nav class="pagination" aria-label="Pages">
+        {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">Newer</a>{%- endif -%}
+        {%- if paginate.next -%}<a href="{{ paginate.next.url }}">Older</a>{%- endif -%}
+      </nav>
+    {%- endif -%}
+  </section>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Blog",
+  "settings": []
+}
+{% endschema %}

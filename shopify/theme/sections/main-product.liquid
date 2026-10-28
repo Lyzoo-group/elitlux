@@ -1,0 +1,276 @@
+{%- liquid
+  assign current = product.selected_variant
+  assign must_choose = false
+  if settings.require_variant_selection and product.variants.size > 1 and current == blank
+    assign must_choose = true
+  endif
+  if current == blank and must_choose == false
+    assign current = product.selected_or_first_available_variant
+  endif
+  assign form_id = 'ProductForm-' | append: section.id
+  assign badge_list = product.metafields.custom.badges.value | split: ','
+  assign spec = product.metafields.custom.spec_line.value
+  assign has_tabs = false
+  if product.description contains '<h3'
+    assign has_tabs = true
+  endif
+  assign chunks = product.description | split: '<h3'
+  assign intro = ''
+  if has_tabs
+    assign intro = chunks | first
+  endif
+  assign intro_text = intro | strip_html | strip
+  assign crumb = collection
+  if crumb == blank
+    assign crumb = product.collections.first
+  endif
+  assign show_compare = false
+  if current != blank and current.compare_at_price > current.price
+    assign show_compare = true
+  endif
+  assign unavailable = false
+  if must_choose
+    unless product.available
+      assign unavailable = true
+    endunless
+  else
+    unless current.available
+      assign unavailable = true
+    endunless
+  endif
+-%}
+{%- capture price_text -%}
+  {%- if must_choose -%}
+    {%- if product.price_varies -%}From {% endif -%}{{ product.price_min | money }}
+  {%- else -%}
+    {{ current.price | money }}
+  {%- endif -%}
+{%- endcapture -%}
+
+<div class="page-width">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol role="list">
+      <li><a href="{{ routes.root_url }}">Home</a></li>
+      <li aria-hidden="true">/</li>
+      {%- if crumb != blank -%}
+        <li><a href="{{ crumb.url }}">{{ crumb.title }}</a></li>
+        <li aria-hidden="true">/</li>
+      {%- endif -%}
+      <li aria-current="page">{{ product.title }}</li>
+    </ol>
+  </nav>
+</div>
+
+<section class="page-width pdp" data-product aria-labelledby="Title-{{ section.id }}">
+  <div class="gallery" data-gallery>
+    <div class="gallery__main">
+      <ul class="gallery__track" data-gallery-track role="list" aria-label="Product images">
+        {%- for media in product.media -%}
+          <li class="gallery__slide" data-media-id="{{ media.id }}">
+            {%- if media.media_type == 'image' -%}
+              {%- if forloop.first -%}
+                {{ media.preview_image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '400, 600, 800, 1000, 1200, 1400', sizes: '(min-width: 1280px) 600px, (min-width: 1000px) 46vw, 100vw', alt: media.alt }}
+              {%- else -%}
+                {{ media.preview_image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '400, 600, 800, 1000, 1200, 1400', sizes: '(min-width: 1280px) 600px, (min-width: 1000px) 46vw, 100vw', alt: media.alt }}
+              {%- endif -%}
+            {%- else -%}
+              {{ media | media_tag }}
+            {%- endif -%}
+          </li>
+        {%- else -%}
+          <li class="gallery__slide">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</li>
+        {%- endfor -%}
+      </ul>
+      {%- if product.media.size > 1 -%}
+        <div class="gallery__controls">
+          <span class="gallery__count" data-gallery-count>1 / {{ product.media.size }}</span>
+          <button type="button" class="icon-btn icon-btn--float" data-gallery-prev aria-label="Previous image">{% render 'icon', name: 'chevron-left', size: 20 %}</button>
+          <button type="button" class="icon-btn icon-btn--float" data-gallery-next aria-label="Next image">{% render 'icon', name: 'chevron-right', size: 20 %}</button>
+        </div>
+      {%- endif -%}
+    </div>
+    {%- if product.media.size > 1 -%}
+      <ul class="gallery__thumbs" role="list">
+        {%- for media in product.media -%}
+          <li>
+            <button type="button" class="gallery__thumb" data-thumb="{{ forloop.index0 }}" aria-label="Show image {{ forloop.index }} of {{ product.media.size }}"{% if forloop.first %} aria-current="true"{% endif %}>
+              {{- media.preview_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' -}}
+            </button>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+
+  <div class="pdp__info">
+    <div class="stack-12">
+      <div class="pdp__eyebrow-row">
+        {%- if product.type != blank -%}<p class="eyebrow">{{ product.type }}</p>{%- endif -%}
+        {%- for b in badge_list -%}
+          {%- assign badge = b | strip -%}
+          {%- if badge != blank -%}<span class="badge">{{ badge }}</span>{%- endif -%}
+        {%- endfor -%}
+      </div>
+      <h1 id="Title-{{ section.id }}" class="pdp__title">{{ product.title }}</h1>
+      {%- if spec != blank -%}<p class="small muted">{{ spec }}</p>{%- endif -%}
+      {%- if section.settings.rating_product != blank and section.settings.rating_product.handle == product.handle -%}<a href="#reviews" class="rating-link"><span class="stars" role="img" aria-label="Rated {{ section.settings.rating }} out of 5"><span class="stars__fill" style="width:{{ section.settings.rating | times: 20 }}%"></span></span><span class="small"><strong>{{ section.settings.rating }}</strong> · {{ section.settings.rating_note }}</span></a>{%- endif -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == '@app' -%}<div {{ block.shopify_attributes }}>{% render block %}</div>{%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="pdp__price-row">
+      <p class="pdp__price" data-price aria-live="polite">{{ price_text }}</p>
+      <s class="pdp__compare" data-compare{% unless show_compare %} hidden{% endunless %}><span class="visually-hidden">Was </span><span data-compare-value>{% if show_compare %}{{ current.compare_at_price | money }}{% endif %}</span></s>
+      <span class="pdp__save" data-save{% unless show_compare %} hidden{% endunless %}>{% if show_compare %}Save {{ current.compare_at_price | minus: current.price | money }}{% endif %}</span>
+    </div>
+
+    {%- if intro_text != blank -%}
+      <div class="pdp__intro">{{ intro }}</div>
+    {%- endif -%}
+
+    {%- form 'product', product, id: form_id, class: 'pdp__form', data-product-form: '' -%}
+      {%- if product.has_only_default_variant -%}
+        <input type="hidden" name="id" value="{{ current.id }}">
+      {%- elsif product.options.size == 1 -%}
+        <fieldset class="variant-picker">
+          <legend>{{ product.options.first }}: <span data-selected-label>{% if must_choose %}choose one{% else %}{{ current.title }}{% endif %}</span></legend>
+          <div class="variant-picker__grid">
+            {%- for variant in product.variants -%}
+              {%- liquid
+                assign v_compare = ''
+                assign v_save = ''
+                if variant.compare_at_price > variant.price
+                  assign v_compare = variant.compare_at_price | money
+                  assign v_diff = variant.compare_at_price | minus: variant.price | money
+                  assign v_save = 'Save ' | append: v_diff
+                endif
+                assign v_checked = false
+                if current != blank and current.id == variant.id
+                  assign v_checked = true
+                endif
+              -%}
+              <label class="option-card{% unless variant.available %} is-unavailable{% endunless %}">
+                <input type="radio" class="visually-hidden" name="id" value="{{ variant.id }}" required{% if v_checked %} checked{% endif %}{% unless variant.available %} disabled{% endunless %} data-price="{{ variant.price | money | escape }}" data-compare="{{ v_compare | escape }}" data-save="{{ v_save | escape }}" data-available="{{ variant.available }}" data-label="{{ variant.title | escape }}" data-media="{{ variant.featured_media.id }}">
+                <span class="option-card__label">{{ variant.title }}</span>
+                {%- unless variant.available -%}<span class="option-card__sub">Sold out</span>{%- endunless -%}
+              </label>
+            {%- endfor -%}
+          </div>
+          <p class="field-error" data-need-size role="alert" hidden>Choose a {{ product.options.first | downcase }} to continue.</p>
+        </fieldset>
+      {%- else -%}
+        <div class="field variant-picker">
+          <label for="Variant-{{ section.id }}">{{ product.options | join: ' / ' }}</label>
+          <select id="Variant-{{ section.id }}" name="id" class="input" required>
+            {%- if must_choose -%}<option value="" disabled selected>Choose an option</option>{%- endif -%}
+            {%- for variant in product.variants -%}
+              {%- liquid
+                assign v_compare = ''
+                assign v_save = ''
+                if variant.compare_at_price > variant.price
+                  assign v_compare = variant.compare_at_price | money
+                  assign v_diff = variant.compare_at_price | minus: variant.price | money
+                  assign v_save = 'Save ' | append: v_diff
+                endif
+              -%}
+              <option value="{{ variant.id }}"{% if current != blank and current.id == variant.id %} selected{% endif %}{% unless variant.available %} disabled{% endunless %} data-price="{{ variant.price | money | escape }}" data-compare="{{ v_compare | escape }}" data-save="{{ v_save | escape }}" data-available="{{ variant.available }}" data-label="{{ variant.title | escape }}" data-media="{{ variant.featured_media.id }}">{{ variant.title }}{% unless variant.available %} – sold out{% endunless %}</option>
+            {%- endfor -%}
+          </select>
+          <p class="field-error" data-need-size role="alert" hidden>Choose an option to continue.</p>
+        </div>
+      {%- endif -%}
+
+      <div class="buy-row">
+        <div class="stepper stepper--lg" role="group" aria-label="Quantity">
+          <button type="button" class="stepper__btn" data-qty="-1" aria-label="Decrease quantity">{% render 'icon', name: 'minus', size: 18 %}</button>
+          <label for="Quantity-{{ section.id }}" class="visually-hidden">Quantity</label>
+          <input id="Quantity-{{ section.id }}" type="number" name="quantity" value="1" min="1" max="99" inputmode="numeric">
+          <button type="button" class="stepper__btn" data-qty="1" aria-label="Increase quantity">{% render 'icon', name: 'plus', size: 18 %}</button>
+        </div>
+        <button type="submit" name="add" class="btn btn--primary" data-add data-label="{{ section.settings.cta_label | escape }}" data-soldout="Sold out"{% if unavailable %} disabled{% endif %}>
+          {%- if unavailable -%}Sold out{%- else -%}{{ section.settings.cta_label }}{%- endif -%}
+        </button>
+      </div>
+      <p class="form-errors" data-form-error role="alert" hidden></p>
+      {%- if section.settings.show_dynamic_checkout -%}
+        <div class="pdp__buy-now{% if must_choose or unavailable %} is-disabled{% endif %}" data-buy-now>{{ form | payment_button }}</div>
+      {%- endif -%}
+    {%- endform -%}
+
+    {%- if section.settings.show_assurances -%}
+      <ul class="assurances" role="list">
+        <li>{% render 'icon', name: 'truck' %}<span><strong>{{ settings.delivery_message }}</strong></span></li>
+        <li>{% render 'icon', name: 'chat' %}<span><strong>{{ settings.help_message }}</strong> with sizing, washing or returns.{% if pages.contact.url != blank %} <a href="{{ pages.contact.url }}">Contact us</a>{% endif %}</span></li>
+        <li>{% render 'icon', name: 'return' %}<span><strong>Returns</strong> on unused items in their original packaging.{% if shop.refund_policy.url != blank %} <a href="{{ shop.refund_policy.url }}">How returns work</a>{% endif %}</span></li>
+      </ul>
+    {%- endif -%}
+
+    <div class="accordions">
+      {%- if has_tabs -%}
+        {%- for chunk in chunks offset: 1 -%}
+          {%- liquid
+            assign head = chunk | split: '</h3>' | first
+            assign tab_title = '<h3' | append: head | append: '</h3>' | strip_html | strip
+            assign tab_body = chunk | remove_first: head | remove_first: '</h3>'
+          -%}
+          <details class="accordion"{% if forloop.first and section.settings.open_first %} open{% endif %}>
+            <summary>{{ tab_title }}{% render 'icon', name: 'chevron-down', size: 20 %}</summary>
+            <div class="accordion__body rte">{{ tab_body }}</div>
+          </details>
+        {%- endfor -%}
+      {%- elsif product.description != blank -%}
+        <details class="accordion"{% if section.settings.open_first %} open{% endif %}>
+          <summary>Description{% render 'icon', name: 'chevron-down', size: 20 %}</summary>
+          <div class="accordion__body rte">{{ product.description }}</div>
+        </details>
+      {%- endif -%}
+      {%- if section.settings.returns_text != blank -%}
+        <details class="accordion">
+          <summary>{{ section.settings.returns_heading }}{% render 'icon', name: 'chevron-down', size: 20 %}</summary>
+          <div class="accordion__body rte">
+            {{ section.settings.returns_text }}
+            {%- if shop.refund_policy.url != blank -%}<p><a href="{{ shop.refund_policy.url }}">Read the full returns policy</a></p>{%- endif -%}
+          </div>
+        </details>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{%- if section.settings.show_sticky -%}
+  <div class="sticky-atc" data-sticky-atc inert>
+    <div class="sticky-atc__text">
+      <p class="sticky-atc__title">{{ product.title }}</p>
+      <p class="sticky-atc__price" data-sticky-price>{{ price_text }}</p>
+    </div>
+    <button type="submit" form="{{ form_id }}" class="btn btn--primary"{% if unavailable %} disabled{% endif %}>{{ section.settings.cta_label }}</button>
+  </div>
+{%- endif -%}
+
+<script type="application/ld+json">
+  {{ product | structured_data }}
+</script>
+
+{% schema %}
+{
+  "name": "Product page",
+  "class": "section-product",
+  "blocks": [ { "type": "@app" } ],
+  "settings": [
+    { "type": "paragraph", "content": "Each Heading 3 in a product description becomes its own tab. Text before the first heading shows beside the price." },
+    { "type": "text", "id": "cta_label", "label": "Add button label", "default": "Add to bed" },
+    { "type": "header", "content": "Rating under the title" },
+    { "type": "product", "id": "rating_product", "label": "Show on this product only", "info": "Only the Cloud Topper has verified reviews so far." },
+    { "type": "text", "id": "rating", "label": "Rating out of 5", "default": "4.6" },
+    { "type": "text", "id": "rating_note", "label": "Note", "default": "32 reviews on Amazon UK" },
+    { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show Buy it now and express checkout", "default": true },
+    { "type": "checkbox", "id": "open_first", "label": "Open the first tab", "default": true },
+    { "type": "checkbox", "id": "show_assurances", "label": "Show delivery, help and returns notes", "default": true },
+    { "type": "checkbox", "id": "show_sticky", "label": "Show the sticky add bar on phones", "default": true },
+    { "type": "header", "content": "Delivery & returns tab" },
+    { "type": "text", "id": "returns_heading", "label": "Heading", "default": "Delivery & returns" },
+    { "type": "richtext", "id": "returns_text", "label": "Text", "default": "<p>Free UK delivery on every order, anywhere in the UK.</p><p>Return requests are accepted within 7–14 days of receiving your order, depending on local consumer law. Items must be unused, unwashed and in their original packaging. For hygiene reasons, bedding that has been used or washed can’t be returned unless it’s faulty.</p><p>Damaged, faulty or not what you ordered? Tell us within 48 hours of delivery with a photo and we’ll arrange a replacement or refund at no cost to you.</p>" }
+  ]
+}
+{% endschema %}

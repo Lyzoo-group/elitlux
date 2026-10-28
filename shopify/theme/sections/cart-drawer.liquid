@@ -1,0 +1,73 @@
+{%- assign empty_menu = linklists['main-menu'] -%}
+<div class="dialog dialog--right" id="CartDrawer" role="dialog" aria-modal="true" aria-labelledby="CartDrawerTitle" hidden>
+  <div class="dialog__overlay" data-close></div>
+  <div class="dialog__panel">
+    <div class="drawer__inner" data-drawer-inner data-count="{{ cart.item_count }}">
+      <div class="dialog__head">
+        <h2 id="CartDrawerTitle" class="drawer__title">Your bag <span>({{ cart.item_count }})</span></h2>
+        <button type="button" class="icon-btn" data-close data-autofocus aria-label="Close bag">{% render 'icon', name: 'close' %}</button>
+      </div>
+      {%- if cart.item_count == 0 -%}
+        <div class="drawer__empty">
+          <p class="serif-28">Your bag is empty.</p>
+          <p class="muted">Let’s find something lovely for your bed.</p>
+          <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary" data-close>Shop the collection</a>
+          {%- if empty_menu.links.size > 0 -%}
+            <ul class="drawer__links" role="list">
+              {%- for link in empty_menu.links limit: 5 -%}
+                <li><a href="{{ link.url }}" data-close>{{ link.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        <ul class="drawer__lines" role="list">
+          {%- for item in cart.items -%}
+            <li class="line" data-line-index="{{ forloop.index }}">
+              <a href="{{ item.url }}" class="line__media" tabindex="-1" aria-hidden="true">
+                {%- if item.image != blank -%}{{ item.image | image_url: width: 200 | image_tag: alt: '', loading: 'lazy' }}{%- endif -%}
+              </a>
+              <div class="line__info">
+                <div class="line__top">
+                  <a href="{{ item.url }}" class="line__title">{{ item.product.title }}</a>
+                  <p class="line__price">{{ item.final_line_price | money }}</p>
+                </div>
+                {%- unless item.product.has_only_default_variant -%}<p class="line__meta">{{ item.variant.title }}</p>{%- endunless -%}
+                {%- for discount in item.line_level_discount_allocations -%}
+                  <p class="line__meta">{{ discount.discount_application.title }} (−{{ discount.amount | money }})</p>
+                {%- endfor -%}
+                <div class="line__actions">
+                  <div class="stepper" role="group" aria-label="Quantity, {{ item.product.title | escape }}">
+                    <a class="stepper__btn" href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity={{ item.quantity | minus: 1 }}" data-cart-change data-line="{{ forloop.index }}" data-quantity="{{ item.quantity | minus: 1 }}" aria-label="Decrease quantity">{% render 'icon', name: 'minus', size: 16 %}</a>
+                    <span class="stepper__val">{{ item.quantity }}</span>
+                    <a class="stepper__btn" href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity={{ item.quantity | plus: 1 }}" data-cart-change data-line="{{ forloop.index }}" data-quantity="{{ item.quantity | plus: 1 }}" aria-label="Increase quantity">{% render 'icon', name: 'plus', size: 16 %}</a>
+                  </div>
+                  <a class="text-btn" href="{{ item.url_to_remove }}" data-cart-change data-line="{{ forloop.index }}" data-quantity="0" aria-label="Remove {{ item.product.title | escape }}">Remove</a>
+                </div>
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+        <div class="drawer__foot">
+          <p class="form-errors" data-drawer-error role="alert" hidden></p>
+          {%- for discount in cart.cart_level_discount_applications -%}
+            <div class="drawer__subtotal"><span>{{ discount.title }}</span><span>−{{ discount.total_allocated_amount | money }}</span></div>
+          {%- endfor -%}
+          <div class="drawer__subtotal"><span>Subtotal</span><span>{{ cart.total_price | money }}</span></div>
+          <p class="small muted">{{ settings.delivery_message }}. Discount codes can be added at checkout.</p>
+          <form action="{{ routes.cart_url }}" method="post">
+            <button type="submit" name="checkout" class="btn btn--primary btn--block">Checkout</button>
+          </form>
+          <a href="{{ routes.cart_url }}" class="drawer__view">View bag</a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Bag drawer",
+  "settings": []
+}
+{% endschema %}

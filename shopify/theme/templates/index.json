@@ -1,0 +1,297 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Hotel-quality comfort for UK homes",
+        "heading": "Rest,",
+        "heading_em": "made lovely.",
+        "text": "Pillows, toppers, duvets and protectors that bring the feeling of a hotel bed home.",
+        "button_label": "Shop the collection",
+        "button_link": "shopify://collections/all",
+        "button2_label": "Find your topper",
+        "button2_link": "shopify://collections/cloud-toppers",
+        "image_alt": "Woman asleep on an Elovela Cloud mattress topper in warm evening light",
+        "image_file": "topper-sleeping.jpg",
+        "image_pos": "center",
+        "rating": "4.6",
+        "rating_note": "by Cloud Topper customers on Amazon UK",
+        "lead_product": "cloud-topper",
+        "lead_label": "Hero range"
+      }
+    },
+    "promises": {
+      "type": "trust-strip",
+      "blocks": {
+        "delivery": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Free UK delivery",
+            "text": "on every order"
+          }
+        },
+        "help": {
+          "type": "item",
+          "settings": {
+            "icon": "chat",
+            "title": "Help, 24/7",
+            "text": "on sizing and care"
+          }
+        },
+        "wash": {
+          "type": "item",
+          "settings": {
+            "icon": "wash",
+            "title": "Machine washable",
+            "text": "for a fresh bed"
+          }
+        }
+      },
+      "block_order": [
+        "delivery",
+        "help",
+        "wash"
+      ],
+      "settings": {
+        "label": "Why shop with Elovela",
+        "offer_label": "10% off"
+      }
+    },
+    "ranges": {
+      "type": "collection-tiles",
+      "blocks": {
+        "toppers": {
+          "type": "collection",
+          "settings": {
+            "collection": "cloud-toppers",
+            "label": "Toppers",
+            "need": "Mattress too firm, or tired? Add 10cm of softness.",
+            "image_file": "topper-eyemask.jpg",
+            "image_pos": "62% 40%"
+          }
+        },
+        "pillows": {
+          "type": "collection",
+          "settings": {
+            "collection": "pillows",
+            "label": "Pillows",
+            "need": "Flat, lumpy pillows? Hotel-soft feather and down.",
+            "image_file": "pillow-joy.jpg",
+            "image_pos": "center"
+          }
+        },
+        "support": {
+          "type": "collection",
+          "settings": {
+            "collection": "support-pillows",
+            "label": "Support",
+            "need": "Back, neck or bump? Shaped support that holds you.",
+            "image_file": "v-shape-sleeping-sage.jpg",
+            "image_pos": "center"
+          }
+        },
+        "protectors": {
+          "type": "collection",
+          "settings": {
+            "collection": "guard-protectors",
+            "label": "Protection",
+            "need": "Spills, dust, allergies? A waterproof layer that breathes.",
+            "image_file": "protector-corner.jpg",
+            "image_pos": "65% center"
+          }
+        },
+        "duvets": {
+          "type": "collection",
+          "settings": {
+            "collection": "duvets",
+            "label": "Duvets",
+            "need": "Too hot, too cold? A tog for every season.",
+            "image_file": "duvet-hug.jpg",
+            "image_pos": "70% center"
+          }
+        },
+        "cushions": {
+          "type": "collection",
+          "settings": {
+            "collection": "nest-cushions",
+            "label": "Living room",
+            "need": "Sagging sofa cushions? Plump pads that bounce back.",
+            "image_file": "cushions-bed-sage.jpg",
+            "image_pos": "center"
+          }
+        }
+      },
+      "block_order": [
+        "toppers",
+        "pillows",
+        "support",
+        "protectors",
+        "duvets",
+        "cushions"
+      ],
+      "settings": {
+        "eyebrow": "Shop by range",
+        "heading": "Six ways to",
+        "heading_em": "a better night",
+        "link_label": "Shop all",
+        "link": "shopify://collections/all"
+      }
+    },
+    "spotlight": {
+      "type": "feature-spotlight",
+      "blocks": {
+        "depth": {
+          "type": "row",
+          "settings": {
+            "value": "10cm",
+            "label": "deep, quilted fill"
+          }
+        },
+        "gsm": {
+          "type": "row",
+          "settings": {
+            "value": "1200",
+            "label": "GSM microfibre in Super King"
+          }
+        },
+        "sizes": {
+          "type": "row",
+          "settings": {
+            "value": "5",
+            "label": "sizes, Single to Super King"
+          }
+        }
+      },
+      "block_order": [
+        "depth",
+        "gsm",
+        "sizes"
+      ],
+      "settings": {
+        "product": "cloud-topper",
+        "image_file": "topper-bed-marble.jpg",
+        "image_alt": "Cloud Topper on a bed in warm evening light",
+        "round_file": "topper-hand-press.jpg",
+        "round_alt": "Hand pressing into the quilted Cloud Topper",
+        "inset_file": "topper-strap.jpg",
+        "inset_alt": "Hands fitting the Cloud Topper strap under a mattress",
+        "eyebrow": "Cloud Topper · Hero range",
+        "heading": "Your bed,",
+        "heading_em": "made new.",
+        "text": "10cm of plump, even softness that adds comfort and support, with no new mattress needed.",
+        "quote": "“Made all the difference to my flat mattress. Haven't slept this good for ages”",
+        "quote_who": "Suzy · Verified purchase · Double",
+        "quote_rating": "4.6",
+        "button_label": "Shop the topper"
+      }
+    },
+    "best": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Best sellers",
+        "limit": 4,
+        "link_label": "Shop all"
+      }
+    },
+    "reviews": {
+      "type": "reviews-marquee",
+      "settings": {
+        "two_rows": true,
+        "eyebrow": "Cloud Topper reviews · Amazon UK",
+        "heading": "“Like sleeping on",
+        "heading_em": "a cloud.”",
+        "rating": "4.6",
+        "rating_note": "out of 5 on Amazon UK"
+      }
+    },
+    "story": {
+      "type": "story",
+      "blocks": {
+        "soft": {
+          "type": "value",
+          "settings": {
+            "title": "Soft by design",
+            "text": "It starts with how it feels."
+          }
+        },
+        "honest": {
+          "type": "value",
+          "settings": {
+            "title": "Honest inside",
+            "text": "Fill, fabric and size, stated plainly."
+          }
+        },
+        "care": {
+          "type": "value",
+          "settings": {
+            "title": "Care built in",
+            "text": "Made to be washed and kept fresh at home."
+          }
+        },
+        "fair": {
+          "type": "value",
+          "settings": {
+            "title": "Fair to every home",
+            "text": "A better night without a big spend."
+          }
+        }
+      },
+      "block_order": [
+        "soft",
+        "honest",
+        "care",
+        "fair"
+      ],
+      "settings": {
+        "photo_a": "bed-morning-light.jpg",
+        "photo_a_alt": "Unmade white bed in soft morning light",
+        "photo_b": "pillow-feathers.jpg",
+        "photo_b_alt": "Pillow beside a pile of soft feather fill",
+        "photo_b_cap": "Honest inside",
+        "photo_c": "pillow-fabric-detail.jpg",
+        "photo_c_alt": "Close-up of a pillow corner and seam",
+        "photo_c_cap": "Soft by design",
+        "eyebrow": "Our story",
+        "heading": "Hotel-quality comfort",
+        "heading_em": "for every home.",
+        "text": "Pillows, toppers, protectors and support pillows that bring the feeling of a hotel bed home.",
+        "text_2": "Elovela is a UK sleep and comfort brand. We’re honest about what’s inside, easy to care for, and delivered free across the UK.",
+        "link_label": "About Elovela",
+        "link": "shopify://pages/about"
+      }
+    },
+    "offer": {
+      "type": "offer-band",
+      "settings": {
+        "image_alt": "Bed with sage bedding in window light",
+        "image_file": "bedroom-sage-window.jpg"
+      }
+    },
+    "band": {
+      "type": "photo-band",
+      "settings": {
+        "image_file": "pillows-duvet-window.jpg",
+        "image_alt": "White pillows stacked on a duvet beside a bright window",
+        "image_pos": "center",
+        "eyebrow": "Hotel Collection",
+        "heading": "Hotel nights,",
+        "heading_em": "every night.",
+        "text": "Natural duck feather and down in a double-stitched cotton cover, sold in pairs.",
+        "button_label": "Shop pillows",
+        "link": "shopify://collections/pillows"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "promises",
+    "ranges",
+    "spotlight",
+    "best",
+    "band",
+    "reviews",
+    "story",
+    "offer"
+  ]
+}

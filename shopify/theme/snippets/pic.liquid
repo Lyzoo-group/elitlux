@@ -1,0 +1,7 @@
+{%- comment -%} Renders a photo from Content → Files (images[file]) and falls back to a theme asset of the same name. {%- endcomment -%}
+{%- assign im = images[file] -%}
+{%- if im != blank -%}
+  {{ im | image_url: width: 2000 | image_tag: loading: loading, class: class, alt: alt, style: style, widths: '400, 700, 1000, 1400, 2000', sizes: sizes }}
+{%- else -%}
+  <img src="{{ file | asset_url }}" alt="{{ alt | escape }}" loading="{{ loading | default: 'lazy' }}" class="{{ class }}" style="{{ style }}">
+{%- endif -%}

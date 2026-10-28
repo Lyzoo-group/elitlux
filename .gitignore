@@ -1,0 +1,13 @@
+# Raw uploads (large, not used by the pages)
+uploads/
+
+# Temporary working files
+_scratch/
+
+# Built theme / photo archives
+shopify/*.zip
+
+# OS / editor junk
+Thumbs.db
+.DS_Store
+desktop.ini

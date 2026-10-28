@@ -1,0 +1,36 @@
+{%- liquid
+  assign img = image
+  if img == blank and c != blank
+    assign img = c.featured_image
+  endif
+  assign min = 999999999
+  if c != blank
+    for p in c.products limit: 50
+      if p.price_min < min
+        assign min = p.price_min
+      endif
+    endfor
+  endif
+  assign url = routes.all_products_collection_url
+  if c != blank
+    assign url = c.url
+  endif
+-%}
+<a href="{{ url }}" class="tile">
+  <div class="tile__media">
+    {%- if img != blank -%}
+      {{ img | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 900px) 400px, 46vw', alt: '' }}
+    {%- else -%}
+      {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+  <div class="tile__body">
+    {%- if label != blank -%}<p class="eyebrow">{{ label }}</p>{%- endif -%}
+    <h3 class="h3">{% if c != blank %}{{ c.title }}{% else %}Collection{% endif %}</h3>
+    {%- if tagline != blank -%}<p class="small muted">{{ tagline }}</p>{%- endif -%}
+    <p class="tile__from">
+      {%- if min < 999999999 -%}From {{ min | money }}{%- else -%}Shop now{%- endif -%}
+      {%- render 'icon', name: 'arrow', size: 16 -%}
+    </p>
+  </div>
+</a>

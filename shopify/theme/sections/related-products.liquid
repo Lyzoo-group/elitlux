@@ -1,0 +1,22 @@
+<div class="page-width" data-recommendations data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&amp;product_id={{ product.id }}&amp;limit={{ section.settings.limit }}&amp;intent=related">
+  {%- if recommendations.performed? and recommendations.products_count > 0 -%}
+    <div class="section">
+      <h2 class="h2-sm section-title">{{ section.settings.heading }}</h2>
+      <ul class="grid-products grid-products--four" role="list">
+        {%- for p in recommendations.products -%}
+          <li>{% render 'product-card', product: p, hide_spec: true %}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "You may also like",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "You may also like" },
+    { "type": "range", "id": "limit", "label": "Products to show", "min": 2, "max": 8, "step": 1, "default": 4 }
+  ]
+}
+{% endschema %}

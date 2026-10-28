@@ -1,0 +1,45 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "cta_label": "Add to bed",
+        "rating_product": "cloud-topper",
+        "rating": "4.6",
+        "rating_note": "32 reviews on Amazon UK",
+        "show_dynamic_checkout": true,
+        "open_first": true,
+        "show_assurances": true,
+        "show_sticky": true
+      }
+    },
+    "extras": {
+      "type": "product-extras",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "reviews-marquee",
+      "settings": {
+        "two_rows": false,
+        "eyebrow": "Reviews",
+        "heading": "What customers",
+        "heading_em": "say",
+        "rating": "4.6",
+        "rating_note": "out of 5 · 32 reviews on Amazon UK"
+      }
+    },
+    "related": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "limit": 4
+      }
+    }
+  },
+  "order": [
+    "main",
+    "extras",
+    "reviews",
+    "related"
+  ]
+}

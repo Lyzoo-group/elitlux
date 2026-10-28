@@ -1,0 +1,26 @@
+<div class="promise-wrap page-width">
+  <ul class="promise" role="list" aria-label="{{ section.settings.label | escape }}">
+    {%- for block in section.blocks -%}
+      <li {{ block.shopify_attributes }}>{% render 'icon', name: block.settings.icon, size: 24 %}<span><strong>{{ block.settings.title }}</strong> {{ block.settings.text }}</span></li>
+    {%- endfor -%}
+    {%- if section.settings.offer_label != blank -%}<li><a href="#offer">{% render 'icon', name: 'tag', size: 24 %}<span><strong>{{ section.settings.offer_label }}</strong> your first order</span></a></li>{%- endif -%}
+  </ul>
+</div>
+{% schema %}
+{
+  "name": "Promise bar",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label for screen readers", "default": "Why shop with Elovela" },
+    { "type": "text", "id": "offer_label", "label": "Offer item (bold part)", "default": "10% off", "info": "Links to the welcome offer. Leave empty to hide." }
+  ],
+  "blocks": [
+    { "type": "item", "name": "Promise", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "options": [ { "value": "truck", "label": "Delivery" }, { "value": "chat", "label": "Help" }, { "value": "wash", "label": "Washing" }, { "value": "return", "label": "Returns" }, { "value": "shield", "label": "Protection" }, { "value": "check", "label": "Tick" } ], "default": "truck" },
+      { "type": "text", "id": "title", "label": "Bold part", "default": "Free UK delivery" },
+      { "type": "text", "id": "text", "label": "Rest of the line", "default": "on every order" }
+    ] }
+  ],
+  "presets": [ { "name": "Promise bar", "blocks": [ { "type": "item" } ] } ]
+}
+{% endschema %}

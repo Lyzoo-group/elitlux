@@ -1,0 +1,35 @@
+{%- liquid
+  assign img = product.featured_media.preview_image
+  assign badge_list = product.metafields.custom.badges.value | split: ','
+  assign badge = badge_list | first | strip
+  assign spec = product.metafields.custom.spec_line.value
+-%}
+<div class="card-wrap"><a href="{{ product.url }}" class="card">
+  <div class="card__media">
+    {%- if img != blank -%}
+      {{ img | image_url: width: 860 | image_tag: loading: 'lazy', widths: '300, 430, 600, 860', sizes: '(min-width: 1100px) 280px, (min-width: 768px) 30vw, 46vw', class: 'card__img', alt: img.alt }}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+    {%- if product.available == false -%}
+      <span class="badge badge--card">Sold out</span>
+    {%- elsif badge != blank -%}
+      <span class="badge badge--card">{{ badge }}</span>
+    {%- endif -%}
+  </div>
+  <div class="card__body">
+    {%- if product.type != blank -%}<p class="eyebrow">{{ product.type }}</p>{%- endif -%}
+    <h3 class="card__title">{{ product.title }}</h3>
+    {%- if spec != blank and hide_spec != true -%}<p class="card__spec">{{ spec }}</p>{%- endif -%}
+    <p class="card__price">
+      <span>{% if product.price_varies %}From {% endif %}{{ product.price_min | money }}</span>
+      {%- if product.compare_at_price_min > product.price_min -%}
+        <s class="card__compare"><span class="visually-hidden">Was </span>{{ product.compare_at_price_min | money }}</s>
+      {%- endif -%}
+    </p>
+  </div>
+</a>
+</div>
+{%- if quick -%}
+  {%- if product.variants.size > 1 -%}<a href="{{ product.url }}" class="btn btn--secondary card__quick">Choose size</a>{%- else -%}{%- form 'product', product, class: 'card__quick-form', data-product-form: '' -%}<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"><button type="submit" name="add" class="btn btn--secondary card__quick" data-add data-label="Add to bed" data-soldout="Sold out"{% unless product.available %} disabled{% endunless %}>{% if product.available %}Add to bed{% else %}Sold out{% endif %}</button><p class="form-errors" data-form-error role="alert" hidden></p>{%- endform -%}{%- endif -%}
+{%- endif -%}

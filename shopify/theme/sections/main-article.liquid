@@ -1,0 +1,24 @@
+<article class="page-width section article" aria-labelledby="ArticleTitle">
+  <div class="stack-12">
+    <p class="eyebrow"><a href="{{ blog.url }}" style="color:inherit">{{ blog.title }}</a> · {{ article.published_at | date: '%d %B %Y' }}</p>
+    <h1 id="ArticleTitle" class="h1">{{ article.title }}</h1>
+  </div>
+  {%- if article.image != blank -%}
+    <div class="article__media">
+      {{ article.image | image_url: width: 1600 | image_tag: loading: 'eager', widths: '600, 900, 1200, 1600', sizes: '(min-width: 840px) 760px, 92vw', alt: article.image.alt }}
+    </div>
+  {%- endif -%}
+  <div class="rte">{{ article.content }}</div>
+  <a href="{{ blog.url }}" class="link-arrow">Back to {{ blog.title }}{% render 'icon', name: 'arrow', size: 16 %}</a>
+</article>
+
+<script type="application/ld+json">
+  {{ article | structured_data }}
+</script>
+
+{% schema %}
+{
+  "name": "Blog post",
+  "settings": []
+}
+{% endschema %}

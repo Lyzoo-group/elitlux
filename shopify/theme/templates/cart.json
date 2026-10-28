@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-cart",
+      "settings": {
+        "delivery_label": "UK delivery",
+        "delivery_value": "Free",
+        "show_note": false,
+        "show_express": true,
+        "empty_product": "cloud-topper",
+        "suggest_heading": "Complete your bed",
+        "suggest_collection": "pillows"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

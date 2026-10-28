@@ -1,0 +1,49 @@
+<section class="page-width section">
+  <div class="account">
+    <div class="stack-12">
+      <p class="small"><a href="{{ routes.account_url }}">← Your account</a></p>
+      <h1 class="h1">Order {{ order.name }}</h1>
+      <p class="muted">Placed {{ order.created_at | date: '%d %B %Y' }}{% if order.cancelled %} · Cancelled {{ order.cancelled_at | date: '%d %B %Y' }}{% endif %}</p>
+    </div>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th scope="col">Item</th><th scope="col">Price</th><th scope="col">Quantity</th><th scope="col">Total</th></tr></thead>
+        <tbody>
+          {%- for line in order.line_items -%}
+            <tr>
+              <td>
+                <a href="{{ line.product.url }}">{{ line.product.title | default: line.title }}</a>
+                {%- unless line.variant.title == 'Default Title' -%}<br><span class="muted">{{ line.variant.title }}</span>{%- endunless -%}
+                {%- if line.fulfillment -%}<br><span class="muted">Sent {{ line.fulfillment.created_at | date: '%d %B %Y' }}{% if line.fulfillment.tracking_url %} · <a href="{{ line.fulfillment.tracking_url }}">Track</a>{% endif %}</span>{%- endif -%}
+              </td>
+              <td>{{ line.final_price | money }}</td>
+              <td>{{ line.quantity }}</td>
+              <td>{{ line.final_line_price | money }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+        <tfoot>
+          <tr><th scope="row" colspan="3">Subtotal</th><td>{{ order.line_items_subtotal_price | money }}</td></tr>
+          {%- for discount in order.cart_level_discount_applications -%}
+            <tr><th scope="row" colspan="3">{{ discount.title }}</th><td>−{{ discount.total_allocated_amount | money }}</td></tr>
+          {%- endfor -%}
+          {%- for shipping in order.shipping_methods -%}
+            <tr><th scope="row" colspan="3">Delivery ({{ shipping.title }})</th><td>{{ shipping.price | money }}</td></tr>
+          {%- endfor -%}
+          {%- for tax in order.tax_lines -%}
+            <tr><th scope="row" colspan="3">{{ tax.title }} ({{ tax.rate_percentage }}%)</th><td>{{ tax.price | money }}</td></tr>
+          {%- endfor -%}
+          <tr><th scope="row" colspan="3">Total</th><td><strong>{{ order.total_price | money }}</strong></td></tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="form-row">
+      {%- if order.shipping_address -%}
+        <div class="stack-8"><h2 class="serif-22">Delivery address</h2><p>{{ order.shipping_address | format_address }}</p></div>
+      {%- endif -%}
+      {%- if order.billing_address -%}
+        <div class="stack-8"><h2 class="serif-22">Billing address</h2><p>{{ order.billing_address | format_address }}</p></div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>

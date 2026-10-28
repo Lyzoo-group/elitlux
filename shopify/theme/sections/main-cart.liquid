@@ -1,0 +1,111 @@
+{%- assign suggest = section.settings.suggest_collection -%}
+<section class="page-width section" aria-labelledby="CartTitle">
+  <h1 id="CartTitle" class="h1">Your bag</h1>
+  {%- if cart.item_count == 0 -%}
+    <div class="empty-state">
+      <p class="serif-28">Your bag is empty.</p>
+      <p class="muted">Let’s find something lovely for your bed.</p>
+      <div class="btn-row">
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary">Shop the collection</a>
+        {%- if section.settings.empty_product != blank -%}
+          <a href="{{ section.settings.empty_product.url }}" class="btn btn--secondary">See the {{ section.settings.empty_product.title }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- else -%}
+    <form action="{{ routes.cart_url }}" method="post" id="CartForm" class="cart-layout">
+      <ul class="cart-lines" role="list">
+        {%- for item in cart.items -%}
+          <li class="line line--page">
+            <a href="{{ item.url }}" class="line__media" tabindex="-1" aria-hidden="true">
+              {%- if item.image != blank -%}{{ item.image | image_url: width: 300 | image_tag: alt: '', loading: 'lazy' }}{%- endif -%}
+            </a>
+            <div class="line__info">
+              <div class="line__top">
+                <a href="{{ item.url }}" class="line__title">{{ item.product.title }}</a>
+                <p class="line__price">{{ item.final_line_price | money }}</p>
+              </div>
+              {%- unless item.product.has_only_default_variant -%}<p class="line__meta">{{ item.variant.title }}</p>{%- endunless -%}
+              <p class="line__meta">{{ item.final_price | money }} each</p>
+              {%- for discount in item.line_level_discount_allocations -%}
+                <p class="line__meta">{{ discount.discount_application.title }} (−{{ discount.amount | money }})</p>
+              {%- endfor -%}
+              <div class="line__actions">
+                <div class="stepper" role="group" aria-label="Quantity, {{ item.product.title | escape }}">
+                  <a class="stepper__btn" href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity={{ item.quantity | minus: 1 }}" aria-label="Decrease quantity">{% render 'icon', name: 'minus', size: 16 %}</a>
+                  <span class="stepper__val">{{ item.quantity }}</span>
+                  <a class="stepper__btn" href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity={{ item.quantity | plus: 1 }}" aria-label="Increase quantity">{% render 'icon', name: 'plus', size: 16 %}</a>
+                </div>
+                <a class="text-btn" href="{{ item.url_to_remove }}" aria-label="Remove {{ item.product.title | escape }}">Remove</a>
+              </div>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+      <aside class="summary" aria-labelledby="SummaryTitle">
+        <h2 id="SummaryTitle" class="serif-24">Order summary</h2>
+        <dl>
+          <dt>Subtotal</dt><dd>{{ cart.items_subtotal_price | money }}</dd>
+          {%- for discount in cart.cart_level_discount_applications -%}
+            <dt>{{ discount.title }}</dt><dd>−{{ discount.total_allocated_amount | money }}</dd>
+          {%- endfor -%}
+          {%- if section.settings.delivery_label != blank -%}
+            <dt>{{ section.settings.delivery_label }}</dt><dd>{{ section.settings.delivery_value }}</dd>
+          {%- endif -%}
+        </dl>
+        <div class="summary__total"><span>Total</span><span>{{ cart.total_price | money }}</span></div>
+        <p class="small muted">Discount codes can be added at checkout.</p>
+        {%- if section.settings.show_note -%}
+          <div class="field">
+            <label for="CartNote">Order note</label>
+            <textarea id="CartNote" name="note" class="input" rows="3">{{ cart.note }}</textarea>
+          </div>
+        {%- endif -%}
+        <button type="submit" name="checkout" class="btn btn--primary btn--block">Checkout</button>
+        {%- if additional_checkout_buttons and section.settings.show_express -%}
+          <div class="additional-checkout">{{ content_for_additional_checkout_buttons }}</div>
+        {%- endif -%}
+        <ul class="summary__notes" role="list">
+          <li>{{ settings.help_message }} with sizing, washing or returns{% if pages.contact.url != blank %} — <a href="{{ pages.contact.url }}">contact us</a>{% endif %}.</li>
+          <li>Returns on unused items in their original packaging.</li>
+        </ul>
+      </aside>
+    </form>
+
+    {%- if suggest != blank -%}
+      {%- assign in_cart = cart.items | map: 'product_id' -%}
+      {%- assign shown = 0 -%}
+      {%- capture suggestions -%}
+        {%- for p in suggest.products -%}
+          {%- if shown >= 4 -%}{%- break -%}{%- endif -%}
+          {%- unless in_cart contains p.id -%}
+            <li>{% render 'product-card', product: p %}</li>
+            {%- assign shown = shown | plus: 1 -%}
+          {%- endunless -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- if shown > 0 -%}
+        <div class="section" style="padding-bottom:0">
+          <h2 class="h2-sm section-title">{{ section.settings.suggest_heading }}</h2>
+          <ul class="grid-products grid-products--four" role="list">{{ suggestions }}</ul>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Bag page",
+  "settings": [
+    { "type": "text", "id": "delivery_label", "label": "Delivery row label", "default": "UK delivery" },
+    { "type": "text", "id": "delivery_value", "label": "Delivery row value", "default": "Free", "info": "Keep this true to your shipping rates." },
+    { "type": "checkbox", "id": "show_note", "label": "Let customers add an order note", "default": false },
+    { "type": "checkbox", "id": "show_express", "label": "Show express checkout buttons", "default": true },
+    { "type": "product", "id": "empty_product", "label": "Product to suggest when the bag is empty" },
+    { "type": "header", "content": "Suggestions" },
+    { "type": "text", "id": "suggest_heading", "label": "Heading", "default": "Complete your bed" },
+    { "type": "collection", "id": "suggest_collection", "label": "Suggest products from" }
+  ]
+}
+{% endschema %}

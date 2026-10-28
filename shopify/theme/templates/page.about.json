@@ -1,0 +1,166 @@
+{
+  "sections": {
+    "heading": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "About Elovela",
+        "heading": "A hotel bed,",
+        "heading_em": "brought home.",
+        "text": "Elovela is a UK sleep and comfort brand making pillows, mattress toppers, protectors and support pillows that bring the feeling of a hotel bed home. We’re honest about what’s inside, easy to care for, and delivered free across the UK.",
+        "layout": "split"
+      }
+    },
+    "image": {
+      "type": "image-banner",
+      "settings": {
+        "image_product": "guard-mattress-protector",
+        "image_alt": "Hands smoothing an Elovela mattress protector over a bed",
+        "ratio": "21 / 9"
+      }
+    },
+    "values": {
+      "type": "text-columns",
+      "blocks": {
+        "soft": {
+          "type": "column",
+          "settings": {
+            "title": "Soft by design",
+            "text": "Every product starts with how it feels: plump fills, smooth covers and quilting that keeps its shape."
+          }
+        },
+        "honest": {
+          "type": "column",
+          "settings": {
+            "title": "Honest inside",
+            "text": "We tell you exactly what’s in it — the fill, the fabric, the size — and never promise more than a pillow can do."
+          }
+        },
+        "care": {
+          "type": "column",
+          "settings": {
+            "title": "Care built in",
+            "text": "Machine-washable fills and covers, so keeping your bed fresh is easy."
+          }
+        },
+        "fair": {
+          "type": "column",
+          "settings": {
+            "title": "Fair to every home",
+            "text": "Hotel-quality comfort for every home, without the big spend."
+          }
+        }
+      },
+      "block_order": [
+        "soft",
+        "honest",
+        "care",
+        "fair"
+      ],
+      "settings": {
+        "eyebrow": "Our values",
+        "heading": "What we stand for",
+        "layout": "stacked",
+        "line": "brass",
+        "background": "none"
+      }
+    },
+    "for": {
+      "type": "link-rows",
+      "blocks": {
+        "tired": {
+          "type": "row",
+          "settings": {
+            "title": "Refreshing a tired bed",
+            "text": "A Cloud Topper adds 10cm of even softness — no new mattress needed.",
+            "link_label": "Shop toppers",
+            "collection": "cloud-toppers"
+          }
+        },
+        "bump": {
+          "type": "row",
+          "settings": {
+            "title": "Expecting, or newly nursing",
+            "text": "U and V-shape pillows that hold you, from bump to baby.",
+            "link_label": "Shop Bump & Baby",
+            "collection": "bump-baby"
+          }
+        },
+        "allergy": {
+          "type": "row",
+          "settings": {
+            "title": "Sleeping with allergies",
+            "text": "Hypoallergenic fills and 100% waterproof protectors, with every material stated plainly.",
+            "link_label": "Shop protectors",
+            "collection": "guard-protectors"
+          }
+        }
+      },
+      "block_order": [
+        "tired",
+        "bump",
+        "allergy"
+      ],
+      "settings": {
+        "eyebrow": "Who we make it for",
+        "heading": "Made for the way",
+        "heading_em": "you sleep"
+      }
+    },
+    "find": {
+      "type": "text-columns",
+      "blocks": {
+        "site": {
+          "type": "column",
+          "settings": {
+            "title": "elovela.com",
+            "text": "Free UK delivery on every order, and help at any hour.",
+            "link_label": "Shop all",
+            "link": "shopify://collections/all",
+            "new_tab": false
+          }
+        },
+        "amazon": {
+          "type": "column",
+          "settings": {
+            "title": "Amazon.co.uk",
+            "text": "The full range is also available through the Elovela Store on Amazon.",
+            "link_label": "Visit the Elovela Store",
+            "link": "https://www.amazon.co.uk/stores/Elovela/",
+            "new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "site",
+        "amazon"
+      ],
+      "settings": {
+        "eyebrow": "Find us",
+        "heading": "Shop us",
+        "heading_em": "your way",
+        "layout": "split",
+        "line": "oat",
+        "background": "none"
+      }
+    },
+    "reviews": {
+      "type": "reviews-marquee",
+      "settings": {
+        "two_rows": true,
+        "eyebrow": "Cloud Topper reviews · Amazon UK",
+        "heading": "“Like sleeping on",
+        "heading_em": "a cloud.”",
+        "rating": "4.6",
+        "rating_note": "out of 5 on Amazon UK"
+      }
+    }
+  },
+  "order": [
+    "heading",
+    "image",
+    "values",
+    "for",
+    "reviews",
+    "find"
+  ]
+}

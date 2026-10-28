@@ -1,0 +1,56 @@
+<section class="bg-linen" aria-labelledby="Rows-{{ section.id }}">
+  <div class="page-width section">
+    <div class="stack-12" style="margin-bottom:40px">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 id="Rows-{{ section.id }}" class="h2">{{ section.settings.heading }}{% if section.settings.heading_em != blank %} <em>{{ section.settings.heading_em }}</em>{% endif %}</h2>
+    </div>
+    <ul class="rows" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign url = block.settings.link
+          if url == blank and block.settings.collection != blank
+            assign url = block.settings.collection.url
+          endif
+          if url == blank
+            assign url = routes.all_products_collection_url
+          endif
+        -%}
+        <li {{ block.shopify_attributes }}>
+          <a href="{{ url }}">
+            <span class="rows__title">{{ block.settings.title }}</span>
+            <span class="muted">{{ block.settings.text }}</span>
+            <span class="rows__cta">{{ block.settings.link_label }} →</span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Link rows",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Who we make it for" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Made for the way" },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part", "default": "you sleep" }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Refreshing a tired bed" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "A Cloud Topper adds 10cm of even softness — no new mattress needed." },
+        { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop toppers" },
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "url", "id": "link", "label": "Or another link" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Link rows", "blocks": [ { "type": "row" } ] }
+  ]
+}
+{% endschema %}

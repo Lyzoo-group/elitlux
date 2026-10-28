@@ -1,0 +1,28 @@
+{%- assign pic_style = 'object-position:' | append: section.settings.image_pos | default: 'center' -%}
+<section class="band" aria-label="{{ section.settings.heading | append: ' ' | append: section.settings.heading_em | strip | escape }}">
+  {% render 'pic', file: section.settings.image_file, alt: section.settings.image_alt, class: 'media-fill band__img', style: pic_style, loading: 'lazy', sizes: '100vw' %}
+  <div class="band__shade" aria-hidden="true"></div>
+  <div class="band__inner"><div class="page-width"><div class="band__copy">
+    <p class="eyebrow eyebrow--accent">{{ section.settings.eyebrow }}</p>
+    <p class="band__title">{{ section.settings.heading }} <em>{{ section.settings.heading_em }}</em></p>
+    <p class="band__text">{{ section.settings.text }}</p>
+    <a href="{{ section.settings.link | default: routes.all_products_collection_url }}" class="btn btn--light">{{ section.settings.button_label }}{% render 'icon', name: 'arrow', size: 18 %}</a>
+  </div></div></div>
+</section>
+{% schema %}
+{
+  "name": "Photo band",
+  "settings": [
+    { "type": "text", "id": "image_file", "label": "Photo filename", "default": "pillows-duvet-window.jpg" },
+    { "type": "text", "id": "image_alt", "label": "Photo description", "default": "White pillows stacked on a duvet beside a bright window" },
+    { "type": "text", "id": "image_pos", "label": "Photo focus", "default": "center" },
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Hotel Collection" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Hotel nights," },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part", "default": "every night." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Natural duck feather and down in a double-stitched cotton cover, sold in pairs." },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Shop pillows" },
+    { "type": "url", "id": "link", "label": "Button link" }
+  ],
+  "presets": [ { "name": "Photo band" } ]
+}
+{% endschema %}

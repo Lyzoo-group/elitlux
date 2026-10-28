@@ -1,0 +1,191 @@
+{%- liquid
+  assign sort_by = collection.sort_by | default: collection.default_sort_by
+  assign img = collection.image
+  if img == blank
+    assign img = collection.featured_image
+  endif
+-%}
+{%- liquid
+  assign pg = collection.metafields.custom.page.value
+  assign chips = collection.metafields.custom.chips.value | split: ','
+  assign shop_label = pg.shopCta | default: section.settings.shop_label | default: 'Shop the range'
+  assign hero_pos = pg.heroPos | default: 'center'
+-%}
+<section class="col-hero" aria-labelledby="CollectionTitle">
+  {%- if section.settings.show_image and img != blank -%}
+    {{ img | image_url: width: 2600 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '800, 1200, 1600, 2000, 2600', sizes: '100vw', class: 'col-hero__img', alt: '', style: 'object-position:' | append: hero_pos }}
+  {%- endif -%}
+  <div class="col-hero__scrim" aria-hidden="true"></div>
+  <div class="page-width col-hero__inner">
+    <div class="col-hero__copy">
+      {%- if pg.title != blank -%}
+        <p class="eyebrow eyebrow--accent">{{ pg.eyebrow | default: collection.title }}</p>
+        <h1 id="CollectionTitle" class="h-display">{{ pg.title }} <em>{{ pg.titleEm }}</em></h1>
+        <p class="lede">{{ pg.intro }}</p>
+      {%- else -%}
+        <p class="eyebrow eyebrow--accent">{{ collection.title }}</p>
+        <h1 id="CollectionTitle" class="h-display">{{ collection.title }}</h1>
+        {%- if collection.description != blank -%}<div class="lede">{{ collection.description }}</div>{%- endif -%}
+      {%- endif -%}
+      {%- if chips.size > 0 and chips[0] != blank -%}
+        <ul class="col-hero__chips" role="list">
+          {%- for chip in chips -%}<li>{{ chip | strip }}</li>{%- endfor -%}
+        </ul>
+      {%- endif -%}
+      <div class="btn-row">
+        <a href="#CollectionGrid" class="btn btn--light">{{ shop_label }}{% render 'icon', name: 'arrow', size: 18 %}</a>
+        {%- if section.settings.guide_label != blank and section.settings.guide_link != blank -%}
+          <a href="{{ section.settings.guide_link }}" class="btn btn--outline-light">{{ section.settings.guide_label }}</a>
+        {%- endif -%}
+      </div>
+      <ul class="ticks" role="list">
+        <li>{% render 'icon', name: 'truck', size: 20 %}{{ settings.delivery_message }}</li>
+        <li>{% render 'icon', name: 'chat', size: 20 %}{{ settings.help_message }}</li>
+      </ul>
+    </div>
+    {%- assign lead = collection.products.first -%}
+    {%- if pg.lead != blank -%}{%- assign lead = all_products[pg.lead] -%}{%- endif -%}
+    {%- if lead != blank -%}
+      <div class="col-hero__lead">
+        {%- if pg.insetImg != blank -%}<div class="col-hero__inset">{% render 'pic', file: pg.insetImg, alt: pg.insetAlt, class: '', style: '', loading: 'lazy', sizes: '100vw' %}</div>{%- endif -%}
+        <a href="{{ lead.url }}" class="lead-card">
+          {%- if lead.featured_media != blank -%}{{ lead.featured_media.preview_image | image_url: width: 160 | image_tag: alt: '', loading: 'lazy' }}{%- endif -%}
+          <span class="lead-card__text">
+            <span class="eyebrow">{{ pg.leadLabel | default: section.settings.lead_label }}</span>
+            <span class="lead-card__title">{{ lead.title }}</span>
+            <span class="small muted">{% if lead.price_varies %}From {% endif %}{{ lead.price_min | money }}</span>
+          </span>
+          {%- render 'icon', name: 'arrow', size: 18 -%}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{%- if pg.benefits.size > 0 -%}
+<section class="page-width col-benefits" aria-label="Why this range">
+  <ul class="col-benefits__grid" role="list">
+    {%- for b in pg.benefits -%}<li class="col-benefit"><span class="col-benefit__num" aria-hidden="true">0{{ forloop.index }}</span><h2>{{ b[0] }}</h2><p>{{ b[1] }}</p></li>{%- endfor -%}
+  </ul>
+</section>
+{%- endif -%}
+{%- paginate collection.products by section.settings.per_page -%}
+  <div class="page-width col-grid-head">
+    <div class="stack-12"><p class="eyebrow" aria-live="polite">{{ collection.products_count }} {% if collection.products_count == 1 %}product{% else %}products{% endif %}</p><h2 class="h2">{{ pg.gridTitle | default: collection.title }}</h2></div>
+    {%- if collection.products_count > 2 -%}
+    <form method="get" action="{{ collection.url }}"><label class="sort"><span class="muted">Sort</span><select name="sort_by" class="select" data-sort>{%- for option in collection.sort_options -%}<option value="{{ option.value }}"{% if option.value == sort_by %} selected{% endif %}>{{ option.name }}</option>{%- endfor -%}</select></label><noscript><button type="submit" class="btn btn--secondary">Apply</button></noscript></form>
+    {%- endif -%}
+  </div>
+  <section id="CollectionGrid" class="page-width col-grid" aria-label="Products">
+    {%- if collection.products.size > 0 -%}
+      {%- if collection.products_count <= 2 -%}
+      <ul class="few" role="list">
+        {%- for product in collection.products -%}
+          {%- assign fv = product.selected_or_first_available_variant -%}
+          <li class="few__card">
+            <a href="{{ product.url }}" class="few__media">{%- if product.featured_media != blank -%}{{ product.featured_media.preview_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'media-fill', alt: product.featured_media.alt }}{%- endif -%}{%- assign badge = product.metafields.custom.badges.value | split: ',' | first | strip -%}{%- if badge != blank -%}<span class="badge badge--card">{{ badge }}</span>{%- endif -%}</a>
+            <div class="few__body">
+              <p class="eyebrow">{{ product.type }}</p>
+              <h3 class="few__title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+              <p class="small muted">{{ product.metafields.custom.spec_line.value }}</p>
+              <p class="few__lead">{{ product.description | strip_html | truncatewords: 28 }}</p>
+              <p class="few__price">{% if product.price_varies %}From {% endif %}{{ product.price_min | money }}{%- if product.compare_at_price_min > product.price_min -%} <s>{{ product.compare_at_price_min | money }}</s>{%- endif -%}</p>
+              {%- unless product.has_only_default_variant -%}<p class="small"><strong>{{ product.options.first }}</strong></p>{%- endunless -%}
+              {%- form 'product', product, data-product-form: '' -%}
+                <ul class="few__opts" role="list">
+                  {%- for v in product.variants -%}<li><button type="submit" name="id" value="{{ v.id }}" class="few__opt"{% unless v.available %} disabled{% endunless %} data-add data-label="{{ v.title | escape }}" data-soldout="Sold out"><span>{{ v.title }}</span><span class="muted">{{ v.price | money }}</span></button></li>{%- endfor -%}
+                </ul>
+                <p class="form-errors" data-form-error role="alert" hidden></p>
+              {%- endform -%}
+              <a href="{{ product.url }}" class="link-arrow link-arrow--dark">View full details{% render 'icon', name: 'arrow', size: 16 %}</a>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+      {%- else -%}
+      <ul class="grid-products" role="list">
+        {%- for product in collection.products -%}
+          <li>{% render 'product-card', product: product, hide_spec: false, quick: true %}</li>
+        {%- endfor -%}
+      </ul>
+      {%- endif -%}
+    {%- else -%}
+      <div class="empty-state">
+        <p class="serif-28">Nothing here yet.</p>
+        <p class="muted">New pieces are on their way. In the meantime, see everything we make.</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary">Shop all</a>
+      </div>
+    {%- endif -%}
+    {%- if paginate.pages > 1 -%}
+      <nav class="pagination" aria-label="Pages">
+        {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">Previous</a>{%- endif -%}
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <a href="{{ part.url }}">{{ part.title }}</a>
+          {%- elsif part.title == paginate.current_page -%}
+            <span class="current" aria-current="page">{{ part.title }}</span>
+          {%- else -%}
+            <span class="deco">{{ part.title }}</span>
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if paginate.next -%}<a href="{{ paginate.next.url }}">Next</a>{%- endif -%}
+      </nav>
+    {%- endif -%}
+  </section>
+{%- endpaginate -%}
+{%- if pg.guideTitle != blank -%}
+<section id="guide" class="page-width col-guide" aria-labelledby="GuideTitle">
+  <div class="col-guide__card">
+    <div class="col-guide__media">{%- if pg.guideImg != blank -%}{% render 'pic', file: pg.guideImg, alt: pg.guideAlt, class: 'media-fill', style: '', loading: 'lazy', sizes: '100vw' %}{%- endif -%}</div>
+    <div class="col-guide__copy">
+      <p class="eyebrow">{{ pg.guideEy }}</p>
+      <h2 id="GuideTitle" class="h2">{{ pg.guideTitle }}</h2>
+      <p class="lede">{{ pg.guideIntro }}</p>
+      {%- if pg.rowsFrom != blank -%}
+        {%- assign rp = all_products[pg.rowsFrom] -%}
+        <dl class="spec-list">{%- for v in rp.variants -%}<dt>{{ v.title }}</dt><dd>{{ v.price | money }}</dd>{%- endfor -%}</dl>
+      {%- else -%}
+        <dl class="spec-list">{%- for p in collection.products limit: 5 -%}<dt><a href="{{ p.url }}">{{ p.title }}</a></dt><dd>{% if p.price_varies %}From {% endif %}{{ p.price_min | money }}</dd>{%- endfor -%}</dl>
+      {%- endif -%}
+      <p class="small muted">Not sure? {% if pages.contact.url != blank %}<a href="{{ pages.contact.url }}">Ask us</a>{% else %}Ask us{% endif %}, we’re here 24/7.</p>
+    </div>
+  </div>
+</section>
+{%- endif -%}
+{%- if pg.banner.img != blank -%}
+<section class="page-width col-banner" aria-label="{{ pg.banner.who | escape }}">
+  <div class="col-banner__card">
+    {%- assign pic_style = 'object-position:' | append: pg.banner.pos -%}{% render 'pic', file: pg.banner.img, alt: pg.banner.alt, class: 'media-fill', style: pic_style, loading: 'lazy', sizes: '100vw' %}
+    <div class="col-banner__shade" aria-hidden="true"></div>
+    <div class="col-banner__copy">
+      <p class="col-banner__quote">{{ pg.banner.quote }}</p>
+      <p class="eyebrow">{{ pg.banner.who }}</p>
+      <a href="#CollectionGrid" class="btn btn--light">{{ shop_label }}{% render 'icon', name: 'arrow', size: 18 %}</a>
+    </div>
+  </div>
+</section>
+{%- endif -%}
+{%- if pg.cross.size > 0 -%}
+<section class="page-width col-cross" aria-labelledby="CrossTitle">
+  <div class="section-head"><div class="stack-12"><p class="eyebrow">Complete your bed</p><h2 id="CrossTitle" class="h2">Goes well <em>with</em></h2></div></div>
+  <ul class="tiles" role="list">
+    {%- for h in pg.cross -%}{%- assign cc = collections[h] -%}{%- if cc != blank -%}<li>{% render 'collection-tile', c: cc, label: cc.title, tagline: cc.description | strip_html | truncatewords: 8 %}</li>{%- endif -%}{%- endfor -%}
+  </ul>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Collection page",
+  "class": "section-collection",
+  "settings": [
+    { "type": "checkbox", "id": "show_image", "label": "Show collection image as the hero background", "default": true },
+    { "type": "text", "id": "shop_label", "label": "Main button", "default": "Shop the range" },
+    { "type": "text", "id": "guide_label", "label": "Second button" },
+    { "type": "url", "id": "guide_link", "label": "Second button link" },
+    { "type": "text", "id": "lead_label", "label": "Featured product label", "default": "Hero range" },
+    { "type": "paragraph", "content": "Each collection's hero headline, chips, promise cards, guide, banner and related ranges come from its Category page metafield (Collections → Metafields). Add a Chips metafield (custom.chips, single line text, comma-separated) to a collection to show short facts under the intro, e.g. 10cm deep, Single to Super King." },
+    { "type": "range", "id": "per_page", "label": "Products per page", "min": 8, "max": 48, "step": 4, "default": 24 }
+  ]
+}
+{% endschema %}

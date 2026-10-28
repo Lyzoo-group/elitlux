@@ -1,0 +1,45 @@
+<section id="offer" class="offer bg-forest" aria-labelledby="Offer-{{ section.id }}">
+  <div class="page-width offer__inner">
+    <div class="offer__copy">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 id="Offer-{{ section.id }}" class="h2-lg">{{ section.settings.heading }}{% if section.settings.heading_em != blank %} <em>{{ section.settings.heading_em }}</em>{% endif %}</h2>
+      <p class="lede">{{ section.settings.text }}</p>
+      {%- assign offer_form_id = 'OfferForm-' | append: section.id -%}
+      {%- form 'customer', id: offer_form_id -%}
+        <input type="hidden" name="contact[tags]" value="newsletter, welcome-offer">
+        {%- if form.posted_successfully? -%}
+          <p class="offer__done" role="status">Thank you. Your code is on its way.</p>
+        {%- else -%}
+          <div class="news-form">
+            <label for="OfferEmail-{{ section.id }}" class="visually-hidden">Email address</label>
+            <input id="OfferEmail-{{ section.id }}" type="email" name="contact[email]" autocomplete="email" placeholder="Email address" required>
+            <button type="submit" class="btn btn--light">{{ section.settings.button_label }}</button>
+          </div>
+          {%- if form.errors -%}<div class="form-errors offer__errors" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+        {%- endif -%}
+      {%- endform -%}
+      <p class="small offer__note">{{ section.settings.note }}</p>
+    </div>
+    <div class="offer__media">
+      {%- if section.settings.image != blank -%}{{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '500, 800, 1100, 1400', sizes: '(min-width: 1000px) 50vw, 100vw', class: 'media-fill', alt: section.settings.image_alt }}{%- elsif section.settings.image_file != blank -%}{% render 'pic', file: section.settings.image_file, alt: section.settings.image_alt, class: 'media-fill', style: '', loading: 'lazy', sizes: '100vw' %}{%- endif -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Welcome offer",
+  "settings": [
+    { "type": "paragraph", "content": "Sign-ups are tagged welcome-offer. Create the 10% discount code in Discounts and send it with a welcome email from Shopify Email or your email app." },
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Welcome to Elovela" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "10% off" },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part", "default": "your first order." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Join our list and we’ll email your code straight away, plus new ranges and care tips now and then." },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Get 10% off" },
+    { "type": "text", "id": "note", "label": "Small print", "default": "One code per customer, for your first order. Unsubscribe any time." },
+    { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "text", "id": "image_file", "label": "Or a photo filename from the theme assets", "default": "bedroom-sage-window.jpg" },
+    { "type": "text", "id": "image_alt", "label": "Image description" }
+  ],
+  "presets": [ { "name": "Welcome offer" } ]
+}
+{% endschema %}

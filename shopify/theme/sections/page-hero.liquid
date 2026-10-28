@@ -1,0 +1,36 @@
+{%- liquid
+  assign stacked = false
+  if section.settings.layout == 'stacked'
+    assign stacked = true
+  endif
+-%}
+<section class="page-width page-hero{% if stacked %} page-hero--stacked{% endif %}" aria-labelledby="PageHero-{{ section.id }}">
+  <div class="page-hero__copy">
+    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    <h1 id="PageHero-{{ section.id }}" class="h-page">{{ section.settings.heading }}{% if section.settings.heading_em != blank %} <em>{{ section.settings.heading_em }}</em>{% endif %}</h1>
+  </div>
+  {%- if section.settings.text != blank -%}<p class="lede">{{ section.settings.text }}</p>{%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Page heading",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "About Elovela" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A hotel bed," },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part", "default": "brought home." },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "split", "label": "Text beside heading" },
+        { "value": "stacked", "label": "Text under heading" }
+      ],
+      "default": "split"
+    }
+  ],
+  "presets": [ { "name": "Page heading" } ]
+}
+{% endschema %}

@@ -1,0 +1,18 @@
+<section class="page-width section" aria-labelledby="AllCollections">
+  <h1 id="AllCollections" class="h1 section-title">{{ section.settings.heading }}</h1>
+  <ul class="tiles" role="list">
+    {%- for c in collections -%}
+      {%- if c.handle == 'frontpage' or c.products_count == 0 -%}{%- continue -%}{%- endif -%}
+      <li>{% render 'collection-tile', c: c %}</li>
+    {%- endfor -%}
+  </ul>
+</section>
+
+{% schema %}
+{
+  "name": "All collections",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by range" }
+  ]
+}
+{% endschema %}

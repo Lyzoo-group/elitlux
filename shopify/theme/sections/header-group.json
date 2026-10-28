@@ -1,0 +1,65 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "header": {
+      "type": "header",
+      "blocks": {
+        "column-toppers": {
+          "type": "column",
+          "settings": {
+            "heading": "Toppers",
+            "collection": "cloud-toppers",
+            "limit": 5,
+            "all_label": "All toppers"
+          }
+        },
+        "column-pillows": {
+          "type": "column",
+          "settings": {
+            "heading": "Pillows",
+            "collection": "pillows",
+            "limit": 5,
+            "all_label": "All pillows"
+          }
+        },
+        "column-support": {
+          "type": "column",
+          "settings": {
+            "heading": "Support",
+            "collection": "support-pillows",
+            "limit": 5,
+            "all_label": "All support pillows"
+          }
+        },
+        "column-protection": {
+          "type": "column",
+          "settings": {
+            "heading": "Protection",
+            "collection": "guard-protectors",
+            "limit": 5,
+            "all_label": "All protectors"
+          }
+        }
+      },
+      "block_order": [
+        "column-toppers",
+        "column-pillows",
+        "column-support",
+        "column-protection"
+      ],
+      "settings": {
+        "logo_height": 48,
+        "menu": "main-menu",
+        "mega_label": "Shop",
+        "promo_product": "cloud-topper",
+        "promo_eyebrow": "Hero range",
+        "promo_heading": "Your bed,",
+        "promo_heading_em": "made new."
+      }
+    }
+  },
+  "order": [
+    "header"
+  ]
+}

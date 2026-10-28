@@ -1,0 +1,51 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menu-shop": {
+          "type": "menu",
+          "settings": {
+            "heading": "Shop",
+            "menu": "main-menu"
+          }
+        },
+        "menu-help": {
+          "type": "menu",
+          "settings": {
+            "heading": "Help",
+            "menu": "footer"
+          }
+        },
+        "contact": {
+          "type": "contact",
+          "settings": {
+            "heading": "Help, 24/7"
+          }
+        },
+        "company": {
+          "type": "company",
+          "settings": {
+            "heading": "Company",
+            "legal_name": "Elovali Limited, trading as Elovela",
+            "reg": "Registered in Scotland, company no. SC844987"
+          }
+        }
+      },
+      "block_order": [
+        "menu-shop",
+        "menu-help",
+        "company",
+        "contact"
+      ],
+      "settings": {
+        "show_offer": true
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

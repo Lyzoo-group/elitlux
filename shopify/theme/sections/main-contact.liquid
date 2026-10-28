@@ -1,0 +1,111 @@
+{%- liquid
+  assign has_details = false
+  if settings.support_email != blank or settings.support_phone != blank or settings.support_hours != blank or settings.business_address != blank
+    assign has_details = true
+  endif
+-%}
+<section class="page-width contact" aria-label="Contact">
+  <div class="panel">
+    {%- form 'contact', id: 'ContactForm', class: 'form' -%}
+      {%- if form.posted_successfully? -%}
+        <div class="stack-12 align-start" role="status">
+          <p class="serif-28">Thank you.</p>
+          <p class="muted">We’ve got your message and will reply by email.</p>
+        </div>
+      {%- else -%}
+        <h2 class="serif-24">{{ section.settings.form_heading }}</h2>
+        {%- if form.errors -%}
+          <div class="form-errors" role="alert">{{ form.errors | default_errors }}</div>
+        {%- endif -%}
+        <div class="form-row">
+          <div class="field">
+            <label for="ContactName">Name</label>
+            <input id="ContactName" class="input" name="contact[name]" autocomplete="name" value="{{ form.name }}" required>
+          </div>
+          <div class="field">
+            <label for="ContactEmail">Email</label>
+            <input id="ContactEmail" class="input" type="email" name="contact[email]" autocomplete="email" value="{{ form.email }}" required{% if form.errors contains 'email' %} aria-invalid="true"{% endif %}>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="ContactOrder">Order number <span class="muted">(optional)</span></label>
+            <input id="ContactOrder" class="input" name="contact[Order number]">
+          </div>
+          <div class="field">
+            <label for="ContactTopic">What’s it about?</label>
+            <select id="ContactTopic" class="input" name="contact[Topic]">
+              <option value="">Choose a topic</option>
+              <option>Sizing</option>
+              <option>Washing and care</option>
+              <option>A return or exchange</option>
+              <option>Damaged or faulty item</option>
+              <option>Something else</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="ContactBody">Message</label>
+          <textarea id="ContactBody" class="input" name="contact[body]" rows="5" required>{{ form.body }}</textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary">Send message</button>
+          <p class="small muted">We’ll only use your details to reply to you.</p>
+        </div>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+
+  <div class="stack-40">
+    {%- if has_details -%}
+      <div class="stack-16">
+        <h2 class="serif-24">Get in touch</h2>
+        <dl class="details">
+          {%- if settings.support_email != blank -%}<dt>Email</dt><dd><a href="mailto:{{ settings.support_email }}">{{ settings.support_email }}</a></dd>{%- endif -%}
+          {%- if settings.support_phone != blank -%}<dt>Phone / WhatsApp</dt><dd><a href="tel:{{ settings.support_phone | remove: ' ' }}">{{ settings.support_phone }}</a></dd>{%- endif -%}
+          {%- if settings.support_hours != blank -%}<dt>Hours</dt><dd>{{ settings.support_hours }}</dd>{%- endif -%}
+          {%- if settings.business_address != blank -%}<dt>Address</dt><dd>{{ settings.business_address }}</dd>{%- endif -%}
+        </dl>
+      </div>
+    {%- endif -%}
+    <div class="stack-16{% if has_details %} divider-top{% endif %}">
+      <h2 class="serif-24">{{ section.settings.returns_heading }}</h2>
+      {%- if section.settings.returns_intro != blank -%}<p>{{ section.settings.returns_intro }}</p>{%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <ol class="steps">
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+          {%- endfor -%}
+        </ol>
+      {%- endif -%}
+      {%- if section.settings.returns_note != blank -%}<p class="small muted">{{ section.settings.returns_note }}</p>{%- endif -%}
+      {%- if shop.refund_policy.url != blank -%}
+        <a href="{{ shop.refund_policy.url }}" class="small" style="font-weight:600">Read the full returns policy</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact form",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "form_heading", "label": "Form heading", "default": "Send us a message" },
+    { "type": "header", "content": "Delivery & returns" },
+    { "type": "text", "id": "returns_heading", "label": "Heading", "default": "Delivery & returns" },
+    { "type": "textarea", "id": "returns_intro", "label": "Intro", "default": "Free UK delivery on every order, anywhere in the UK." },
+    { "type": "textarea", "id": "returns_note", "label": "Small print", "default": "Return requests are accepted within 7–14 days of receiving your order, depending on local consumer law. Items must be unused, unwashed and in their original packaging. For hygiene reasons, bedding that has been used or washed can’t be returned unless it’s faulty." }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Returns step",
+      "settings": [
+        { "type": "textarea", "id": "text", "label": "Step", "default": "Contact us with your order number." }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Contact form" } ]
+}
+{% endschema %}

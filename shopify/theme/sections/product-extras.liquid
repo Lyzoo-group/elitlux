@@ -1,0 +1,51 @@
+{%- liquid
+  assign benefits = product.metafields.custom.benefits.value
+  assign cmp = product.metafields.custom.compare.value
+  assign faqs = product.metafields.custom.faqs.value
+  assign why_img = product.media[1].preview_image | default: product.featured_media.preview_image
+-%}
+{%- if benefits and benefits.size > 0 -%}
+<section class="why bg-linen" aria-labelledby="Why-{{ section.id }}">
+  <div class="page-width why__inner">
+    <div class="why__media">{%- if why_img != blank -%}{{ why_img | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '500, 800, 1200', sizes: '(min-width: 900px) 45vw, 100vw', class: 'media-fill', alt: why_img.alt }}{%- endif -%}</div>
+    <div class="why__copy">
+      <div class="stack-12"><p class="eyebrow">{{ section.settings.why_eyebrow }}</p><h2 id="Why-{{ section.id }}" class="h2">{{ product.title | replace: ' & ', ' and ' }}</h2></div>
+      <ol class="why__list" role="list">
+        {%- for b in benefits -%}<li><span class="why__num" aria-hidden="true">0{{ forloop.index }}</span><div class="stack-8"><h3>{{ b[0] }}</h3><p>{{ b[1] }}</p></div></li>{%- endfor -%}
+      </ol>
+    </div>
+  </div>
+</section>
+{%- endif -%}
+{%- if cmp and cmp.handles.size > 1 -%}
+<section class="page-width section cmp" aria-labelledby="Cmp-{{ section.id }}">
+  <div class="stack-12 cmp__head"><p class="eyebrow">{{ section.settings.cmp_eyebrow }}</p><h2 id="Cmp-{{ section.id }}" class="h2">{{ cmp.title }}</h2></div>
+  <div class="cmp__scroll">
+    <table class="cmp__table">
+      <thead><tr><th scope="col" class="cmp__rowhead"><span class="visually-hidden">Product</span></th>
+        {%- for h in cmp.handles -%}{%- assign cp = all_products[h] -%}<th scope="col"{% if forloop.first %} class="is-current"{% endif %}><a href="{{ cp.url }}">{%- if cp.featured_media != blank -%}<span class="cmp__img">{{ cp.featured_media.preview_image | image_url: width: 200 | image_tag: alt: '', loading: 'lazy' }}</span>{%- endif -%}<span class="cmp__name">{{ cp.title }}</span><span class="cmp__tag">{% if forloop.first %}You’re viewing{% else %}{% if cp.price_varies %}From {% endif %}{{ cp.price_min | money }}{% endif %}</span></a></th>{%- endfor -%}
+      </tr></thead>
+      <tbody>{%- for row in cmp.rows -%}<tr><th scope="row">{{ row.k }}</th>{%- for v in row.v -%}<td{% if forloop.first %} class="is-current"{% endif %}>{{ v }}</td>{%- endfor -%}</tr>{%- endfor -%}</tbody>
+    </table>
+  </div>
+</section>
+{%- endif -%}
+{%- if faqs and faqs.size > 0 -%}
+<section class="faq" aria-labelledby="Faq-{{ section.id }}">
+  <div class="page-width faq__inner">
+    <div class="stack-12"><p class="eyebrow">{{ section.settings.faq_eyebrow }}</p><h2 id="Faq-{{ section.id }}" class="h2">Questions about the {{ product.type | downcase | default: product.title }}</h2><p class="muted">Anything else? {% if pages.contact.url != blank %}<a href="{{ pages.contact.url }}">Ask us</a>{% else %}Ask us{% endif %}, we’re here 24/7.</p></div>
+    <div class="faq__list">{%- for f in faqs -%}<details class="accordion"><summary>{{ f.q }}{% render 'icon', name: 'plus', size: 20 %}</summary><div class="accordion__body"><p>{{ f.a }}</p></div></details>{%- endfor -%}</div>
+  </div>
+</section>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Product extras",
+  "settings": [
+    { "type": "paragraph", "content": "Shows each product's Benefits, Comparison and FAQs metafields (Products → Metafields)." },
+    { "type": "text", "id": "why_eyebrow", "label": "Benefits label", "default": "Why choose it" },
+    { "type": "text", "id": "cmp_eyebrow", "label": "Comparison label", "default": "Choosing between them" },
+    { "type": "text", "id": "faq_eyebrow", "label": "FAQ label", "default": "Good to know" }
+  ]
+}
+{% endschema %}
