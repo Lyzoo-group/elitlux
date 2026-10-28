@@ -1,0 +1,61 @@
+{%- liquid
+  assign ovl = section.settings.overlap
+  assign n = section.blocks.size
+-%}
+{%- if n > 0 -%}
+<div class="strip"{% if ovl %} data-ovl{% endif %} style="z-index:{{ section.index | default: 2 }}" {{ section.shopify_attributes }}>
+  <div class="strip__vp">
+    <div class="strip__track" data-marquee>
+      {%- for pass in (1..2) -%}
+        <ul role="list"{% if pass == 1 %} aria-label="{{ section.settings.label | escape }}"{% else %} aria-hidden="true"{% endif %} class="strip__list">
+          {%- for copy in (1..2) -%}
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign hid = false
+                if pass == 1 and copy == 2
+                  assign hid = true
+                endif
+                assign focusable = false
+                if pass == 1 and copy == 1
+                  assign focusable = true
+                endif
+              -%}
+              <li class="strip__it"{% if hid %} aria-hidden="true"{% endif %}{% if pass == 1 and copy == 1 %} {{ block.shopify_attributes }}{% endif %}>
+                {%- if block.settings.opens_offer -%}
+                  <button type="button" class="strip__btn" data-go-offer{% unless focusable %} tabindex="-1"{% endunless %}>{{ block.settings.text }}</button>
+                {%- else -%}
+                  <span class="strip__txt">{{ block.settings.text }}</span>
+                {%- endif -%}
+                {%- render 'icon', i: 'star4', cls: 'strip__star' -%}
+              </li>
+            {%- endfor -%}
+          {%- endfor -%}
+        </ul>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Moving strip",
+  "class": "strip-sec",
+  "settings": [
+    { "type": "checkbox", "id": "overlap", "label": "Overlap the section above with a rounded top", "default": false, "info": "Turn on when the strip sits under a photo hero. On pages that already show a strip in the page, the header's strip hides itself." },
+    { "type": "text", "id": "label", "label": "Accessible list name", "default": "Why shop with Elitlux" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Free UK delivery on every order" },
+        { "type": "checkbox", "id": "opens_offer", "label": "Scroll to the 10% off sign-up when clicked", "default": false }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "Moving strip", "blocks": [{ "type": "item" }] }]
+}
+{% endschema %}

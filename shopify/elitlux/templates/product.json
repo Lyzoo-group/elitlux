@@ -1,0 +1,203 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "home_label": "Home",
+        "rating_product": "cloud-topper",
+        "add_label": "Add to bed",
+        "buy_now_label": "Buy it now",
+        "assure_1": "<p><strong>Free UK delivery</strong> on every order</p>",
+        "assure_2": "<p><strong>Help, 24/7</strong> with sizing, washing or returns. <a href=\"/pages/contact\">Contact us</a></p>",
+        "assure_3": "<p><strong>Returns</strong> on unused items in their original packaging. <a href=\"/pages/contact\">How returns work</a></p>",
+        "pair_label": "Pairs well with",
+        "desc_label": "Description",
+        "specs_label": "Specifications",
+        "size_label": "Size guide",
+        "size_note_before": "Measurements shown where confirmed. Not sure which size you need?",
+        "size_note_link": "Ask us",
+        "ask_link": "/pages/contact",
+        "size_note_after": " — we’re here 24/7.",
+        "care_label": "Care",
+        "deliv_label": "Delivery & returns",
+        "deliv_text": "<p>Free UK delivery on every order, anywhere in the UK.</p><p>Return requests are accepted within 7–14 days of receiving your order, depending on local consumer law. Items must be unused, unwashed and in their original packaging. For hygiene reasons, bedding that has been used or washed can’t be returned unless it’s faulty.</p><p>Damaged, faulty or not what you ordered? Tell us within 48 hours of delivery with a photo and we’ll arrange a replacement or refund at no cost to you.</p>",
+        "policy_link": "Read the full returns policy",
+        "sticky_label": "Add to bed"
+      }
+    },
+    "why": {
+      "type": "product-why",
+      "settings": {
+        "overlap": false,
+        "rounded": true,
+        "eyebrow": "Why choose it"
+      }
+    },
+    "compare": {
+      "type": "product-compare",
+      "settings": {
+        "overlap": true,
+        "eyebrow": "Choosing between them",
+        "current_label": "You’re viewing"
+      }
+    },
+    "faq": {
+      "type": "product-faq",
+      "settings": {
+        "overlap": true,
+        "eyebrow": "Good to know",
+        "heading": "Questions about the",
+        "ask_before": "Anything else?",
+        "ask_link_text": "Ask us",
+        "ask_link": "/pages/contact",
+        "ask_after": ", we’re here 24/7."
+      }
+    },
+    "reviews": {
+      "type": "reviews",
+      "blocks": {
+        "r1_1": {
+          "type": "review",
+          "settings": {
+            "row": "1",
+            "title": "Very good buy",
+            "text": "If you want an extra layer of the mattress, this is the protector you need to get. It came in the right size as I wanted and also thick as well. Its winter now and you need all the heat protection as possible, this did it for me. I highly recommend it.",
+            "name": "Ade",
+            "meta": "Verified purchase · Double"
+          }
+        },
+        "r1_2": {
+          "type": "review",
+          "settings": {
+            "row": "1",
+            "title": "Excellent Mattress Protector",
+            "text": "Excellent. Great quality and deep sides/corners so it doesn't slip off.",
+            "name": "JD",
+            "meta": "Verified purchase · King"
+          }
+        },
+        "r1_3": {
+          "type": "review",
+          "settings": {
+            "row": "1",
+            "title": "Great for protecting mattress",
+            "text": "Excellent for keeping stains off of your mattress. Been using for about 6 months, washes well, need to hang it out as it drips. Overall great for protecting mattress",
+            "name": "Amazon Customer",
+            "meta": "Verified purchase · Small Double"
+          }
+        },
+        "r1_4": {
+          "type": "review",
+          "settings": {
+            "row": "1",
+            "title": "Good product",
+            "text": "Great product, fits well and more importantly....stays where it should!",
+            "name": "harrygilfillan",
+            "meta": "Verified purchase · King"
+          }
+        },
+        "r1_5": {
+          "type": "review",
+          "settings": {
+            "row": "1",
+            "title": "Quilted mattress cover",
+            "text": "Very good value and so comfortable. One happy customer.",
+            "name": "Amazon Customer",
+            "meta": "Verified purchase · Double"
+          }
+        },
+        "r2_1": {
+          "type": "review",
+          "settings": {
+            "row": "2",
+            "title": "Mattress protector",
+            "text": "Great item. Very good quality. Great fit.",
+            "name": "Coffee lover",
+            "meta": "Verified purchase · King"
+          }
+        },
+        "r2_2": {
+          "type": "review",
+          "settings": {
+            "row": "2",
+            "title": "Good quality",
+            "text": "Good quality, does the job and looks nice.",
+            "name": "J.Harris",
+            "meta": "Verified purchase · Double"
+          }
+        },
+        "r2_3": {
+          "type": "review",
+          "settings": {
+            "row": "2",
+            "title": "Well delivered",
+            "text": "Good quality easy to fit",
+            "name": "scottie",
+            "meta": "Verified purchase · King"
+          }
+        },
+        "r2_4": {
+          "type": "review",
+          "settings": {
+            "row": "2",
+            "title": "Order the correct size.",
+            "text": "I found this item perfect and delivery was excellent.",
+            "name": "Charles Wood",
+            "meta": "Verified purchase · Double"
+          }
+        },
+        "r2_5": {
+          "type": "review",
+          "settings": {
+            "row": "2",
+            "title": "Fits well.",
+            "text": "As described.",
+            "name": "Barbara Boscott",
+            "meta": "Verified purchase · Double"
+          }
+        }
+      },
+      "block_order": [
+        "r1_1",
+        "r1_2",
+        "r1_3",
+        "r1_4",
+        "r1_5",
+        "r2_1",
+        "r2_2",
+        "r2_3",
+        "r2_4",
+        "r2_5"
+      ],
+      "settings": {
+        "overlap": false,
+        "rounded": true,
+        "anchor": "reviews",
+        "eyebrow": "Mattress Protector reviews · Amazon UK",
+        "heading": "What customers",
+        "heading_em": "say",
+        "heading_after": "",
+        "rating_text": "out of 5 on Amazon UK",
+        "row_1_label": "Customer reviews",
+        "row_2_label": "More customer reviews",
+        "link_label": "All reviews on Amazon"
+      }
+    },
+    "related": {
+      "type": "product-related",
+      "settings": {
+        "overlap": true,
+        "rounded": false,
+        "heading": "You may also like"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "why",
+    "compare",
+    "faq",
+    "reviews",
+    "related"
+  ]
+}

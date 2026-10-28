@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1F2D4D">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="icon" type="image/png" href="{{ 'elitlux-favicon.png' | asset_url }}">
+    {%- capture seo_title -%}
+      {{ page_title }}
+      {%- if current_tags %} – {{ current_tags | join: ', ' }}{% endif -%}
+      {%- if current_page != 1 %} – Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} – {{ shop.name }}{% endunless -%}
+    {%- endcapture -%}
+    <title>{{ seo_title | strip }}</title>
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+    {% render 'meta-tags' %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Lora:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap">
+    {{ 'elitlux.css' | asset_url | stylesheet_tag }}
+    <script>
+      window.Elitlux = {
+        root: {{ routes.root_url | json }},
+        cartUrl: {{ routes.cart_url | json }},
+        openCartOnAdd: {{ settings.open_cart_on_add | json }},
+        bundleWording: {{ settings.bundle_discount_wording | json }},
+        money: {{ shop.money_format | json }}
+      };
+    </script>
+    <script src="{{ 'elitlux.js' | asset_url }}" defer="defer"></script>
+    {{ content_for_header }}
+  </head>
+  <body class="tpl-{{ template.name | handle }}">
+    <a class="skip" href="#MainContent">Skip to content</a>
+    {% sections 'header-group' %}
+    <main id="MainContent" class="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+    {% sections 'footer-group' %}
+    {% section 'cart-drawer' %}
+    {% render 'quick-add' %}
+    <p class="vh" aria-live="polite" data-live></p>
+  </body>
+</html>

@@ -1,0 +1,240 @@
+[
+ {
+  "title": "Shop all",
+  "handle": "all",
+  "descriptionHtml": "<p>Every Elitlux product, from everyday pillows to deep toppers and support shapes.</p>",
+  "sortOrder": "CREATED",
+  "ruleSet": {
+   "appliedDisjunctively": false,
+   "rules": [
+    {
+     "column": "VARIANT_PRICE",
+     "relation": "GREATER_THAN",
+     "condition": "0"
+    }
+   ]
+  },
+  "image": {
+   "src": "https://66f8f299-5e32-4633-8849-d6b233326e83.claudeusercontent.com/v1/design/projects/66f8f299-5e32-4633-8849-d6b233326e83/serve/img/elt-room-wide.jpg?t=032e9ef213e05a9e2c100eb9cba7a414cfcc42de7672983cc4ecbde5af702495.314273ef-6d2b-4ed5-a1c0-f29421f4b313.d17e7416-0008-4c0b-9f65-f3dbbf9719ce.1793188551.fp&direct=1",
+   "altText": "Bright bedroom with a freshly made white bed"
+  },
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "page",
+    "type": "json",
+    "value": "{\"eyebrow\":\"Shop all\",\"title\":\"Everything for\",\"title_em\":\"a better night.\",\"intro\":\"Pillows, toppers, duvets, protectors and cushion pads that bring the feeling of a hotel bed home, delivered free across the UK.\",\"hero\":{\"file\":\"elt-room-wide.jpg\",\"alt\":\"Bright bedroom with a freshly made white bed\",\"pos\":\"center\"},\"lead\":{\"handle\":\"cloud-topper\",\"label\":\"Hero range\"},\"shop_cta\":\"Shop everything\",\"grid_title\":\"Every product\",\"guide\":{\"eyebrow\":\"Where to start\",\"title\":\"Find your range\",\"intro\":\"Start with what’s keeping you up, and we’ll point you to the right range.\",\"file\":\"bed-morning-light.jpg\",\"alt\":\"Unmade white bed in soft morning light\",\"rows\":[{\"name\":\"Mattress too firm or tired\",\"detail\":\"Mattress Topper, 10cm deep\",\"collection\":\"toppers\"},{\"name\":\"Back, neck, bump or nursing\",\"detail\":\"U and V-shape support pillows\",\"collection\":\"bump-and-baby\"},{\"name\":\"Spills or allergies\",\"detail\":\"Waterproof, breathable protectors\",\"collection\":\"protectors\"},{\"name\":\"Too warm or too cold\",\"detail\":\"Duvets from 4.5 to 13.5 tog\",\"collection\":\"duvets\"},{\"name\":\"Flat sofa cushions\",\"detail\":\"Hollowfibre pads in 11 sizes\",\"collection\":\"cushions\"}]},\"banner\":{\"file\":\"elx-hero-sleep.png\",\"alt\":\"Woman sleeping peacefully on a white pillow\",\"pos\":\"center\",\"text\":\"Softness you can feel. Warmth you can trust.\",\"who\":\"Elitlux\",\"rating\":false},\"cross\":[\"toppers\",\"bump-and-baby\",\"protectors\"],\"bundle\":false}"
+   },
+   {
+    "namespace": "custom",
+    "key": "chips",
+    "type": "single_line_text_field",
+    "value": "13 products|Free UK delivery|Help, 24/7"
+   }
+  ]
+ },
+ {
+  "title": "Mattress Toppers",
+  "handle": "toppers",
+  "descriptionHtml": "<p>10cm deep, 1100–1200 GSM microfibre, quilted to stay even. Single to Super King.</p>",
+  "sortOrder": "CREATED",
+  "ruleSet": {
+   "appliedDisjunctively": false,
+   "rules": [
+    {
+     "column": "TAG",
+     "relation": "EQUALS",
+     "condition": "toppers"
+    }
+   ]
+  },
+  "image": {
+   "src": "https://66f8f299-5e32-4633-8849-d6b233326e83.claudeusercontent.com/v1/design/projects/66f8f299-5e32-4633-8849-d6b233326e83/serve/img/topper-sleeping.jpg?t=1134c69d0240e765ae659a08c0ce2c56c7bf9b76bbb2ecb89be281f965cba8d9.314273ef-6d2b-4ed5-a1c0-f29421f4b313.d17e7416-0008-4c0b-9f65-f3dbbf9719ce.1793188549.fp&direct=1",
+   "altText": "Woman asleep on the quilted Mattress Topper"
+  },
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "page",
+    "type": "json",
+    "value": "{\"eyebrow\":\"Mattress Toppers\",\"title\":\"Your bed,\",\"title_em\":\"made new.\",\"intro\":\"10cm of plump, even softness that adds comfort and support without replacing your mattress, quilted so the fill stays even.\",\"hero\":{\"file\":\"topper-sleeping.jpg\",\"alt\":\"Woman asleep on the quilted Mattress Topper\",\"pos\":\"60% center\"},\"lead\":{\"handle\":\"cloud-topper\",\"label\":\"Hero range\"},\"shop_cta\":\"Shop the topper\",\"grid_title\":\"The Quilted Mattress Topper\",\"guide\":{\"eyebrow\":\"Size guide\",\"title\":\"Find your size\",\"intro\":\"Measure your mattress, then pick the matching size. Prices shown per size.\",\"file\":\"topper-strap.jpg\",\"alt\":\"Hands fitting the Mattress Topper to a mattress\",\"rows_from\":\"cloud-topper\"},\"banner\":{\"file\":\"topper-bed-marble.jpg\",\"alt\":\"Mattress Topper on a bed in warm evening light\",\"pos\":\"40% center\",\"text\":\"Rest, elevated.\",\"who\":\"Mattress Toppers\",\"rating\":true},\"cross\":[\"protectors\",\"pillows\",\"duvets\"],\"bundle\":true,\"card\":{\"file\":\"topper-bed-marble.jpg\",\"pos\":\"60% center\",\"title\":\"Mattress Toppers\",\"label\":\"Toppers\",\"tagline\":\"Your bed, made new.\"}}"
+   },
+   {
+    "namespace": "custom",
+    "key": "chips",
+    "type": "single_line_text_field",
+    "value": "10cm deep|1100–1200 GSM|Single to Super King|Machine washable"
+   }
+  ]
+ },
+ {
+  "title": "Pillows",
+  "handle": "pillows",
+  "descriptionHtml": "<p>Natural duck feather and down for everyday softness, plus support shapes for bump, back and neck.</p>",
+  "sortOrder": "CREATED",
+  "ruleSet": {
+   "appliedDisjunctively": false,
+   "rules": [
+    {
+     "column": "TAG",
+     "relation": "EQUALS",
+     "condition": "pillows"
+    }
+   ]
+  },
+  "image": {
+   "src": "https://66f8f299-5e32-4633-8849-d6b233326e83.claudeusercontent.com/v1/design/projects/66f8f299-5e32-4633-8849-d6b233326e83/serve/img/elt-pillows-press.jpg?t=6329ac3f44991cc563d365ef8e3bc321c413d4cc93dafdfc2303e7ba49248e59.314273ef-6d2b-4ed5-a1c0-f29421f4b313.d17e7416-0008-4c0b-9f65-f3dbbf9719ce.1793188549.fp&direct=1",
+   "altText": "Hands plumping white pillows on a bed"
+  },
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "page",
+    "type": "json",
+    "value": "{\"eyebrow\":\"Pillows\",\"title\":\"Hotel nights,\",\"title_em\":\"every night.\",\"intro\":\"Natural duck feather and down for everyday softness, plus hollowfibre bolsters and support shapes for bump, back and neck.\",\"hero\":{\"file\":\"elt-pillows-press.jpg\",\"alt\":\"Hands plumping white pillows on a bed\",\"pos\":\"center\"},\"lead\":{\"handle\":\"duck-feather-pillows\",\"label\":\"Duck Feather Pillows\"},\"shop_cta\":\"Shop pillows\",\"grid_title\":\"All pillows\",\"guide\":{\"eyebrow\":\"Pillow guide\",\"title\":\"Which pillow?\",\"intro\":\"Four ways to rest, side by side.\",\"file\":\"elt-bolster-hug.jpg\",\"alt\":\"Woman hugging a long bolster pillow\",\"rows\":[{\"name\":\"Duck Feather & Down\",\"detail\":\"Everyday sleeping · 48 × 74cm · pack of 2 or 4\",\"product\":\"duck-feather-pillows\"},{\"name\":\"Hollowfibre Bolster\",\"detail\":\"Hug it or lean on it · 3ft to 6ft\",\"product\":\"bolster-pillow\"},{\"name\":\"U-Shape Body Pillow\",\"detail\":\"Head-to-toe support · 3.7m\",\"product\":\"u-shape-pillow\"},{\"name\":\"V-Shape Support Pillow\",\"detail\":\"Neck and back · 73 × 34cm\",\"product\":\"v-shape-pillow\"}]},\"banner\":{\"file\":\"elt-pillows-bed.jpg\",\"alt\":\"Two white pillows on a made bed\",\"pos\":\"center\",\"text\":\"Hotel nights, every night.\",\"who\":\"Duck Feather Pillows\",\"rating\":false},\"cross\":[\"bump-and-baby\",\"duvets\",\"protectors\"],\"bundle\":true,\"card\":{\"file\":\"elt-pillows-press.jpg\",\"pos\":\"center\",\"title\":\"Pillows\",\"label\":\"Pillows\",\"tagline\":\"Hotel nights, every night.\"}}"
+   },
+   {
+    "namespace": "custom",
+    "key": "chips",
+    "type": "single_line_text_field",
+    "value": "Duck feather & down|Bolsters, 3ft to 6ft|U and V shapes"
+   }
+  ]
+ },
+ {
+  "title": "Support Pillows",
+  "handle": "bump-and-baby",
+  "descriptionHtml": "<p>V and U-shape pillows for pregnancy, nursing, back and neck, with the cover included.</p>",
+  "sortOrder": "CREATED",
+  "ruleSet": {
+   "appliedDisjunctively": false,
+   "rules": [
+    {
+     "column": "TAG",
+     "relation": "EQUALS",
+     "condition": "bump-and-baby"
+    }
+   ]
+  },
+  "image": {
+   "src": "https://66f8f299-5e32-4633-8849-d6b233326e83.claudeusercontent.com/v1/design/projects/66f8f299-5e32-4633-8849-d6b233326e83/serve/img/elt-support-u-phone.jpg?t=905f59866744132208445375fdb360a45088cdfccac342dd1c8af81952d2780e.314273ef-6d2b-4ed5-a1c0-f29421f4b313.d17e7416-0008-4c0b-9f65-f3dbbf9719ce.1793188549.fp&direct=1",
+   "altText": "Woman relaxing in bed against a U-shape pillow"
+  },
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "page",
+    "type": "json",
+    "value": "{\"eyebrow\":\"Support Pillows\",\"title\":\"Comfort in\",\"title_em\":\"every curve.\",\"intro\":\"U and V-shape pillows for back, neck, pregnancy, nursing, reading and rest, with soft hollowfibre fill and a cover included.\",\"hero\":{\"file\":\"elt-support-u-phone.jpg\",\"alt\":\"Woman relaxing in bed against a U-shape pillow\",\"pos\":\"45% center\"},\"lead\":{\"handle\":\"u-shape-pillow\",\"label\":\"Support\"},\"shop_cta\":\"Shop support pillows\",\"grid_title\":\"U and V-shape pillows\",\"guide\":{\"eyebrow\":\"Shape guide\",\"title\":\"U or V?\",\"intro\":\"Two shapes, two kinds of support.\",\"file\":\"elt-u-reading.jpg\",\"alt\":\"Woman reading in bed, supported by a U-shape pillow\",\"rows\":[{\"name\":\"U-Shape Pregnancy & Body Pillow\",\"detail\":\"Whole-body support, head to toe · removable cover\",\"product\":\"u-shape-pillow\"},{\"name\":\"V-Shape Support Pillow\",\"detail\":\"Neck and back support · pillowcase included\",\"product\":\"v-shape-pillow\"}]},\"banner\":{\"file\":\"elt-v-side.jpg\",\"alt\":\"Woman resting on her side against a V-shape pillow\",\"pos\":\"center\",\"text\":\"Support for back, neck, bump and beyond.\",\"who\":\"Support Pillows\",\"rating\":false},\"cross\":[\"pillows\",\"protectors\",\"duvets\"],\"bundle\":false,\"card\":{\"file\":\"bump-reading.jpg\",\"pos\":\"45% center\",\"title\":\"Support Pillows\",\"label\":\"Support\",\"tagline\":\"Comfort in every curve.\"}}"
+   },
+   {
+    "namespace": "custom",
+    "key": "chips",
+    "type": "single_line_text_field",
+    "value": "U-shape, 3.7m|V-shape, 73 × 34cm|Cover included|Hypoallergenic fill"
+   }
+  ]
+ },
+ {
+  "title": "Mattress Protectors",
+  "handle": "protectors",
+  "descriptionHtml": "<p>100% waterproof and breathable, with quilted and terry towel options and deep fitted skirts.</p>",
+  "sortOrder": "CREATED",
+  "ruleSet": {
+   "appliedDisjunctively": false,
+   "rules": [
+    {
+     "column": "TAG",
+     "relation": "EQUALS",
+     "condition": "protectors"
+    }
+   ]
+  },
+  "image": {
+   "src": "https://66f8f299-5e32-4633-8849-d6b233326e83.claudeusercontent.com/v1/design/projects/66f8f299-5e32-4633-8849-d6b233326e83/serve/img/elt-protector-room.jpg?t=7bcc556aee7cc2fcc61a8b3c5507fd4b70cfac519a1ffe35eeb9e6ad6c02a870.314273ef-6d2b-4ed5-a1c0-f29421f4b313.d17e7416-0008-4c0b-9f65-f3dbbf9719ce.1793188550.fp&direct=1",
+   "altText": "Quilted mattress protector on a bed in a bright bedroom"
+  },
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "page",
+    "type": "json",
+    "value": "{\"eyebrow\":\"Mattress Protectors\",\"title\":\"Keep it fresh.\",\"title_em\":\"Keep it yours.\",\"intro\":\"A breathable, 100% waterproof layer that guards your mattress against everyday spills, dust and stains, in quilted or terry towel.\",\"hero\":{\"file\":\"elt-protector-room.jpg\",\"alt\":\"Quilted mattress protector on a bed in a bright bedroom\",\"pos\":\"center\"},\"lead\":{\"handle\":\"guard-mattress-protector\",\"label\":\"Protect\"},\"shop_cta\":\"Shop protectors\",\"grid_title\":\"Choose your protector\",\"guide\":{\"eyebrow\":\"Compare\",\"title\":\"Quilted or terry?\",\"intro\":\"Both are 100% waterproof and machine washable. Choose the feel you prefer.\",\"file\":\"protector-corner.jpg\",\"alt\":\"Fitting a quilted protector over a mattress corner\",\"rows\":[{\"name\":\"Quilted Protector\",\"detail\":\"Soft, breathable quilted surface · 30cm fitted skirt\",\"product\":\"guard-mattress-protector\"},{\"name\":\"Terry Towel Protector\",\"detail\":\"Absorbent terry towel surface · aloe vera treated · deep fitted skirt\",\"product\":\"terry-waterproof-protector\"}]},\"banner\":{\"file\":\"protector-droplets.jpg\",\"alt\":\"Water beading on a waterproof protector\",\"pos\":\"center\",\"text\":\"100% waterproof. Still breathable.\",\"who\":\"Mattress Protectors\",\"rating\":false},\"cross\":[\"toppers\",\"pillows\",\"duvets\"],\"bundle\":false,\"card\":{\"file\":\"elt-protector-room.jpg\",\"pos\":\"65% center\",\"title\":\"Mattress Protectors\",\"label\":\"Protection\",\"tagline\":\"Keep it fresh. Keep it yours.\"}}"
+   },
+   {
+    "namespace": "custom",
+    "key": "chips",
+    "type": "single_line_text_field",
+    "value": "100% waterproof|Breathable|Quilted or terry|Machine washable"
+   }
+  ]
+ },
+ {
+  "title": "Duvets",
+  "handle": "duvets",
+  "descriptionHtml": "<p>Hollowfibre and microfibre duvets, from a light 4.5 tog for summer to a warm 13.5 tog for winter.</p>",
+  "sortOrder": "CREATED",
+  "ruleSet": {
+   "appliedDisjunctively": false,
+   "rules": [
+    {
+     "column": "TAG",
+     "relation": "EQUALS",
+     "condition": "duvets"
+    }
+   ]
+  },
+  "image": {
+   "src": "https://66f8f299-5e32-4633-8849-d6b233326e83.claudeusercontent.com/v1/design/projects/66f8f299-5e32-4633-8849-d6b233326e83/serve/img/elt-duvet-throw.jpg?t=400059ed94088fb1ef6d29b89a7135fb626a6f06e225934a050f88bab571e40e.314273ef-6d2b-4ed5-a1c0-f29421f4b313.d17e7416-0008-4c0b-9f65-f3dbbf9719ce.1793188550.fp&direct=1",
+   "altText": "Made bed with a plump white duvet and grey throw"
+  },
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "page",
+    "type": "json",
+    "value": "{\"eyebrow\":\"Duvets\",\"title\":\"Light as a cloud,\",\"title_em\":\"warm as you need.\",\"intro\":\"Hollowfibre and microfibre duvets, from a light 4.5 tog for summer nights to a warm 13.5 tog for cold British winters.\",\"hero\":{\"file\":\"elt-duvet-throw.jpg\",\"alt\":\"Made bed with a plump white duvet and grey throw\",\"pos\":\"center\"},\"lead\":{\"handle\":\"luxury-hollowfibre-10-5-tog\",\"label\":\"All-season\"},\"shop_cta\":\"Shop duvets\",\"grid_title\":\"All duvets\",\"guide\":{\"eyebrow\":\"Tog guide\",\"title\":\"Choose your tog\",\"intro\":\"The higher the tog, the warmer the duvet.\",\"file\":\"elt-duvet-warm.jpg\",\"alt\":\"Plump white duvet on a bed in warm light\",\"rows\":[{\"name\":\"4.5 tog · Hollowfibre\",\"detail\":\"Light, for summer nights\",\"product\":\"luxury-hollowfibre-4-5-tog\"},{\"name\":\"10.5 tog · Hollowfibre\",\"detail\":\"All-season, especially good on cooler spring nights\",\"product\":\"luxury-hollowfibre-10-5-tog\"},{\"name\":\"13.5 tog · Hollowfibre\",\"detail\":\"Our warmest weight, for cold winters\",\"product\":\"luxury-hollowfibre-13-5-tog\"},{\"name\":\"13.5 tog · Microfibre\",\"detail\":\"Winter warmth with a soft microfibre fill\",\"product\":\"luxury-microfibre-13-5-tog\"},{\"name\":\"Essential Winter Duvet\",\"detail\":\"Hollowfibre, multi-pocket construction\",\"product\":\"essential-hollowfibre-duvet\"}]},\"banner\":{\"file\":\"elt-duvet-floor.jpg\",\"alt\":\"White duvet and pillows on a low bed\",\"pos\":\"center\",\"text\":\"Curl up, and sleep soundly.\",\"who\":\"Duvets\",\"rating\":false},\"cross\":[\"pillows\",\"toppers\",\"protectors\"],\"bundle\":true,\"card\":{\"file\":\"elt-duvet-throw.jpg\",\"pos\":\"68% center\",\"title\":\"Duvets\",\"label\":\"Duvets\",\"tagline\":\"Light as a cloud, warm as you need.\"}}"
+   },
+   {
+    "namespace": "custom",
+    "key": "chips",
+    "type": "single_line_text_field",
+    "value": "4.5 to 13.5 tog|Hollowfibre or microfibre|Single to Super King"
+   }
+  ]
+ },
+ {
+  "title": "Cushions",
+  "handle": "cushions",
+  "descriptionHtml": "<p>Virgin hollowfibre cushion pads with bounce-back fill, in eleven sizes from 12in to 30in.</p>",
+  "sortOrder": "CREATED",
+  "ruleSet": {
+   "appliedDisjunctively": false,
+   "rules": [
+    {
+     "column": "TAG",
+     "relation": "EQUALS",
+     "condition": "cushions"
+    }
+   ]
+  },
+  "image": {
+   "src": "https://66f8f299-5e32-4633-8849-d6b233326e83.claudeusercontent.com/v1/design/projects/66f8f299-5e32-4633-8849-d6b233326e83/serve/img/elt-cushions-rug.jpg?t=0ac96b4e65198d2cfbf5403d365c11ba0786e0190b19c2c7a1f1ebc73983bd9f.314273ef-6d2b-4ed5-a1c0-f29421f4b313.d17e7416-0008-4c0b-9f65-f3dbbf9719ce.1793188551.fp&direct=1",
+   "altText": "Two white cushion pads on a soft rug"
+  },
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "page",
+    "type": "json",
+    "value": "{\"eyebrow\":\"Cushions\",\"title\":\"The plump\",\"title_em\":\"your sofa’s missing.\",\"intro\":\"Soft yet supportive cushion pads filled with virgin hollowfibre that keeps its shape, in eleven sizes from 12in to 30in.\",\"hero\":{\"file\":\"elt-cushions-rug.jpg\",\"alt\":\"Two white cushion pads on a soft rug\",\"pos\":\"center\"},\"lead\":{\"handle\":\"nest-cushion-pad\",\"label\":\"Living room\"},\"shop_cta\":\"Shop cushion pads\",\"grid_title\":\"Hollowfibre Cushion Pad\",\"guide\":{\"eyebrow\":\"Size guide\",\"title\":\"Find your size\",\"intro\":\"Choose the pad that matches your cushion cover. Prices shown per size.\",\"file\":\"cushions-bed-sage.jpg\",\"alt\":\"Two plump white cushions on a linen bed\",\"rows_from\":\"nest-cushion-pad\"},\"banner\":{\"file\":\"duvet-sofa-cushions.png\",\"alt\":\"Cushions on a sofa with a throw\",\"pos\":\"center\",\"text\":\"Sofa, bed or reading corner.\",\"who\":\"Cushions\",\"rating\":false},\"cross\":[\"pillows\",\"duvets\",\"bump-and-baby\"],\"bundle\":false,\"card\":{\"file\":\"cushions-sofa.jpg\",\"pos\":\"center\",\"title\":\"Cushions\",\"label\":\"Living room\",\"tagline\":\"The plump your sofa’s missing.\"}}"
+   },
+   {
+    "namespace": "custom",
+    "key": "chips",
+    "type": "single_line_text_field",
+    "value": "Virgin hollowfibre|Sewn seam|11 sizes|From £4.64"
+   }
+  ]
+ }
+]

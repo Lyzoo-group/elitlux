@@ -1,0 +1,62 @@
+{%- liquid
+  assign s = section.settings
+  assign cp = s.chip_product
+  assign f = s.image
+  assign rpct = settings.rating | times: 20
+-%}
+<section id="home-hero" class="hero" data-photo-hero aria-labelledby="hero-title-{{ section.id }}" style="z-index:{{ section.index }}; --pos-d:{{ s.focus_desktop }}; --pos-m:{{ s.focus_mobile }}">
+  {% render 'img', file: f, alt: s.image_alt, class: 'hero__img', loading: 'eager', priority: true %}
+  <div class="hero__in">
+    <div class="hero__c">
+      <p class="ey ey--linen">{{ s.eyebrow }}</p>
+      <h1 id="hero-title-{{ section.id }}" class="hero__h">{{ s.heading }} <em class="em-gold">{{ s.heading_em }}</em></h1>
+      <p class="hero__p">{{ s.text }}</p>
+      <div class="hero__btns">
+        {%- if s.button_1_label != blank -%}<a href="{{ s.button_1_link }}" class="btn btn--white">{{ s.button_1_label }}{% render 'icon', i: 'arrow' %}</a>{%- endif -%}
+        {%- if s.button_2_label != blank -%}<a href="{{ s.button_2_link }}" class="btn btn--ghost">{{ s.button_2_label }}</a>{%- endif -%}
+      </div>
+      {%- if settings.rating != blank -%}
+        {%- assign rl = 'Rated ' | append: settings.rating | append: ' out of 5' -%}
+        <a href="#reviews" class="hero__rating" data-scroll-to="reviews">{% render 'stars', w: 96, h: 19.2, base: 'rgba(251,248,243,0.3)', pct: rpct, label: rl %}<span><strong>{{ rl }}</strong> {{ s.rating_text }}</span></a>
+      {%- endif -%}
+    </div>
+  </div>
+  {%- if cp != blank -%}
+    {%- assign chip_file = s.chip_image -%}
+    <a href="{{ cp.url }}" class="hero__chip">
+      <span class="hero__chip-img">{% render 'img', file: chip_file, alt: '', class: 'cover', loading: 'eager', sizes: '60px', widths: '120, 180' %}</span>
+      <span class="hero__chip-t">
+        <span class="ey ey--11">{{ s.chip_label }}</span>
+        <span class="hero__chip-h">{{ cp.title }}</span>
+        <span class="hero__chip-p">From <strong>{{ cp.price_min | money }}</strong></span>
+      </span>
+    </a>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Home hero",
+  "class": "hero-sec",
+  "settings": [
+    { "type": "text", "id": "image", "label": "Photo filename (Content → Files)", "default": "elt-hero.jpg" },
+    { "type": "text", "id": "image_alt", "label": "Photo description", "default": "Woman reading on a freshly made Elitlux bed in a bright bedroom" },
+    { "type": "text", "id": "focus_desktop", "label": "Photo focus, desktop (CSS object-position)", "default": "62% 38%" },
+    { "type": "text", "id": "focus_mobile", "label": "Photo focus, mobile", "default": "58% 30%" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Hotel-quality bedding" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Sleep better." },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part", "default": "Live better." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Hotel-quality duvets, pillows and protectors — made for every home." },
+    { "type": "text", "id": "button_1_label", "label": "Button 1", "default": "Shop the collection" },
+    { "type": "url", "id": "button_1_link", "label": "Button 1 link", "default": "/collections/all" },
+    { "type": "text", "id": "button_2_label", "label": "Button 2", "default": "Find your topper" },
+    { "type": "url", "id": "button_2_link", "label": "Button 2 link", "default": "/collections" },
+    { "type": "text", "id": "rating_text", "label": "Text after the rating", "default": "by Mattress Protector customers on Amazon UK", "info": "The rating line shows only when a rating is filled in under Theme settings → Ratings." },
+    { "type": "header", "content": "Product chip (wide screens)" },
+    { "type": "product", "id": "chip_product", "label": "Product" },
+    { "type": "text", "id": "chip_image", "label": "Photo filename", "default": "topper-floor.jpg" },
+    { "type": "text", "id": "chip_label", "label": "Label", "default": "Hero range" }
+  ],
+  "presets": [{ "name": "Home hero" }]
+}
+{% endschema %}

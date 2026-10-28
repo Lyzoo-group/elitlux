@@ -1,0 +1,87 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="bs"{% if s.overlap %} data-ovl{% endif %} aria-labelledby="bs-title-{{ section.id }}" style="z-index:{{ section.index }}" data-tabs>
+  <div class="bs__in">
+    <div class="bs__side">
+      <div class="bs__head">
+        <p class="ey ey--mist">{{ s.eyebrow }}</p>
+        <h2 id="bs-title-{{ section.id }}" class="h2x bs__h">{{ s.heading }}</h2>
+      </div>
+      <div role="tablist" aria-label="{{ s.tabs_label | escape }}" class="bs__tabs" data-tablist>
+        {%- for block in section.blocks -%}
+          <button type="button" role="tab" class="bs__tab" id="bs-tab-{{ block.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="bs-panel-{{ block.id }}" tabindex="{% if forloop.first %}0{% else %}-1{% endif %}" {{ block.shopify_attributes }}>{{ block.settings.label }}<span aria-hidden="true" class="bs__tab-arrow">{% render 'icon', i: 'arrow' %}</span></button>
+        {%- endfor -%}
+      </div>
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign c = block.settings.collection
+          assign curl = routes.all_products_collection_url
+          if c != blank
+            assign curl = c.url
+          endif
+        -%}
+        <a href="{{ curl }}" class="alink alink--white bs__shop" data-tab-for="bs-panel-{{ block.id }}"{% unless forloop.first %} hidden{% endunless %}>{{ block.settings.shop_label }}{% render 'icon', i: 'arrow' %}</a>
+      {%- endfor -%}
+    </div>
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign c = block.settings.collection
+        assign curl = routes.all_products_collection_url
+        if c != blank
+          assign curl = c.url
+        endif
+        assign list = block.settings.products
+        assign shown = 0
+        for x in list limit: 3
+          assign shown = shown | plus: 1
+        endfor
+        assign odd = shown | modulo: 2
+      -%}
+      <div role="tabpanel" id="bs-panel-{{ block.id }}" aria-labelledby="bs-tab-{{ block.id }}" class="bs__panel"{% unless forloop.first %} hidden{% endunless %}>
+        <ul role="list" class="bs__grid">
+          {%- for x in list limit: 3 -%}
+            {%- liquid
+              assign tag = forloop.index | prepend: '0'
+              if forloop.first
+                assign tag = block.settings.first_tag
+              endif
+            -%}
+            {% render 'card-best', product: x, tag: tag %}
+          {%- endfor -%}
+          {%- if shown > 0 -%}
+            <li class="bs__fill{% if shown < 3 %} bs__fill--3{% endif %}{% if odd == 1 %} bs__fill--2{% endif %}"><a href="{{ curl }}" class="bs__fill-a"><span aria-hidden="true" class="bs__fill-ic">{% render 'icon', i: 'arrow' %}</span><span class="bs__fill-t">{{ block.settings.shop_label }}</span></a></li>
+          {%- endif -%}
+        </ul>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Best sellers",
+  "class": "bs-sec",
+  "settings": [
+    { "type": "checkbox", "id": "overlap", "label": "Overlap the section above with a rounded top", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Most loved" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Best sellers" },
+    { "type": "text", "id": "tabs_label", "label": "Accessible name for the tabs", "default": "Best sellers by category" }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Tab label", "default": "All" },
+        { "type": "collection", "id": "collection", "label": "Collection for the “Shop all” link" },
+        { "type": "product_list", "id": "products", "label": "Products (top 3 shown, first is No. 1)", "limit": 6 },
+        { "type": "text", "id": "first_tag", "label": "Tag on the first card", "default": "No. 1 best seller" },
+        { "type": "text", "id": "shop_label", "label": "“Shop all” link text", "default": "Shop all products" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "Best sellers" }]
+}
+{% endschema %}

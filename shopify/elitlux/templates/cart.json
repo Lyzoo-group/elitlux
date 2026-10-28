@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-cart",
+      "settings": {
+        "title": "Your bag",
+        "empty_title": "Your bag is empty.",
+        "empty_text": "Let’s find something lovely for your bed.",
+        "empty_button": "Shop the collection",
+        "empty_product": "cloud-topper",
+        "empty_product_label": "See the Mattress Topper",
+        "summary_title": "Order summary",
+        "delivery_label": "UK delivery",
+        "delivery_value": "Free",
+        "codes_note": "Discount codes can be added at checkout.",
+        "checkout_label": "Checkout",
+        "help_text": "<ul><li>Help, 24/7 with sizing, washing or returns — <a href=\"/pages/contact\">contact us</a>.</li><li>Returns on unused items in their original packaging.</li></ul>",
+        "suggest_title": "Complete your bed",
+        "fallback_handles": "cloud-topper, guard-mattress-protector, duck-feather-pillows, u-shape-pillow"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

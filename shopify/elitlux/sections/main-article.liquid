@@ -1,0 +1,10 @@
+<section class="pg" style="z-index:{{ section.index }}">
+  <p class="ey">{{ article.published_at | date: '%-d %B %Y' }}</p>
+  <h1 class="cart__h">{{ article.title }}</h1>
+  {%- if article.image -%}<div class="pg__body">{{ article.image | image_url: width: 1600 | image_tag: loading: 'eager', class: 'cover', widths: '600, 900, 1200, 1600', sizes: '(min-width: 1000px) 60vw, 100vw' }}</div>{%- endif -%}
+  <div class="pg__body">{{ article.content }}</div>
+</section>
+
+{% schema %}
+{ "name": "Article", "class": "pg-sec", "settings": [] }
+{% endschema %}

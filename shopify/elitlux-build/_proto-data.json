@@ -1,0 +1,2391 @@
+{
+ "PNG": [
+  "topper-strap-fit",
+  "duvet-sofa-cushions",
+  "topper-press-quilt",
+  "pillows-stack-stool",
+  "duvet-rolled-hands",
+  "duvet-lamp-evening",
+  "duvet-flatlay-green",
+  "v-shape-green-bed",
+  "duvet-mug-morning",
+  "terry-fitting-corner",
+  "topper-eyemask-cutout"
+ ],
+ "AM": {
+  "toppers": [
+   "topper-bed-marble",
+   "Mattress Toppers",
+   "Toppers",
+   "Your bed, made new.",
+   "60% center"
+  ],
+  "pillows": [
+   "elt-pillows-press",
+   "Pillows",
+   "Pillows",
+   "Hotel nights, every night.",
+   "center"
+  ],
+  "bump-and-baby": [
+   "bump-reading",
+   "Support Pillows",
+   "Support",
+   "Comfort in every curve.",
+   "45% center"
+  ],
+  "protectors": [
+   "elt-protector-room",
+   "Mattress Protectors",
+   "Protection",
+   "Keep it fresh. Keep it yours.",
+   "65% center"
+  ],
+  "duvets": [
+   "elt-duvet-throw",
+   "Duvets",
+   "Duvets",
+   "Light as a cloud, warm as you need.",
+   "68% center"
+  ],
+  "cushions": [
+   "cushions-sofa",
+   "Cushions",
+   "Living room",
+   "The plump your sofa’s missing.",
+   "center"
+  ]
+ },
+ "ORDER": [
+  "toppers",
+  "pillows",
+  "bump-and-baby",
+  "protectors",
+  "duvets",
+  "cushions"
+ ],
+ "RG": {
+  "toppers": [
+   "topper-sleeping",
+   "Woman asleep on the quilted Mattress Topper",
+   "center"
+  ],
+  "pillows": [
+   "elt-pillows-press",
+   "Hands plumping white pillows on a bed",
+   "center"
+  ],
+  "bump-and-baby": [
+   "elt-support-u-phone",
+   "Woman relaxing in bed against a U-shape pillow",
+   "center"
+  ],
+  "protectors": [
+   "elt-protector-room",
+   "Quilted mattress protector on a bed in a bright bedroom",
+   "center"
+  ],
+  "duvets": [
+   "elt-duvet-throw",
+   "Made bed with a plump white duvet and grey throw",
+   "center"
+  ],
+  "cushions": [
+   "elt-cushions-rug",
+   "Two white cushion pads on a soft rug",
+   "center"
+  ]
+ },
+ "NEED": {
+  "toppers": "Mattress too firm, or tired? Add 10cm of softness.",
+  "pillows": "Hotel nights, every night. Duck feather and down, in pairs.",
+  "bump-and-baby": "Back, neck, bump or nursing? U and V-shape pillows that hold you.",
+  "protectors": "Spills, sweat or allergies? 100% waterproof, still breathable.",
+  "duvets": "Too warm, or too cold? Light as a cloud, warm as you need.",
+  "cushions": "Sofa cushions gone flat? The plump they’re missing."
+ },
+ "CATS": {
+  "all": {
+   "eyebrow": "Shop all",
+   "title": "Everything for",
+   "titleEm": "a better night.",
+   "intro": "Pillows, toppers, duvets, protectors and cushion pads that bring the feeling of a hotel bed home, delivered free across the UK.",
+   "hero": [
+    "elt-room-wide",
+    "Bright bedroom with a freshly made white bed"
+   ],
+   "inset": [
+    "elt-pillows-pair",
+    "Two plump white pillows"
+   ],
+   "chips": [
+    "13 products",
+    "Free UK delivery",
+    "Help, 24/7"
+   ],
+   "lead": "cloud-topper",
+   "leadLabel": "Hero range",
+   "benefits": [
+    [
+     "Honest quality",
+     "Fill, fabric and size, stated plainly on every product."
+    ],
+    [
+     "Free UK delivery",
+     "On every order, anywhere in the UK."
+    ],
+    [
+     "Help, 24/7",
+     "Real answers on sizing, washing, returns or a replacement."
+    ]
+   ],
+   "shopCta": "Shop everything",
+   "gridTitle": "Every product",
+   "guideEy": "Where to start",
+   "guideTitle": "Find your range",
+   "guideIntro": "Start with what’s keeping you up, and we’ll point you to the right range.",
+   "rows": [
+    {
+     "a": "Mattress too firm or tired",
+     "b": "Mattress Topper, 10cm deep",
+     "col": "toppers"
+    },
+    {
+     "a": "Back, neck, bump or nursing",
+     "b": "U and V-shape support pillows",
+     "col": "bump-and-baby"
+    },
+    {
+     "a": "Spills or allergies",
+     "b": "Waterproof, breathable protectors",
+     "col": "protectors"
+    },
+    {
+     "a": "Too warm or too cold",
+     "b": "Duvets from 4.5 to 13.5 tog",
+     "col": "duvets"
+    },
+    {
+     "a": "Flat sofa cushions",
+     "b": "Hollowfibre pads in 11 sizes",
+     "col": "cushions"
+    }
+   ],
+   "guideImg": [
+    "bed-morning-light",
+    "Unmade white bed in soft morning light"
+   ],
+   "banner": [
+    "elx-hero-sleep",
+    "Woman sleeping peacefully on a white pillow",
+    "center",
+    "Softness you can feel. Warmth you can trust.",
+    "Elitlux"
+   ],
+   "cross": [
+    "toppers",
+    "bump-and-baby",
+    "protectors"
+   ]
+  },
+  "toppers": {
+   "eyebrow": "Mattress Toppers",
+   "title": "Your bed,",
+   "titleEm": "made new.",
+   "intro": "10cm of plump, even softness that adds comfort and support without replacing your mattress, quilted so the fill stays even.",
+   "hero": [
+    "topper-sleeping",
+    "Woman asleep on the quilted Mattress Topper",
+    "60% center"
+   ],
+   "inset": [
+    "topper-strap-fit",
+    "Fitting the Mattress Topper strap under the mattress"
+   ],
+   "chips": [
+    "10cm deep",
+    "1100–1200 GSM",
+    "Single to Super King",
+    "Machine washable"
+   ],
+   "lead": "cloud-topper",
+   "leadLabel": "Hero range",
+   "benefits": [
+    [
+     "Softer, without a new mattress",
+     "Ideal for a firm or tired mattress. It restores comfort and helps your mattress last longer."
+    ],
+    [
+     "Stays even",
+     "Quilted panels hold the microfibre fill evenly in place."
+    ],
+    [
+     "Breathable",
+     "Air moves freely, so heat doesn’t build up while you sleep."
+    ],
+    [
+     "Stays put",
+     "A secure, non-slip fit on your mattress."
+    ]
+   ],
+   "shopCta": "Shop the topper",
+   "gridTitle": "The Quilted Mattress Topper",
+   "guideEy": "Size guide",
+   "guideTitle": "Find your size",
+   "guideIntro": "Measure your mattress, then pick the matching size. Prices shown per size.",
+   "rowsFrom": "cloud-topper",
+   "guideImg": [
+    "topper-strap",
+    "Hands fitting the Mattress Topper to a mattress"
+   ],
+   "banner": [
+    "topper-bed-marble",
+    "Mattress Topper on a bed in warm evening light",
+    "40% center",
+    "Rest, elevated.",
+    "Mattress Toppers",
+    true
+   ],
+   "cross": [
+    "protectors",
+    "pillows",
+    "duvets"
+   ]
+  },
+  "pillows": {
+   "eyebrow": "Pillows",
+   "title": "Hotel nights,",
+   "titleEm": "every night.",
+   "intro": "Natural duck feather and down for everyday softness, plus hollowfibre bolsters and support shapes for bump, back and neck.",
+   "hero": [
+    "elt-pillows-press",
+    "Hands plumping white pillows on a bed"
+   ],
+   "inset": [
+    "pillow-feathers",
+    "Pillow beside a pile of soft feather fill"
+   ],
+   "chips": [
+    "Duck feather & down",
+    "Bolsters, 3ft to 6ft",
+    "U and V shapes"
+   ],
+   "lead": "duck-feather-pillows",
+   "leadLabel": "Duck Feather Pillows",
+   "benefits": [
+    [
+     "Soft, with support",
+     "Duck feather and down cushions your neck and shoulders, for side, stomach and back sleepers."
+    ],
+    [
+     "Cotton that breathes",
+     "A 100% cotton cover, double stitched to hold its shape and keep the feathers in."
+    ],
+    [
+     "A shape for every need",
+     "Bolsters, U and V-shapes for back, neck and maternity support."
+    ]
+   ],
+   "shopCta": "Shop pillows",
+   "gridTitle": "All pillows",
+   "guideEy": "Pillow guide",
+   "guideTitle": "Which pillow?",
+   "guideIntro": "Four ways to rest, side by side.",
+   "rows": [
+    {
+     "a": "Duck Feather & Down",
+     "b": "Everyday sleeping · 48 × 74cm · pack of 2 or 4",
+     "p": "duck-feather-pillows"
+    },
+    {
+     "a": "Hollowfibre Bolster",
+     "b": "Hug it or lean on it · 3ft to 6ft",
+     "p": "bolster-pillow"
+    },
+    {
+     "a": "U-Shape Body Pillow",
+     "b": "Head-to-toe support · 3.7m",
+     "p": "u-shape-pillow"
+    },
+    {
+     "a": "V-Shape Support Pillow",
+     "b": "Neck and back · 73 × 34cm",
+     "p": "v-shape-pillow"
+    }
+   ],
+   "guideImg": [
+    "elt-bolster-hug",
+    "Woman hugging a long bolster pillow"
+   ],
+   "banner": [
+    "elt-pillows-bed",
+    "Two white pillows on a made bed",
+    "center",
+    "Hotel nights, every night.",
+    "Duck Feather Pillows"
+   ],
+   "cross": [
+    "bump-and-baby",
+    "duvets",
+    "protectors"
+   ]
+  },
+  "bump-and-baby": {
+   "eyebrow": "Support Pillows",
+   "title": "Comfort in",
+   "titleEm": "every curve.",
+   "intro": "U and V-shape pillows for back, neck, pregnancy, nursing, reading and rest, with soft hollowfibre fill and a cover included.",
+   "hero": [
+    "elt-support-u-phone",
+    "Woman relaxing in bed against a U-shape pillow",
+    "45% center"
+   ],
+   "inset": [
+    "elt-vshape-cutout",
+    "The V-shape support pillow"
+   ],
+   "chips": [
+    "U-shape, 3.7m",
+    "V-shape, 73 × 34cm",
+    "Cover included",
+    "Hypoallergenic fill"
+   ],
+   "lead": "u-shape-pillow",
+   "leadLabel": "Support",
+   "benefits": [
+    [
+     "Head-to-toe support",
+     "The U-shape cradles you, keeping your neck, shoulders, back and hips aligned."
+    ],
+    [
+     "For nursing and reading",
+     "The V-shape supports the back and sides of your neck, sitting up or lying down."
+    ],
+    [
+     "Easy to keep fresh",
+     "Each pillow comes with its cover, over soft hollowfibre fill."
+    ]
+   ],
+   "shopCta": "Shop support pillows",
+   "gridTitle": "U and V-shape pillows",
+   "guideEy": "Shape guide",
+   "guideTitle": "U or V?",
+   "guideIntro": "Two shapes, two kinds of support.",
+   "rows": [
+    {
+     "a": "U-Shape Pregnancy & Body Pillow",
+     "b": "Whole-body support, head to toe · removable cover",
+     "p": "u-shape-pillow"
+    },
+    {
+     "a": "V-Shape Support Pillow",
+     "b": "Neck and back support · pillowcase included",
+     "p": "v-shape-pillow"
+    }
+   ],
+   "guideImg": [
+    "elt-u-reading",
+    "Woman reading in bed, supported by a U-shape pillow"
+   ],
+   "banner": [
+    "elt-v-side",
+    "Woman resting on her side against a V-shape pillow",
+    "center",
+    "Support for back, neck, bump and beyond.",
+    "Support Pillows"
+   ],
+   "cross": [
+    "pillows",
+    "protectors",
+    "duvets"
+   ]
+  },
+  "protectors": {
+   "eyebrow": "Mattress Protectors",
+   "title": "Keep it fresh.",
+   "titleEm": "Keep it yours.",
+   "intro": "A breathable, 100% waterproof layer that guards your mattress against everyday spills, dust and stains, in quilted or terry towel.",
+   "hero": [
+    "elt-protector-room",
+    "Quilted mattress protector on a bed in a bright bedroom"
+   ],
+   "inset": [
+    "terry-pinch",
+    "Close-up of the terry towel surface"
+   ],
+   "chips": [
+    "100% waterproof",
+    "Breathable",
+    "Quilted or terry",
+    "Machine washable"
+   ],
+   "lead": "guard-mattress-protector",
+   "leadLabel": "Protect",
+   "benefits": [
+    [
+     "100% waterproof",
+     "Guards your mattress against everyday spills and stains."
+    ],
+    [
+     "Still breathable",
+     "Air keeps moving, so you sleep comfortably."
+    ],
+    [
+     "A barrier against allergens",
+     "Helps protect your mattress from dust, allergens and moisture."
+    ],
+    [
+     "Deep, fitted skirts",
+     "Stretch skirts that hold on, up to 30cm deep."
+    ]
+   ],
+   "shopCta": "Shop protectors",
+   "gridTitle": "Choose your protector",
+   "guideEy": "Compare",
+   "guideTitle": "Quilted or terry?",
+   "guideIntro": "Both are 100% waterproof and machine washable. Choose the feel you prefer.",
+   "rows": [
+    {
+     "a": "Quilted Protector",
+     "b": "Soft, breathable quilted surface · 30cm fitted skirt",
+     "p": "guard-mattress-protector"
+    },
+    {
+     "a": "Terry Towel Protector",
+     "b": "Absorbent terry towel surface · aloe vera treated · deep fitted skirt",
+     "p": "terry-waterproof-protector"
+    }
+   ],
+   "guideImg": [
+    "protector-corner",
+    "Fitting a quilted protector over a mattress corner"
+   ],
+   "banner": [
+    "protector-droplets",
+    "Water beading on a waterproof protector",
+    "center",
+    "100% waterproof. Still breathable.",
+    "Mattress Protectors"
+   ],
+   "cross": [
+    "toppers",
+    "pillows",
+    "duvets"
+   ]
+  },
+  "duvets": {
+   "eyebrow": "Duvets",
+   "title": "Light as a cloud,",
+   "titleEm": "warm as you need.",
+   "intro": "Hollowfibre and microfibre duvets, from a light 4.5 tog for summer nights to a warm 13.5 tog for cold British winters.",
+   "hero": [
+    "elt-duvet-throw",
+    "Made bed with a plump white duvet and grey throw"
+   ],
+   "inset": [
+    "duvet-rolled",
+    "Rolled white duvet"
+   ],
+   "chips": [
+    "4.5 to 13.5 tog",
+    "Hollowfibre or microfibre",
+    "Single to Super King"
+   ],
+   "lead": "luxury-hollowfibre-10-5-tog",
+   "leadLabel": "All-season",
+   "benefits": [
+    [
+     "Light for summer",
+     "A 4.5 tog for warm rooms and summer nights."
+    ],
+    [
+     "All-season",
+     "A 10.5 tog, the one to keep on the bed most of the year."
+    ],
+    [
+     "Warm for winter",
+     "A 13.5 tog in hollowfibre or microfibre for the coldest nights."
+    ]
+   ],
+   "shopCta": "Shop duvets",
+   "gridTitle": "All duvets",
+   "guideEy": "Tog guide",
+   "guideTitle": "Choose your tog",
+   "guideIntro": "The higher the tog, the warmer the duvet.",
+   "rows": [
+    {
+     "a": "4.5 tog · Hollowfibre",
+     "b": "Light, for summer nights",
+     "p": "luxury-hollowfibre-4-5-tog"
+    },
+    {
+     "a": "10.5 tog · Hollowfibre",
+     "b": "All-season, especially good on cooler spring nights",
+     "p": "luxury-hollowfibre-10-5-tog"
+    },
+    {
+     "a": "13.5 tog · Hollowfibre",
+     "b": "Our warmest weight, for cold winters",
+     "p": "luxury-hollowfibre-13-5-tog"
+    },
+    {
+     "a": "13.5 tog · Microfibre",
+     "b": "Winter warmth with a soft microfibre fill",
+     "p": "luxury-microfibre-13-5-tog"
+    },
+    {
+     "a": "Essential Winter Duvet",
+     "b": "Hollowfibre, multi-pocket construction",
+     "p": "essential-hollowfibre-duvet"
+    }
+   ],
+   "guideImg": [
+    "elt-duvet-warm",
+    "Plump white duvet on a bed in warm light"
+   ],
+   "banner": [
+    "elt-duvet-floor",
+    "White duvet and pillows on a low bed",
+    "center",
+    "Curl up, and sleep soundly.",
+    "Duvets"
+   ],
+   "cross": [
+    "pillows",
+    "toppers",
+    "protectors"
+   ]
+  },
+  "cushions": {
+   "eyebrow": "Cushions",
+   "title": "The plump",
+   "titleEm": "your sofa’s missing.",
+   "intro": "Soft yet supportive cushion pads filled with virgin hollowfibre that keeps its shape, in eleven sizes from 12in to 30in.",
+   "hero": [
+    "elt-cushions-rug",
+    "Two white cushion pads on a soft rug"
+   ],
+   "inset": [
+    "elt-cushion-single",
+    "A plump white cushion pad"
+   ],
+   "chips": [
+    "Virgin hollowfibre",
+    "Sewn seam",
+    "11 sizes",
+    "From £4.64"
+   ],
+   "lead": "nest-cushion-pad",
+   "leadLabel": "Living room",
+   "benefits": [
+    [
+     "Bounce-back fill",
+     "Virgin hollowfibre that’s soft, resilient and durable."
+    ],
+    [
+     "Holds its shape",
+     "So your cushions keep their shape."
+    ],
+    [
+     "A size for every cover",
+     "Square pads from 12in to 30in, plus a 12 × 18in oblong."
+    ]
+   ],
+   "shopCta": "Shop cushion pads",
+   "gridTitle": "Hollowfibre Cushion Pad",
+   "guideEy": "Size guide",
+   "guideTitle": "Find your size",
+   "guideIntro": "Choose the pad that matches your cushion cover. Prices shown per size.",
+   "rowsFrom": "nest-cushion-pad",
+   "guideImg": [
+    "cushions-bed-sage",
+    "Two plump white cushions on a linen bed"
+   ],
+   "banner": [
+    "duvet-sofa-cushions",
+    "Cushions on a sofa with a throw",
+    "center",
+    "Sofa, bed or reading corner.",
+    "Cushions"
+   ],
+   "cross": [
+    "pillows",
+    "duvets",
+    "bump-and-baby"
+   ]
+  }
+ },
+ "BDL": [
+  {
+   "layer": "Topper",
+   "handles": [
+    "cloud-topper"
+   ],
+   "x": 11,
+   "y": 46
+  },
+  {
+   "layer": "Pillows",
+   "handles": [
+    "duck-feather-pillows"
+   ],
+   "x": 17,
+   "y": 33
+  },
+  {
+   "layer": "Duvet",
+   "handles": [
+    "luxury-hollowfibre-4-5-tog",
+    "luxury-hollowfibre-10-5-tog",
+    "luxury-hollowfibre-13-5-tog"
+   ],
+   "togs": [
+    "4.5 tog",
+    "10.5 tog",
+    "13.5 tog"
+   ],
+   "x": 72,
+   "y": 62
+  }
+ ],
+ "TC": [
+  [
+   "topper-bed-marble.jpg",
+   "Quilted Mattress Topper on a bed in warm evening light",
+   "center",
+   "10cm deep",
+   "10cm of plump, even softness on top of the mattress you already have."
+  ],
+  [
+   "topper-hand-press.jpg",
+   "Hand pressing into the quilted microfibre fill",
+   "center 70%",
+   "Quilted to stay even",
+   "Box quilting keeps the 1100–1200 GSM microfibre fill even across the whole bed."
+  ],
+  [
+   "topper-strap-fit.png",
+   "Fitting the topper’s elastic strap under the mattress",
+   "center",
+   "Stays put",
+   "Elastic corner straps give it a secure, non-slip fit."
+  ],
+  [
+   "topper-sleeping.jpg",
+   "Woman asleep on the Mattress Topper",
+   "center",
+   "Breathable and washable",
+   "Breathable and hypoallergenic, so heat doesn’t build up while you sleep. Machine washable when it needs a refresh."
+  ]
+ ],
+ "STRIP": [
+  [
+   "Free UK delivery on every order"
+  ],
+  [
+   "Help, 24/7 on sizing and care"
+  ],
+  [
+   "Machine washable for a fresh bed"
+  ],
+  [
+   "10% off your first order",
+   true
+  ]
+ ],
+ "BEST_BY": {
+  "all": [
+   "guard-mattress-protector",
+   "v-shape-pillow",
+   "duck-feather-pillows",
+   "luxury-hollowfibre-10-5-tog"
+  ],
+  "pillows": [
+   "duck-feather-pillows",
+   "v-shape-pillow",
+   "u-shape-pillow",
+   "bolster-pillow"
+  ],
+  "duvets": [
+   "luxury-hollowfibre-10-5-tog",
+   "luxury-hollowfibre-13-5-tog",
+   "luxury-microfibre-13-5-tog",
+   "luxury-hollowfibre-4-5-tog"
+  ],
+  "protectors": [
+   "guard-mattress-protector",
+   "terry-waterproof-protector"
+  ],
+  "bump-and-baby": [
+   "v-shape-pillow",
+   "u-shape-pillow"
+  ]
+ },
+ "BS_TABS": [
+  [
+   "all",
+   "All"
+  ],
+  [
+   "pillows",
+   "Pillows"
+  ],
+  [
+   "duvets",
+   "Duvets"
+  ],
+  [
+   "protectors",
+   "Protectors"
+  ],
+  [
+   "bump-and-baby",
+   "Support pillows"
+  ]
+ ],
+ "BS_PIC": {
+  "guard-mattress-protector": 2,
+  "terry-waterproof-protector": 1,
+  "duck-feather-pillows": 3,
+  "u-shape-pillow": 1,
+  "v-shape-pillow": 1,
+  "luxury-hollowfibre-10-5-tog": 1,
+  "luxury-microfibre-13-5-tog": 1
+ },
+ "BEST_IMG": {
+  "duck-feather-pillows": [
+   "pillow-fabric-detail",
+   "Close-up of the double-stitched cotton cover on a duck feather pillow"
+  ]
+ },
+ "PRODUCTS": [
+  {
+   "handle": "cloud-topper",
+   "title": "Quilted Mattress Topper",
+   "type": "Mattress topper",
+   "range": "Mattress Topper",
+   "sku": "LGT12",
+   "collections": [
+    "toppers"
+   ],
+   "badges": [
+    "Hero range"
+   ],
+   "option": "Size",
+   "spec": "10cm deep · 1100–1200 GSM · Single to Super King",
+   "lead": "Your bed, made new. 10cm of plump, even softness that adds comfort and support without replacing your mattress.",
+   "variants": [
+    {
+     "title": "Single",
+     "dims": "90 × 190cm",
+     "price": 20.64,
+     "est": false
+    },
+    {
+     "title": "4ft",
+     "dims": "Small double",
+     "price": 22.89,
+     "est": true
+    },
+    {
+     "title": "Double",
+     "dims": "137 × 190cm",
+     "price": 25.14,
+     "est": true
+    },
+    {
+     "title": "King",
+     "dims": "",
+     "price": 27.39,
+     "est": true
+    },
+    {
+     "title": "Super King",
+     "dims": "182 × 200cm",
+     "price": 29.64,
+     "est": false
+    }
+   ],
+   "card": "img/topper-press-quilt.png",
+   "images": [
+    {
+     "src": "img/topper-press-quilt.png",
+     "alt": "Hand pressing the quilted Mattress Topper"
+    },
+    {
+     "src": "img/topper-eyemask.jpg",
+     "alt": "Woman in an eye mask resting on the Mattress Topper"
+    },
+    {
+     "src": "img/topper-strap-fit.png",
+     "alt": "Fitting the Mattress Topper’s elastic strap under the mattress"
+    },
+    {
+     "src": "img/topper-sleeping.jpg",
+     "alt": "Woman asleep on the Mattress Topper"
+    },
+    {
+     "src": "img/topper-bed-marble.jpg",
+     "alt": "Mattress Topper on a bed"
+    }
+   ],
+   "features": [
+    "10cm deep, quilted so the fill stays even",
+    "1100–1200 GSM microfibre fill, depending on size",
+    "Breathable and hypoallergenic",
+    "Secure, non-slip fit",
+    "Machine washable"
+   ],
+   "description": [
+    "A quilted microfibre topper that sits on your mattress and adds 10cm of soft, even comfort. The cushioning adapts to your body shape, helping keep your spine aligned and reducing movement disturbance through the night.",
+    "Breathable materials let air move freely, so heat doesn’t build up while you sleep. It’s ideal for a firm or tired mattress — it restores comfort and helps your mattress last longer."
+   ],
+   "specs": [
+    [
+     "Depth",
+     "10cm"
+    ],
+    [
+     "Fill",
+     "Microfibre, 1100–1200 GSM by size"
+    ],
+    [
+     "Fabric",
+     "100% microfibre"
+    ],
+    [
+     "Fit",
+     "Secure, non-slip"
+    ],
+    [
+     "Colour",
+     "White"
+    ],
+    [
+     "SKU",
+     "LGT12"
+    ]
+   ],
+   "care": [
+    "Machine washable.",
+    "Follow the care label for wash temperature and drying."
+   ],
+   "pairsWith": "guard-mattress-protector",
+   "related": [
+    "guard-mattress-protector",
+    "terry-waterproof-protector",
+    "duck-feather-pillows",
+    "luxury-hollowfibre-10-5-tog"
+   ],
+   "keywords": "mattress topper microfibre quilted toppers",
+   "benefits": [
+    [
+     "Softness that stays even",
+     "Quilted panels hold the microfibre in place, so it doesn’t bunch or go flat in the middle."
+    ],
+    [
+     "Cooler nights",
+     "Breathable materials let air move freely, so heat doesn’t build up while you sleep."
+    ],
+    [
+     "Stays put",
+     "A secure, non-slip fit keeps the topper where you laid it, night after night."
+    ]
+   ]
+  },
+  {
+   "handle": "guard-mattress-protector",
+   "title": "Quilted Waterproof Mattress Protector",
+   "type": "Mattress protector",
+   "range": "Mattress Protectors",
+   "sku": "TBW02",
+   "collections": [
+    "protectors"
+   ],
+   "badges": [
+    "Hypoallergenic"
+   ],
+   "option": "Size",
+   "spec": "100% waterproof · 30cm deep skirt · Single to Super King",
+   "lead": "Keep it fresh. Keep it yours. A breathable, waterproof layer that guards your mattress against everyday spills, dust and stains.",
+   "variants": [
+    {
+     "title": "Single",
+     "dims": "",
+     "price": 11.64,
+     "est": false
+    },
+    {
+     "title": "4ft",
+     "dims": "Small double",
+     "price": 12.64,
+     "est": true
+    },
+    {
+     "title": "Double",
+     "dims": "",
+     "price": 13.64,
+     "est": true
+    },
+    {
+     "title": "King",
+     "dims": "152 × 200cm",
+     "price": 14.64,
+     "est": true
+    },
+    {
+     "title": "Super King",
+     "dims": "",
+     "price": 15.64,
+     "est": false
+    }
+   ],
+   "card": "img/protector-corner.jpg",
+   "images": [
+    {
+     "src": "img/protector-corner.jpg",
+     "alt": "Fitting the quilted protector over a mattress corner"
+    },
+    {
+     "src": "img/protector-bed.jpg",
+     "alt": "Quilted protector on a made bed"
+    },
+    {
+     "src": "img/protector-droplets.jpg",
+     "alt": "Water beading on the waterproof surface"
+    },
+    {
+     "src": "img/protector-spill.jpg",
+     "alt": "A spill sitting on top of the protector"
+    }
+   ],
+   "features": [
+    "100% waterproof",
+    "Soft, breathable quilted surface",
+    "Fitted stretch skirt, 30cm deep",
+    "A barrier against allergens and moisture",
+    "Machine washable"
+   ],
+   "description": [
+    "Made with breathable fabric, it adds a soft layer of comfort without changing the natural feel of your mattress.",
+    "It acts as a barrier against allergens and moisture, helping your mattress last longer. Easy to remove and wash, it’s a simple way to keep your bed fresh."
+   ],
+   "specs": [
+    [
+     "Waterproof",
+     "100%"
+    ],
+    [
+     "Surface",
+     "Quilted, breathable"
+    ],
+    [
+     "Skirt",
+     "Fitted stretch skirt, 30cm deep"
+    ],
+    [
+     "Colour",
+     "White"
+    ],
+    [
+     "SKU",
+     "TBW02"
+    ]
+   ],
+   "care": [
+    "Easy to remove and machine wash.",
+    "Follow the care label for wash temperature and drying."
+   ],
+   "pairsWith": "cloud-topper",
+   "related": [
+    "cloud-topper",
+    "terry-waterproof-protector",
+    "duck-feather-pillows",
+    "luxury-hollowfibre-13-5-tog"
+   ],
+   "keywords": "mattress protector waterproof protection quilted protectors",
+   "benefits": [
+    [
+     "Nothing gets through",
+     "100% waterproof against spills, sweat and stains, and it still breathes."
+    ],
+    [
+     "You won’t feel it",
+     "A soft quilted surface adds a little comfort without changing how your mattress feels."
+    ],
+    [
+     "Fits deep mattresses",
+     "A 30cm stretch skirt wraps under the mattress and stays in place."
+    ]
+   ]
+  },
+  {
+   "handle": "terry-waterproof-protector",
+   "title": "Terry Towel Waterproof Mattress Protector",
+   "type": "Mattress protector",
+   "range": "Mattress Protectors",
+   "collections": [
+    "protectors"
+   ],
+   "badges": [],
+   "option": "Size",
+   "spec": "100% waterproof · Terry towel · Aloe vera treated",
+   "lead": "A soft terry towel surface over a waterproof layer. It absorbs spills and lets air circulate, so your bed stays fresh and you stay comfortable.",
+   "variants": [
+    {
+     "title": "Single",
+     "dims": "90 × 190cm",
+     "price": 9.99,
+     "est": false
+    },
+    {
+     "title": "4ft",
+     "dims": "Small double",
+     "price": 10.99,
+     "est": true
+    },
+    {
+     "title": "Double",
+     "dims": "",
+     "price": 11.99,
+     "est": true
+    },
+    {
+     "title": "King",
+     "dims": "",
+     "price": 12.99,
+     "est": true
+    },
+    {
+     "title": "Super King",
+     "dims": "",
+     "price": 13.99,
+     "est": false
+    }
+   ],
+   "card": "img/terry-fitting-corner.png",
+   "images": [
+    {
+     "src": "img/terry-fitting-corner.png",
+     "alt": "Fitting the terry towel protector over a mattress corner"
+    },
+    {
+     "src": "img/terry-pinch.jpg",
+     "alt": "Close-up of the terry towel surface"
+    },
+    {
+     "src": "img/terry-fitting.jpg",
+     "alt": "Terry towel protector being fitted"
+    }
+   ],
+   "features": [
+    "100% waterproof",
+    "Breathable terry towel surface",
+    "Aloe vera treated",
+    "Deep fitted stretch skirt",
+    "Machine washable"
+   ],
+   "description": [
+    "Helps protect your mattress against allergens, dust and bed bugs, while adding an extra comfortable layer to your bed.",
+    "The terry towel surface absorbs liquid and moisture and allows air to circulate, so you sleep comfortably and your mattress stays clean."
+   ],
+   "specs": [
+    [
+     "Waterproof",
+     "100%"
+    ],
+    [
+     "Surface",
+     "Terry towel"
+    ],
+    [
+     "Treatment",
+     "Aloe vera"
+    ],
+    [
+     "Skirt",
+     "Deep fitted stretch skirt"
+    ],
+    [
+     "Colour",
+     "White"
+    ]
+   ],
+   "care": [
+    "Machine washable.",
+    "Follow the care label for wash temperature and drying."
+   ],
+   "pairsWith": "cloud-topper",
+   "related": [
+    "guard-mattress-protector",
+    "cloud-topper",
+    "duck-feather-pillows",
+    "luxury-hollowfibre-4-5-tog"
+   ],
+   "keywords": "mattress protector waterproof terry towel aloe vera protectors",
+   "benefits": [
+    [
+     "Absorbs, then protects",
+     "Terry towel soaks up spills while the waterproof layer underneath keeps the mattress dry."
+    ],
+    [
+     "Air keeps moving",
+     "Breathable fabric lets air circulate, so you don’t overheat."
+    ],
+    [
+     "Soft, treated surface",
+     "A terry towel top with an aloe vera treatment, over a deep fitted skirt."
+    ]
+   ]
+  },
+  {
+   "handle": "duck-feather-pillows",
+   "title": "Duck Feather & Down Pillows",
+   "type": "Bed pillow",
+   "range": "Duck Feather Pillows",
+   "sku": "TBW06",
+   "collections": [
+    "pillows"
+   ],
+   "badges": [],
+   "option": "Pack",
+   "spec": "Standard 48 × 74cm · Duck feather & down · Pack of 2 or 4",
+   "lead": "Hotel nights, every night. Natural duck feather and down in a 100% cotton, double-stitched cover — soft, supportive and sold in pairs.",
+   "variants": [
+    {
+     "title": "Pack of 2",
+     "dims": "2 pillows",
+     "price": 19.64,
+     "est": false
+    },
+    {
+     "title": "Pack of 4",
+     "dims": "4 pillows",
+     "price": 34.64,
+     "est": false
+    }
+   ],
+   "card": "img/pillows-stack-stool.png",
+   "images": [
+    {
+     "src": "img/pillows-stack-stool.png",
+     "alt": "Four duck feather and down pillows stacked on a stool"
+    },
+    {
+     "src": "img/pillow-feathers.jpg",
+     "alt": "Duck feathers and down"
+    },
+    {
+     "src": "img/pillow-fabric-detail.jpg",
+     "alt": "Close-up of the double-stitched cotton cover"
+    },
+    {
+     "src": "img/pillows-duvet-window.jpg",
+     "alt": "Pillows and duvet in window light"
+    },
+    {
+     "src": "img/pillow-joy.jpg",
+     "alt": "Woman hugging a pillow"
+    }
+   ],
+   "features": [
+    "Natural duck feather and down fill",
+    "100% cotton cover, double stitched",
+    "Breathable, so you stay cool",
+    "For side, stomach and back sleepers",
+    "Machine washable on a cold wash"
+   ],
+   "description": [
+    "A balance of duck feather and down gives these pillows the right kind of softness, with enough support for your neck and shoulders. They suit side, stomach and back sleepers alike.",
+    "The fill sits directly inside a 100% cotton cover (it isn’t a separate case), double stitched to hold its shape and keep the feathers in. The cotton breathes, so air keeps moving and you stay comfortable all night."
+   ],
+   "specs": [
+    [
+     "Size",
+     "Standard, 48 × 74cm (19 × 29in)"
+    ],
+    [
+     "Fill",
+     "Duck feather and down"
+    ],
+    [
+     "Cover",
+     "100% cotton, double stitched"
+    ],
+    [
+     "Colour",
+     "White"
+    ],
+    [
+     "SKU",
+     "TBW06"
+    ]
+   ],
+   "care": [
+    "Machine washable on a cold wash.",
+    "Follow the care label for wash temperature and drying."
+   ],
+   "pairsWith": "guard-mattress-protector",
+   "related": [
+    "cloud-topper",
+    "guard-mattress-protector",
+    "luxury-hollowfibre-10-5-tog",
+    "bolster-pillow"
+   ],
+   "keywords": "bed pillow pillows feather down hotel standard",
+   "benefits": [
+    [
+     "Soft, with real support",
+     "A balance of duck feather and down gives softness with enough support for your neck and shoulders."
+    ],
+    [
+     "Breathable cotton",
+     "The 100% cotton cover lets air move, so you stay comfortable all night."
+    ],
+    [
+     "Built to keep its shape",
+     "Double stitching holds the shape and keeps the feathers in."
+    ]
+   ]
+  },
+  {
+   "handle": "u-shape-pillow",
+   "title": "U-Shape Pregnancy & Body Pillow",
+   "type": "Support pillow",
+   "range": "Support Pillows",
+   "sku": "TBW03",
+   "collections": [
+    "pillows",
+    "bump-and-baby"
+   ],
+   "badges": [
+    "Support"
+   ],
+   "option": "Colour",
+   "compareAt": 27.99,
+   "spec": "12ft / 3.7m · Hollowfibre · Removable cover",
+   "lead": "Held, from bump to baby. A 3.7m U-shape that cradles you from head to toe, keeping your neck, shoulders, back and hips aligned.",
+   "variants": [
+    {
+     "title": "White",
+     "dims": "",
+     "price": 24.64,
+     "est": false
+    }
+   ],
+   "card": "img/u-shape-cutout.jpg",
+   "images": [
+    {
+     "src": "img/u-shape-cutout.jpg",
+     "alt": "U-shape pregnancy and body pillow"
+    },
+    {
+     "src": "img/u-reading-sage.jpg",
+     "alt": "Reading propped up in the U-shape pillow"
+    },
+    {
+     "src": "img/bump-sleeping.jpg",
+     "alt": "Sleeping on her side with the U-shape pillow"
+    },
+    {
+     "src": "img/bump-reading.jpg",
+     "alt": "Expectant mother reading with the U-shape pillow"
+    }
+   ],
+   "features": [
+    "12ft / 3.7m long — cradles you from head to toe",
+    "Keeps neck, shoulders, back and hips aligned",
+    "Soft hollowfibre fill, microfibre outer",
+    "Removable cover",
+    "Hypoallergenic and chemical free",
+    "Lightweight and machine washable"
+   ],
+   "description": [
+    "The U-shaped body pillow gives comfort and support through pregnancy, or whenever your back, hips, shoulders or neck need a little more. Its shape cradles your body all night long, so you can settle and stay comfortable.",
+    "Soft hollowfibre filling sits inside a microfibre outer, with a removable cover for easy washing."
+   ],
+   "specs": [
+    [
+     "Length",
+     "12ft / 3.7m"
+    ],
+    [
+     "Shape",
+     "U-shape (semicircular)"
+    ],
+    [
+     "Fill",
+     "Polyester hollowfibre"
+    ],
+    [
+     "Outer",
+     "Microfibre"
+    ],
+    [
+     "Cover",
+     "Removable"
+    ],
+    [
+     "Colour",
+     "White"
+    ],
+    [
+     "SKU",
+     "TBW03"
+    ]
+   ],
+   "care": [
+    "Machine washable, with a removable cover.",
+    "Follow the care label for wash temperature and drying."
+   ],
+   "pairsWith": "v-shape-pillow",
+   "related": [
+    "v-shape-pillow",
+    "bolster-pillow",
+    "duck-feather-pillows",
+    "guard-mattress-protector"
+   ],
+   "keywords": "pregnancy maternity body pillow support u shape",
+   "benefits": [
+    [
+     "Support from head to toe",
+     "3.7m of pillow cradles your whole body, keeping neck, shoulders, back and hips aligned."
+    ],
+    [
+     "For bump, back and beyond",
+     "Made for pregnancy, and just as useful whenever your back, hips, shoulders or neck need a little more."
+    ],
+    [
+     "Easy to keep fresh",
+     "The cover comes off for washing, and the fill is hypoallergenic and chemical free."
+    ]
+   ]
+  },
+  {
+   "handle": "v-shape-pillow",
+   "title": "V-Shape Support Pillow",
+   "type": "Support pillow",
+   "range": "Support Pillows",
+   "collections": [
+    "pillows",
+    "bump-and-baby"
+   ],
+   "badges": [
+    "Support"
+   ],
+   "option": "Colour",
+   "compareAt": 12.95,
+   "spec": "73 × 34cm · Hollowfibre · Pillowcase included",
+   "lead": "Support around the back and sides of your neck — for sleeping, nursing, reading or an evening on the sofa.",
+   "variants": [
+    {
+     "title": "White",
+     "dims": "",
+     "price": 9.64,
+     "est": false
+    }
+   ],
+   "card": "img/v-shape-green-bed.png",
+   "images": [
+    {
+     "src": "img/v-shape-green-bed.png",
+     "alt": "V-shape support pillow against a headboard"
+    },
+    {
+     "src": "img/v-shape-mug.jpg",
+     "alt": "V-shape pillow with a morning mug"
+    },
+    {
+     "src": "img/v-shape-sleeping-sage.jpg",
+     "alt": "Sleeping against the V-shape pillow"
+    }
+   ],
+   "features": [
+    "Supports the back and sides of your neck",
+    "Made for pregnancy and nursing",
+    "Generous non-allergenic hollowfibre",
+    "High-density down-proof fabric keeps the fibre in",
+    "Pillowcase included"
+   ],
+   "description": [
+    "A multipurpose V-shaped pillow for neck and back support. Use it for sleeping, reading or watching TV, and through pregnancy and nursing, when a little extra support goes a long way.",
+    "A poly-cotton cover and generous non-allergenic hollowfibre make it a good choice for allergy-conscious sleepers, with high-density down-proof fabric that stops the fibre working its way out."
+   ],
+   "specs": [
+    [
+     "Size",
+     "73 × 34cm"
+    ],
+    [
+     "Fill",
+     "Hollowfibre"
+    ],
+    [
+     "Cover",
+     "Poly-cotton, high-density down-proof fabric"
+    ],
+    [
+     "Colour",
+     "White"
+    ]
+   ],
+   "care": [
+    "Follow the care label for wash temperature and drying."
+   ],
+   "pairsWith": "u-shape-pillow",
+   "related": [
+    "u-shape-pillow",
+    "bolster-pillow",
+    "duck-feather-pillows",
+    "nest-cushion-pad"
+   ],
+   "keywords": "nursing pregnancy orthopaedic neck back support v shape pillow",
+   "benefits": [
+    [
+     "Holds your neck and back",
+     "The V-shape supports the back and sides of your neck while you sit up in bed."
+    ],
+    [
+     "From pregnancy to nursing",
+     "Comfortable support through pregnancy and while feeding."
+    ],
+    [
+     "Kind to allergies",
+     "Non-allergenic hollowfibre in a down-proof poly-cotton cover, with a pillowcase included."
+    ]
+   ]
+  },
+  {
+   "handle": "bolster-pillow",
+   "title": "Hollowfibre Bolster Pillow",
+   "type": "Support pillow",
+   "range": "Pillows",
+   "collections": [
+    "pillows"
+   ],
+   "badges": [],
+   "option": "Length",
+   "spec": "Hollowfibre · 100% cotton cover · 3ft to 6ft",
+   "lead": "A long, soft bolster for full-body support. Hug it, lean on it, or tuck it along your back.",
+   "variants": [
+    {
+     "title": "3ft",
+     "dims": "Single",
+     "price": 9.64,
+     "est": false
+    },
+    {
+     "title": "4ft",
+     "dims": "Small double",
+     "price": 10.89,
+     "est": true
+    },
+    {
+     "title": "4ft 6in",
+     "dims": "Double",
+     "price": 12.14,
+     "est": true
+    },
+    {
+     "title": "5ft",
+     "dims": "King",
+     "price": 13.39,
+     "est": true
+    },
+    {
+     "title": "6ft",
+     "dims": "Super King",
+     "price": 14.64,
+     "est": false
+    }
+   ],
+   "card": "img/bolster-sleeping.jpg",
+   "images": [
+    {
+     "src": "img/bolster-sleeping.jpg",
+     "alt": "Woman sleeping with the hollowfibre bolster pillow"
+    }
+   ],
+   "features": [
+    "Full-body, back, neck and maternity support",
+    "Soft hollowfibre fill",
+    "Breathable 100% cotton cover",
+    "Resists pilling",
+    "Five lengths, 3ft to 6ft"
+   ],
+   "description": [
+    "A full-length bolster filled with soft hollowfibre, for back, neck and maternity support or simply something to hold on to.",
+    "The 100% cotton cover is breathable and soft, and made to resist pilling."
+   ],
+   "specs": [
+    [
+     "Fill",
+     "Hollowfibre"
+    ],
+    [
+     "Cover",
+     "100% cotton"
+    ],
+    [
+     "Lengths",
+     "3ft, 4ft, 4ft 6in, 5ft, 6ft"
+    ],
+    [
+     "Colour",
+     "White"
+    ]
+   ],
+   "care": [
+    "Follow the care label for wash temperature and drying."
+   ],
+   "pairsWith": "u-shape-pillow",
+   "related": [
+    "u-shape-pillow",
+    "v-shape-pillow",
+    "duck-feather-pillows",
+    "nest-cushion-pad"
+   ],
+   "keywords": "bolster body pillow maternity long support",
+   "benefits": [
+    [
+     "Full-length support",
+     "Hug it, lean on it or tuck it along your back for support where you need it."
+    ],
+    [
+     "Soft, breathable cotton",
+     "A 100% cotton cover that breathes and resists pilling."
+    ],
+    [
+     "A length for every bed",
+     "Five lengths from 3ft to 6ft, matching Single through Super King."
+    ]
+   ]
+  },
+  {
+   "type": "Duvet",
+   "range": "Duvets",
+   "collections": [
+    "duvets"
+   ],
+   "option": "Size",
+   "badges": [],
+   "pairsWith": "duck-feather-pillows",
+   "related": [
+    "duck-feather-pillows",
+    "guard-mattress-protector",
+    "cloud-topper",
+    "luxury-hollowfibre-10-5-tog"
+   ],
+   "care": [
+    "Follow the care label for wash temperature and drying."
+   ],
+   "keywords": "duvet quilt tog bedding",
+   "handle": "luxury-hollowfibre-4-5-tog",
+   "title": "Luxury Hollowfibre 4.5 Tog Duvet",
+   "spec": "4.5 tog · Hollowfibre · Polycotton",
+   "lead": "A light 4.5 tog for summer nights and warm rooms.",
+   "variants": [
+    {
+     "title": "Single",
+     "dims": "",
+     "price": 11.64,
+     "est": false
+    },
+    {
+     "title": "Double",
+     "dims": "",
+     "price": 12.97,
+     "est": true
+    },
+    {
+     "title": "King",
+     "dims": "",
+     "price": 14.31,
+     "est": true
+    },
+    {
+     "title": "Super King",
+     "dims": "",
+     "price": 15.64,
+     "est": false
+    }
+   ],
+   "card": "img/duvet-sunlight.jpg",
+   "images": [
+    {
+     "src": "img/duvet-sunlight.jpg",
+     "alt": "Light duvet in summer sunlight"
+    },
+    {
+     "src": "img/duvet-flatlay-green.png",
+     "alt": "Duvet and pillows from above"
+    },
+    {
+     "src": "img/duvet-mug-morning.png",
+     "alt": "Morning mug on the duvet"
+    },
+    {
+     "src": "img/duvet-palm.jpg",
+     "alt": "Hand resting on the duvet"
+    }
+   ],
+   "features": [
+    "4.5 tog — light, for summer",
+    "Soft hollowfibre fill",
+    "Polycotton cover"
+   ],
+   "description": [
+    "Wrap yourself in a lightweight hollowfibre duvet made for summer nights, so you sleep well and wake up refreshed."
+   ],
+   "specs": [
+    [
+     "Tog",
+     "4.5"
+    ],
+    [
+     "Fill",
+     "Hollowfibre"
+    ],
+    [
+     "Cover",
+     "Polycotton"
+    ],
+    [
+     "Colour",
+     "White"
+    ]
+   ],
+   "benefits": [
+    [
+     "Made for summer",
+     "A light 4.5 tog that keeps you covered without overheating on warm nights."
+    ],
+    [
+     "Soft hollowfibre fill",
+     "Plump, lightweight hollowfibre in a polycotton cover."
+    ],
+    [
+     "Part of a tog family",
+     "Pair it with a 10.5 or 13.5 tog as the seasons change."
+    ]
+   ]
+  },
+  {
+   "type": "Duvet",
+   "range": "Duvets",
+   "collections": [
+    "duvets"
+   ],
+   "option": "Size",
+   "badges": [],
+   "pairsWith": "duck-feather-pillows",
+   "related": [
+    "duck-feather-pillows",
+    "guard-mattress-protector",
+    "cloud-topper",
+    "luxury-hollowfibre-10-5-tog"
+   ],
+   "care": [
+    "Follow the care label for wash temperature and drying."
+   ],
+   "keywords": "duvet quilt tog bedding",
+   "handle": "luxury-hollowfibre-10-5-tog",
+   "title": "Luxury Hollowfibre 10.5 Tog Duvet",
+   "spec": "10.5 tog · Hollowfibre · Polycotton",
+   "lead": "An all-season 10.5 tog — the one to keep on the bed most of the year.",
+   "variants": [
+    {
+     "title": "Single",
+     "dims": "",
+     "price": 12.64,
+     "est": false
+    },
+    {
+     "title": "Double",
+     "dims": "",
+     "price": 14.14,
+     "est": true
+    },
+    {
+     "title": "King",
+     "dims": "",
+     "price": 15.64,
+     "est": true
+    },
+    {
+     "title": "Super King",
+     "dims": "",
+     "price": 17.14,
+     "est": false
+    }
+   ],
+   "card": "img/duvet-rolled-hands.png",
+   "images": [
+    {
+     "src": "img/duvet-rolled-hands.png",
+     "alt": "Rolled hollowfibre duvet"
+    },
+    {
+     "src": "img/duvet-lamp-evening.png",
+     "alt": "Duvet on a bed in evening lamplight"
+    },
+    {
+     "src": "img/duvet-draped.jpg",
+     "alt": "Duvet draped over the bed"
+    },
+    {
+     "src": "img/duvet-flatlay-green.png",
+     "alt": "Duvet and pillows from above"
+    }
+   ],
+   "features": [
+    "10.5 tog — for year-round use",
+    "Soft hollowfibre fill",
+    "Polycotton cover"
+   ],
+   "description": [
+    "Curl up in a hollowfibre 10.5 tog duvet. It’s made for year-round use, and especially good on cooler spring nights."
+   ],
+   "specs": [
+    [
+     "Tog",
+     "10.5"
+    ],
+    [
+     "Fill",
+     "Hollowfibre"
+    ],
+    [
+     "Cover",
+     "Polycotton"
+    ],
+    [
+     "Colour",
+     "White"
+    ]
+   ],
+   "benefits": [
+    [
+     "One duvet, most of the year",
+     "Made for year-round use, and especially good on cooler spring nights."
+    ],
+    [
+     "Soft hollowfibre fill",
+     "Plump, lightweight hollowfibre in a polycotton cover."
+    ],
+    [
+     "Four sizes",
+     "Single, Double, King and Super King."
+    ]
+   ]
+  },
+  {
+   "type": "Duvet",
+   "range": "Duvets",
+   "collections": [
+    "duvets"
+   ],
+   "option": "Size",
+   "badges": [],
+   "pairsWith": "duck-feather-pillows",
+   "related": [
+    "duck-feather-pillows",
+    "guard-mattress-protector",
+    "cloud-topper",
+    "luxury-hollowfibre-10-5-tog"
+   ],
+   "care": [
+    "Follow the care label for wash temperature and drying."
+   ],
+   "keywords": "duvet quilt tog bedding",
+   "handle": "luxury-hollowfibre-13-5-tog",
+   "title": "Luxury Hollowfibre 13.5 Tog Duvet",
+   "spec": "13.5 tog · Hollowfibre · Polycotton",
+   "lead": "A warm 13.5 tog for cold British winters.",
+   "variants": [
+    {
+     "title": "Single",
+     "dims": "",
+     "price": 13.64,
+     "est": false
+    },
+    {
+     "title": "Double",
+     "dims": "",
+     "price": 15.64,
+     "est": true
+    },
+    {
+     "title": "King",
+     "dims": "",
+     "price": 17.64,
+     "est": true
+    },
+    {
+     "title": "Super King",
+     "dims": "",
+     "price": 19.64,
+     "est": false
+    }
+   ],
+   "card": "img/duvet-hug.jpg",
+   "images": [
+    {
+     "src": "img/duvet-hug.jpg",
+     "alt": "Wrapped up in the 13.5 tog duvet"
+    },
+    {
+     "src": "img/duvet-lamp-evening.png",
+     "alt": "Duvet on a bed in evening lamplight"
+    },
+    {
+     "src": "img/duvet-rolled-hands.png",
+     "alt": "Rolled hollowfibre duvet"
+    },
+    {
+     "src": "img/duvet-folded-cutout.jpg",
+     "alt": "Folded duvet"
+    }
+   ],
+   "features": [
+    "13.5 tog — our warmest weight",
+    "Soft hollowfibre fill",
+    "Polycotton cover"
+   ],
+   "description": [
+    "Our highest tog, made for the coldest winter nights, so you sleep soundly and wake up warm."
+   ],
+   "specs": [
+    [
+     "Tog",
+     "13.5"
+    ],
+    [
+     "Fill",
+     "Hollowfibre"
+    ],
+    [
+     "Cover",
+     "Polycotton"
+    ],
+    [
+     "Colour",
+     "White"
+    ]
+   ],
+   "benefits": [
+    [
+     "Our warmest weight",
+     "13.5 tog for the coldest nights of a British winter."
+    ],
+    [
+     "Soft hollowfibre fill",
+     "Plump, lightweight hollowfibre in a polycotton cover."
+    ],
+    [
+     "Four sizes",
+     "Single, Double, King and Super King."
+    ]
+   ]
+  },
+  {
+   "type": "Duvet",
+   "range": "Duvets",
+   "collections": [
+    "duvets"
+   ],
+   "option": "Size",
+   "badges": [],
+   "pairsWith": "duck-feather-pillows",
+   "related": [
+    "duck-feather-pillows",
+    "guard-mattress-protector",
+    "cloud-topper",
+    "luxury-hollowfibre-10-5-tog"
+   ],
+   "care": [
+    "Follow the care label for wash temperature and drying."
+   ],
+   "keywords": "duvet quilt tog bedding",
+   "handle": "luxury-microfibre-13-5-tog",
+   "title": "Luxury Microfibre 13.5 Tog Duvet",
+   "spec": "13.5 tog · Microfibre · Polycotton",
+   "lead": "Winter-warm 13.5 tog with a soft microfibre fill.",
+   "variants": [
+    {
+     "title": "Single",
+     "dims": "",
+     "price": 19.64,
+     "est": false
+    },
+    {
+     "title": "Double",
+     "dims": "",
+     "price": 21.97,
+     "est": true
+    },
+    {
+     "title": "King",
+     "dims": "",
+     "price": 24.31,
+     "est": true
+    },
+    {
+     "title": "Super King",
+     "dims": "",
+     "price": 26.64,
+     "est": false
+    }
+   ],
+   "card": "img/duvet-folded-cutout.jpg",
+   "images": [
+    {
+     "src": "img/duvet-folded-cutout.jpg",
+     "alt": "Folded microfibre duvet"
+    },
+    {
+     "src": "img/duvet-draped.jpg",
+     "alt": "Duvet draped over the bed"
+    },
+    {
+     "src": "img/duvet-mug-morning.png",
+     "alt": "Morning mug on the duvet"
+    },
+    {
+     "src": "img/duvet-lamp-evening.png",
+     "alt": "Duvet on a bed in evening lamplight"
+    }
+   ],
+   "features": [
+    "13.5 tog — for winter",
+    "Soft microfibre fill",
+    "Polycotton cover"
+   ],
+   "description": [
+    "A 13.5 tog microfibre duvet for the coldest nights of the British winter."
+   ],
+   "specs": [
+    [
+     "Tog",
+     "13.5"
+    ],
+    [
+     "Fill",
+     "Microfibre"
+    ],
+    [
+     "Cover",
+     "Polycotton"
+    ],
+    [
+     "Colour",
+     "White"
+    ]
+   ],
+   "benefits": [
+    [
+     "Winter warm",
+     "13.5 tog for the coldest nights of a British winter."
+    ],
+    [
+     "Soft microfibre fill",
+     "Fine microfibre in a polycotton cover."
+    ],
+    [
+     "Four sizes",
+     "Single, Double, King and Super King."
+    ]
+   ]
+  },
+  {
+   "type": "Duvet",
+   "range": "Duvets",
+   "collections": [
+    "duvets"
+   ],
+   "option": "Size",
+   "badges": [],
+   "pairsWith": "duck-feather-pillows",
+   "related": [
+    "duck-feather-pillows",
+    "guard-mattress-protector",
+    "cloud-topper",
+    "luxury-hollowfibre-10-5-tog"
+   ],
+   "care": [
+    "Follow the care label for wash temperature and drying."
+   ],
+   "keywords": "duvet quilt tog bedding",
+   "handle": "essential-hollowfibre-duvet",
+   "title": "Essential Hollowfibre Winter Duvet",
+   "spec": "Hollowfibre · Multi-pocket · Winter weight",
+   "lead": "Warm, soft and lightweight, with multi-pocket construction that keeps the fill evenly spread.",
+   "variants": [
+    {
+     "title": "Single",
+     "dims": "",
+     "price": 16.64,
+     "est": false
+    },
+    {
+     "title": "Double",
+     "dims": "",
+     "price": 18.97,
+     "est": true
+    },
+    {
+     "title": "King",
+     "dims": "",
+     "price": 21.31,
+     "est": true
+    },
+    {
+     "title": "Super King",
+     "dims": "",
+     "price": 23.64,
+     "est": false
+    }
+   ],
+   "card": "img/duvet-flatlay-green.png",
+   "images": [
+    {
+     "src": "img/duvet-flatlay-green.png",
+     "alt": "Duvet and pillows from above"
+    },
+    {
+     "src": "img/duvet-rolled.jpg",
+     "alt": "Rolled duvet"
+    },
+    {
+     "src": "img/duvet-palm.jpg",
+     "alt": "Hand resting on the duvet"
+    },
+    {
+     "src": "img/duvet-rolled-hands.png",
+     "alt": "Rolled hollowfibre duvet"
+    }
+   ],
+   "features": [
+    "Winter-weight hollowfibre",
+    "Multi-pocket construction keeps the fill even",
+    "Warm, soft and lightweight"
+   ],
+   "description": [
+    "Our essential line uses a hollowfibre filling that keeps the duvet warm, soft and lightweight. Multi-pocket construction holds the fill evenly in place, so it stays comfortable night after night."
+   ],
+   "specs": [
+    [
+     "Fill",
+     "Hollowfibre"
+    ],
+    [
+     "Construction",
+     "Multi-pocket"
+    ],
+    [
+     "Season",
+     "Winter"
+    ],
+    [
+     "Colour",
+     "White"
+    ]
+   ],
+   "benefits": [
+    [
+     "Fill that stays put",
+     "Multi-pocket construction holds the hollowfibre evenly, so there are no thin patches."
+    ],
+    [
+     "Warm without the weight",
+     "Hollowfibre keeps the duvet warm, soft and lightweight."
+    ],
+    [
+     "Four sizes",
+     "Single, Double, King and Super King."
+    ]
+   ]
+  },
+  {
+   "handle": "nest-cushion-pad",
+   "title": "Hollowfibre Cushion Pad",
+   "type": "Cushion pad",
+   "range": "Cushions",
+   "collections": [
+    "cushions"
+   ],
+   "badges": [],
+   "option": "Size",
+   "spec": "Virgin hollowfibre · Sewn seam · 11 sizes",
+   "lead": "The plump your sofa’s missing. Soft yet supportive inserts with bounce-back virgin hollowfibre.",
+   "variants": [
+    {
+     "title": "12 × 12in",
+     "dims": "30 × 30cm",
+     "price": 4.64,
+     "est": false
+    },
+    {
+     "title": "12 × 18in",
+     "dims": "30 × 45cm",
+     "price": 5.09,
+     "est": true
+    },
+    {
+     "title": "14 × 14in",
+     "dims": "35 × 35cm",
+     "price": 5.54,
+     "est": true
+    },
+    {
+     "title": "16 × 16in",
+     "dims": "40 × 40cm",
+     "price": 5.99,
+     "est": true
+    },
+    {
+     "title": "18 × 18in",
+     "dims": "45 × 45cm",
+     "price": 6.44,
+     "est": true
+    },
+    {
+     "title": "20 × 20in",
+     "dims": "50 × 50cm",
+     "price": 6.89,
+     "est": true
+    },
+    {
+     "title": "22 × 22in",
+     "dims": "55 × 55cm",
+     "price": 7.34,
+     "est": true
+    },
+    {
+     "title": "24 × 24in",
+     "dims": "60 × 60cm",
+     "price": 7.79,
+     "est": true
+    },
+    {
+     "title": "26 × 26in",
+     "dims": "65 × 65cm",
+     "price": 8.24,
+     "est": true
+    },
+    {
+     "title": "28 × 28in",
+     "dims": "70 × 70cm",
+     "price": 8.69,
+     "est": true
+    },
+    {
+     "title": "30 × 30in",
+     "dims": "75 × 75cm",
+     "price": 9.14,
+     "est": false
+    }
+   ],
+   "card": "img/cushion-pair-cutout.jpg",
+   "images": [
+    {
+     "src": "img/cushion-pair-cutout.jpg",
+     "alt": "Two hollowfibre cushion pads"
+    },
+    {
+     "src": "img/duvet-sofa-cushions.png",
+     "alt": "Cushions on a sofa with a throw"
+    },
+    {
+     "src": "img/cushions-sofa.jpg",
+     "alt": "Cushions on a sofa"
+    },
+    {
+     "src": "img/cushions-bench.jpg",
+     "alt": "Cushions on a bench"
+    },
+    {
+     "src": "img/cushions-bed-sage.jpg",
+     "alt": "Cushions on a bed"
+    }
+   ],
+   "features": [
+    "Virgin hollowfibre fill",
+    "Soft, resilient and holds its shape",
+    "Sewn seam closure",
+    "Square sizes from 12in to 30in, plus 12 × 18in oblong"
+   ],
+   "description": [
+    "Soft yet supportive cushion inserts that make sitting more comfortable, on the sofa, in bed or wherever you like to unwind.",
+    "Filled with virgin hollowfibre that’s soft, resilient and durable, so your cushions keep their shape."
+   ],
+   "specs": [
+    [
+     "Fill",
+     "Virgin hollowfibre"
+    ],
+    [
+     "Closure",
+     "Sewn seam"
+    ],
+    [
+     "Shape",
+     "Square, or 12 × 18in oblong"
+    ],
+    [
+     "Colour",
+     "White"
+    ]
+   ],
+   "care": [
+    "Follow the care label for wash temperature and drying."
+   ],
+   "pairsWith": "bolster-pillow",
+   "related": [
+    "v-shape-pillow",
+    "bolster-pillow",
+    "duck-feather-pillows",
+    "u-shape-pillow"
+   ],
+   "keywords": "cushion pad insert inner filler sofa scatter cushions",
+   "benefits": [
+    [
+     "Bounce that lasts",
+     "Virgin hollowfibre is soft, resilient and durable, so cushions keep their shape."
+    ],
+    [
+     "Eleven sizes",
+     "Square pads from 12in to 30in, plus a 12 × 18in oblong."
+    ],
+    [
+     "Clean, sewn finish",
+     "A sewn seam closure that sits neatly inside any cover."
+    ]
+   ]
+  }
+ ],
+ "COLLECTIONS": [
+  {
+   "handle": "all",
+   "label": "Elitlux",
+   "title": "Shop all",
+   "tagline": "Sleep better. Live better.",
+   "blurb": "Every Elitlux product, from everyday pillows to deep toppers and support shapes.",
+   "img": ""
+  },
+  {
+   "handle": "toppers",
+   "label": "Toppers",
+   "title": "Mattress Toppers",
+   "tagline": "Your bed, made new.",
+   "blurb": "10cm deep, 1100–1200 GSM microfibre, quilted to stay even. Single to Super King.",
+   "img": "https://cdn.shopify.com/s/files/1/0859/9640/4956/files/Topper-0002.jpg?v=1791809148"
+  },
+  {
+   "handle": "pillows",
+   "label": "Pillows",
+   "title": "Pillows",
+   "tagline": "Hotel nights, every night.",
+   "blurb": "Natural duck feather and down for everyday softness, plus support shapes for bump, back and neck.",
+   "img": "https://cdn.shopify.com/s/files/1/0859/9640/4956/files/Bolster-Pillow-09.jpg?v=1791809201"
+  },
+  {
+   "handle": "bump-and-baby",
+   "label": "Support",
+   "title": "Support Pillows",
+   "tagline": "Comfort in every curve.",
+   "blurb": "V and U-shape pillows for pregnancy, nursing, back and neck, with the cover included.",
+   "img": "https://cdn.shopify.com/s/files/1/0859/9640/4956/files/Loomerig-U-Shape-Pillow-01.jpg?v=1791809199"
+  },
+  {
+   "handle": "protectors",
+   "label": "Protection",
+   "title": "Mattress Protectors",
+   "tagline": "Keep it fresh. Keep it yours.",
+   "blurb": "100% waterproof and breathable, with quilted and terry towel options and deep fitted skirts.",
+   "img": "https://cdn.shopify.com/s/files/1/0859/9640/4956/files/Terry-Towel-Waterproof-Mattress-Protector.jpg?v=1791809150"
+  },
+  {
+   "handle": "duvets",
+   "label": "Duvets",
+   "title": "Duvets",
+   "tagline": "Light as a cloud, warm as you need.",
+   "blurb": "Hollowfibre and microfibre duvets, from a light 4.5 tog for summer to a warm 13.5 tog for winter.",
+   "img": "https://cdn.shopify.com/s/files/1/0859/9640/4956/files/Essential-Hollow-fibre-Duvet-01.jpg?v=1791809261"
+  },
+  {
+   "handle": "cushions",
+   "label": "Living room",
+   "title": "Cushions",
+   "tagline": "The plump your sofa’s missing.",
+   "blurb": "Virgin hollowfibre cushion pads with bounce-back fill, in eleven sizes from 12in to 30in.",
+   "img": "https://cdn.shopify.com/s/files/1/0859/9640/4956/files/Loomerig-Cushion-01.jpg?v=1791809262"
+  }
+ ],
+ "REVIEWS": {
+  "row1": [
+   {
+    "title": "Very good buy",
+    "text": "If you want an extra layer of the mattress, this is the protector you need to get. It came in the right size as I wanted and also thick as well. Its winter now and you need all the heat protection as possible, this did it for me. I highly recommend it.",
+    "name": "Ade",
+    "meta": "Verified purchase · Double"
+   },
+   {
+    "title": "Excellent Mattress Protector",
+    "text": "Excellent. Great quality and deep sides/corners so it doesn't slip off.",
+    "name": "JD",
+    "meta": "Verified purchase · King"
+   },
+   {
+    "title": "Great for protecting mattress",
+    "text": "Excellent for keeping stains off of your mattress. Been using for about 6 months, washes well, need to hang it out as it drips. Overall great for protecting mattress",
+    "name": "Amazon Customer",
+    "meta": "Verified purchase · Small Double"
+   },
+   {
+    "title": "Good product",
+    "text": "Great product, fits well and more importantly....stays where it should!",
+    "name": "harrygilfillan",
+    "meta": "Verified purchase · King"
+   },
+   {
+    "title": "Quilted mattress cover",
+    "text": "Very good value and so comfortable. One happy customer.",
+    "name": "Amazon Customer",
+    "meta": "Verified purchase · Double"
+   }
+  ],
+  "row2": [
+   {
+    "title": "Mattress protector",
+    "text": "Great item. Very good quality. Great fit.",
+    "name": "Coffee lover",
+    "meta": "Verified purchase · King"
+   },
+   {
+    "title": "Good quality",
+    "text": "Good quality, does the job and looks nice.",
+    "name": "J.Harris",
+    "meta": "Verified purchase · Double"
+   },
+   {
+    "title": "Well delivered",
+    "text": "Good quality easy to fit",
+    "name": "scottie",
+    "meta": "Verified purchase · King"
+   },
+   {
+    "title": "Order the correct size.",
+    "text": "I found this item perfect and delivery was excellent.",
+    "name": "Charles Wood",
+    "meta": "Verified purchase · Double"
+   },
+   {
+    "title": "Fits well.",
+    "text": "As described.",
+    "name": "Barbara Boscott",
+    "meta": "Verified purchase · Double"
+   }
+  ]
+ }
+}

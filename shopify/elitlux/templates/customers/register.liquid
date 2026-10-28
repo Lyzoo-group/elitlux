@@ -1,0 +1,33 @@
+<section class="page-width section">
+  <div class="account account--narrow">
+    <div class="panel stack-24">
+      <h1 class="h2">Create an account</h1>
+      {%- form 'create_customer', class: 'form' -%}
+        {%- if form.errors -%}<div class="form-errors" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+        <div class="form-row">
+          <div class="field">
+            <label for="RegisterFirst">First name</label>
+            <input id="RegisterFirst" class="input" name="customer[first_name]" autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label for="RegisterLast">Last name</label>
+            <input id="RegisterLast" class="input" name="customer[last_name]" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="field">
+          <label for="RegisterEmail">Email</label>
+          <input id="RegisterEmail" class="input" type="email" name="customer[email]" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="RegisterPassword">Password</label>
+          <input id="RegisterPassword" class="input" type="password" name="customer[password]" autocomplete="new-password" required>
+        </div>
+        <label class="checkbox"><input type="checkbox" name="customer[accepts_marketing]" value="true"> Send me new ranges and care tips now and then.</label>
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary">Create account</button>
+          <a href="{{ routes.account_login_url }}" class="small">I already have an account</a>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</section>

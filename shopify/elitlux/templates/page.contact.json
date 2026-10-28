@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-contact",
+      "settings": {
+        "eyebrow": "Help, 24/7",
+        "heading": "Real answers,",
+        "heading_em": "any hour.",
+        "text": "Sizing, washing, returns or a replacement — send us a message and we’ll come back to you.",
+        "form_title": "Send us a message",
+        "send_label": "Send message",
+        "privacy_note": "We’ll only use your details to reply to you.",
+        "done_title": "Thank you",
+        "done_text": "We’ve got your message and will reply to",
+        "again_label": "Send another message",
+        "touch_title": "Get in touch",
+        "address": "Elitlux Ltd\n55 Newton Grove, Newton Mearns\nGlasgow G77 5QJ",
+        "registration": "Registered in Scotland, SC855958",
+        "returns_title": "Delivery & returns",
+        "returns_text": "<p>Free UK delivery on every order, anywhere in the UK.</p><ol><li>Contact us with your order number. If something arrived damaged, faulty or incorrect, please tell us within 48 hours and include a photo.</li><li>We’ll review your request and send return instructions.</li><li>Pack the item securely in its original packaging.</li><li>Once it’s back and checked, refunds go to your original payment method within 7–10 business days.</li></ol><p>Return requests are accepted within 7–14 days of receiving your order, depending on local consumer law. Items must be unused, unwashed and in their original packaging. For hygiene reasons, bedding that has been used or washed can’t be returned unless it’s faulty.</p>",
+        "policy_link": "Read the full returns policy"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,81 @@
+{%- liquid
+  assign s = section.settings
+  assign p = s.product
+-%}
+<section class="tp"{% if s.overlap %} data-ovl{% elsif s.rounded %} data-round{% endif %} aria-labelledby="tp-title-{{ section.id }}" style="z-index:{{ section.index }}">
+  <div class="tp__in" data-topper-story>
+    <div class="tp__head" data-reveal>
+      <p class="ey">{{ s.eyebrow }}</p>
+      <h2 id="tp-title-{{ section.id }}" class="tp__h">{{ s.heading }} <em class="em-navy">{{ s.heading_em }}</em></h2>
+    </div>
+    <div class="tp__media" data-reveal>
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign bf = block.settings.image
+          assign pos = 'object-position:' | append: block.settings.focus
+          assign a = ''
+          if forloop.first
+            assign a = block.settings.alt
+          endif
+          assign cls = 'tp__img'
+          if forloop.first
+            assign cls = 'tp__img is-on'
+          endif
+        -%}
+        {% render 'img', file: bf, alt: a, class: cls, style: pos, sizes: '(min-width: 1000px) 50vw, 100vw' %}
+      {%- endfor -%}
+    </div>
+    <div class="tp__steps">
+      <ol role="list" class="tp__list">
+        {%- for block in section.blocks -%}
+          {%- assign num = forloop.index | prepend: '0' -%}
+          <li class="tp__step{% if forloop.first %} is-on{% endif %}" data-alt="{{ block.settings.alt | escape }}" {{ block.shopify_attributes }}>
+            <span aria-hidden="true" class="tp__fill"></span>
+            <h3><button type="button" class="tp__btn" id="tp-step-{{ section.id }}-{{ forloop.index0 }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="tp-panel-{{ section.id }}-{{ forloop.index0 }}" data-tp-step="{{ forloop.index0 }}">
+              <span class="tp__n">{{ num }}</span>
+              <span class="tp__t">{{ block.settings.title }}</span>
+              <span aria-hidden="true" class="tp__ic">{% render 'icon', i: 'plus-acc', s: 16, w: 1.8 %}</span>
+            </button></h3>
+            <div id="tp-panel-{{ section.id }}-{{ forloop.index0 }}" role="region" aria-labelledby="tp-step-{{ section.id }}-{{ forloop.index0 }}" class="tp__panel"{% unless forloop.first %} aria-hidden="true"{% endunless %}><div class="tp__clip"><p class="tp__body">{{ block.settings.body }}</p></div></div>
+          </li>
+        {%- endfor -%}
+      </ol>
+      <div class="tp__foot">
+        {%- if p != blank -%}<a href="{{ p.url }}" class="tp__cta">{{ s.button_label }}{% render 'icon', i: 'arrow' %}</a>{%- endif -%}
+        <p class="tp__price">{{ s.price_text }} {% if p != blank %}<strong>{{ p.price_min | money }}</strong>{% endif %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product story (accordion)",
+  "class": "tp-sec",
+  "settings": [
+    { "type": "checkbox", "id": "overlap", "label": "Overlap the section above with a rounded top", "default": false },
+    { "type": "checkbox", "id": "rounded", "label": "Rounded top corners (without overlapping)", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Mattress Topper · Hero range" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Your bed," },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part", "default": "made new." },
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Shop the topper" },
+    { "type": "text", "id": "price_text", "label": "Text before the price", "default": "Single to Super King, from" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Point",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "10cm deep" },
+        { "type": "textarea", "id": "body", "label": "Text" },
+        { "type": "text", "id": "image", "label": "Photo filename (Content → Files)" },
+        { "type": "text", "id": "alt", "label": "Photo description" },
+        { "type": "text", "id": "focus", "label": "Photo focus (CSS object-position)", "default": "center" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Product story (accordion)" }]
+}
+{% endschema %}

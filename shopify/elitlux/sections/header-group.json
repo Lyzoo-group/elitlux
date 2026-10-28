@@ -1,0 +1,37 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu",
+        "right_menu": "header-links",
+        "card_product": "cloud-topper",
+        "card_image": "topper-sleeping.jpg",
+        "card_eyebrow": "Hero range",
+        "card_title": "Your bed,",
+        "card_title_em": "made new.",
+        "card_line": "Mattress Topper · from",
+        "mobile_shop_label": "Shop",
+        "mobile_menu": "footer",
+        "mobile_more_label": "Elitlux",
+        "mobile_more_menu": "mobile-more",
+        "mobile_note_1": "Free UK delivery on every order",
+        "mobile_note_2": "Help, 24/7"
+      }
+    },
+    "strip": {
+      "type": "strip",
+      "blocks": {
+        "s1": { "type": "item", "settings": { "text": "Free UK delivery on every order", "opens_offer": false } },
+        "s2": { "type": "item", "settings": { "text": "Help, 24/7 on sizing and care", "opens_offer": false } },
+        "s3": { "type": "item", "settings": { "text": "Machine washable for a fresh bed", "opens_offer": false } },
+        "s4": { "type": "item", "settings": { "text": "10% off your first order", "opens_offer": true } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"],
+      "settings": { "overlap": false, "label": "Why shop with Elitlux" }
+    }
+  },
+  "order": ["header", "strip"]
+}

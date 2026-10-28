@@ -1,0 +1,36 @@
+{%- liquid
+  assign cpg = collection.metafields.custom.page.value
+  assign b = cpg.banner
+-%}
+{%- if b != blank -%}
+{%- liquid
+  assign bf = b.file
+  assign bpos = 'object-position:' | append: b.pos
+  assign aria = cpg.title | append: ' ' | append: cpg.title_em
+  assign rpct = settings.rating | times: 20
+-%}
+<section class="ban" aria-label="{{ aria | escape }}" style="z-index:{{ section.index }}">
+  <div class="ban__box" data-reveal>
+    {% render 'img', file: bf, alt: b.alt, class: 'cover zoom', style: bpos %}
+    <div aria-hidden="true" class="ban__grad"></div>
+    <div class="ban__c">
+      {%- if b.rating and settings.rating != blank -%}
+        {%- assign rl = 'Rated ' | append: settings.rating | append: ' out of 5' -%}
+        <span class="ban__rating">{% render 'stars', w: 90, h: 18, base: 'rgba(251,248,243,0.3)', pct: rpct, label: rl %}{{ settings.rating }} out of 5 · Amazon UK</span>
+      {%- endif -%}
+      <p class="ban__t">{{ b.text }}</p>
+      <p class="ban__who">{{ b.who }}</p>
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Collection banner",
+  "class": "ban-sec",
+  "settings": [
+    { "type": "paragraph", "content": "Photo and words come from the collection's custom.page metafield (banner)." }
+  ]
+}
+{% endschema %}

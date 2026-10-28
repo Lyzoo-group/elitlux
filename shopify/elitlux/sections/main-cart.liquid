@@ -1,0 +1,117 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="cart" aria-labelledby="cart-title" style="z-index:{{ section.index }}">
+  <h1 id="cart-title" class="cart__h">{{ s.title }}</h1>
+  {%- if cart.item_count == 0 -%}
+    <div class="cart__empty">
+      <p class="cart__empty-h">{{ s.empty_title }}</p>
+      <p class="cart__muted">{{ s.empty_text }}</p>
+      <div class="cart__empty-b">
+        <a href="{{ routes.all_products_collection_url }}" class="cart__btn">{{ s.empty_button }}</a>
+        {%- if s.empty_product != blank -%}<a href="{{ s.empty_product.url }}" class="cart__btn2">{{ s.empty_product_label }}</a>{%- endif -%}
+      </div>
+    </div>
+  {%- else -%}
+    <form action="{{ routes.cart_url }}" method="post" class="cart__grid" id="CartPageForm">
+      <ul role="list" class="cart__lines">
+        {%- for item in cart.items -%}
+          {%- liquid
+            assign has_variant = true
+            if item.product.has_only_default_variant or item.product.variants.size == 1
+              assign has_variant = false
+            endif
+          -%}
+          <li class="cart__line">
+            <a href="{{ item.url }}" class="cart__img">{%- if item.image -%}{{ item.image | image_url: width: 300 | image_tag: loading: 'lazy', alt: '', widths: '176, 240, 300', sizes: '120px' }}{%- endif -%}</a>
+            <div class="cart__info">
+              <div class="cart__row"><a href="{{ item.url }}" class="cart__name">{{ item.product.title }}</a><p class="cart__total">{{ item.original_line_price | money }}</p></div>
+              {%- if has_variant -%}<p class="cart__muted15">{{ item.product.options.first }}: {{ item.variant.title }}</p>{%- endif -%}
+              <p class="cart__muted15">{{ item.original_price | money }} each</p>
+              <div class="cart__ctrl">
+                <div role="group" aria-label="Quantity" class="qty qty--44">
+                  <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity={{ item.quantity | minus: 1 | at_least: 1 }}" class="qty__b" aria-label="Decrease quantity of {{ item.product.title | escape }}">{% render 'icon', i: 'minus', s: 16, w: 1.5 %}</a>
+                  <span class="qty__n">{{ item.quantity }}</span>
+                  <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity={{ item.quantity | plus: 1 | at_most: 20 }}" class="qty__b" aria-label="Increase quantity of {{ item.product.title | escape }}">{% render 'icon', i: 'plus', s: 16, w: 1.5 %}</a>
+                </div>
+                <a href="{{ item.url_to_remove }}" class="rm" aria-label="Remove {{ item.product.title | escape }} from your bag">Remove</a>
+              </div>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+      <aside class="cart__sum" aria-labelledby="summary-title">
+        <h2 id="summary-title" class="cart__sum-h">{{ s.summary_title }}</h2>
+        <dl class="cart__dl">
+          <dt>Subtotal</dt><dd>{{ cart.original_total_price | money }}</dd>
+          {%- for app in cart.discount_applications -%}<dt class="cart__disc">{{ app.title }}</dt><dd class="cart__disc">−{{ app.total_allocated_amount | money }}</dd>{%- endfor -%}
+          <dt>{{ s.delivery_label }}</dt><dd>{{ s.delivery_value }}</dd>
+        </dl>
+        <div class="cart__tot"><span>Total</span><span>{{ cart.total_price | money }}</span></div>
+        <p class="cart__muted15">{{ s.codes_note }}</p>
+        <button type="submit" name="checkout" class="cart__checkout">{{ s.checkout_label }}</button>
+        <div class="cart__help">{{ s.help_text }}</div>
+      </aside>
+    </form>
+    {%- liquid
+      assign handles = ''
+      assign in_cart = ''
+      for item in cart.items
+        assign in_cart = in_cart | append: ',' | append: item.product.handle | append: ','
+      endfor
+      for item in cart.items
+        assign pw = item.product.metafields.custom.pairs_with.value
+        if pw != blank
+          assign needle = ',' | append: pw | append: ','
+          unless in_cart contains needle or handles contains needle
+            assign handles = handles | append: needle
+          endunless
+        endif
+      endfor
+      assign extra = s.fallback_handles | split: ','
+      for h in extra
+        assign hh = h | strip
+        assign needle = ',' | append: hh | append: ','
+        unless in_cart contains needle or handles contains needle
+          assign handles = handles | append: needle
+        endunless
+      endfor
+      assign list = handles | split: ','
+    -%}
+    <section class="cart__sug" aria-labelledby="suggest-title">
+      <h2 id="suggest-title" class="cart__sug-h">{{ s.suggest_title }}</h2>
+      <ul role="list" class="cart__sug-grid">
+        {%- assign shown = 0 -%}
+        {%- for h in list -%}
+          {%- if h != blank and shown < 3 -%}
+            {%- assign x = all_products[h] -%}
+            {%- if x.id != blank -%}{% render 'card-small', product: x %}{%- assign shown = shown | plus: 1 -%}{%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </section>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Bag page",
+  "class": "cart-sec",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Your bag" },
+    { "type": "text", "id": "empty_title", "label": "Empty heading", "default": "Your bag is empty." },
+    { "type": "text", "id": "empty_text", "label": "Empty text", "default": "Let’s find something lovely for your bed." },
+    { "type": "text", "id": "empty_button", "label": "Empty button", "default": "Shop the collection" },
+    { "type": "product", "id": "empty_product", "label": "Empty second button product" },
+    { "type": "text", "id": "empty_product_label", "label": "Empty second button", "default": "See the Mattress Topper" },
+    { "type": "text", "id": "summary_title", "label": "Summary heading", "default": "Order summary" },
+    { "type": "text", "id": "delivery_label", "label": "Delivery label", "default": "UK delivery" },
+    { "type": "text", "id": "delivery_value", "label": "Delivery value", "default": "Free" },
+    { "type": "text", "id": "codes_note", "label": "Note", "default": "Discount codes can be added at checkout." },
+    { "type": "text", "id": "checkout_label", "label": "Checkout button", "default": "Checkout" },
+    { "type": "richtext", "id": "help_text", "label": "Help lines" },
+    { "type": "text", "id": "suggest_title", "label": "Suggestions heading", "default": "Complete your bed" },
+    { "type": "text", "id": "fallback_handles", "label": "Suggest these when nothing pairs (product handles, comma separated)", "default": "cloud-topper, guard-mattress-protector, duck-feather-pillows, u-shape-pillow" }
+  ]
+}
+{% endschema %}

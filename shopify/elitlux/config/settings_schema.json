@@ -1,0 +1,87 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Elitlux",
+    "theme_version": "1.0.0",
+    "theme_author": "Built with Claude for Elitlux",
+    "theme_documentation_url": "https://elitlux.co.uk",
+    "theme_support_url": "https://elitlux.co.uk"
+  },
+  {
+    "name": "Ratings",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "The star rating, review count and rating lines stay hidden until a rating is filled in."
+      },
+      {
+        "type": "text",
+        "id": "rating",
+        "label": "Mattress Protector rating on Amazon UK (e.g. 4.6)"
+      },
+      {
+        "type": "text",
+        "id": "review_count",
+        "label": "Number of reviews"
+      }
+    ]
+  },
+  {
+    "name": "Contact details",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Shown in the footer and on the contact page only when filled in."
+      },
+      {
+        "type": "text",
+        "id": "care_email",
+        "label": "Customer care email"
+      },
+      {
+        "type": "text",
+        "id": "care_phone",
+        "label": "Phone number"
+      },
+      {
+        "type": "text",
+        "id": "care_hours",
+        "label": "Customer care hours"
+      }
+    ]
+  },
+  {
+    "name": "Bundle offer",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "bundle_discount_wording",
+        "label": "Show the 10% wording on Build your bed",
+        "default": true,
+        "info": "Keep this on only when a bundle discount (an app or a Shopify Functions discount) takes 10% off a topper, pillows and a duvet bought together. The bag and checkout always show the discount Shopify applies."
+      }
+    ]
+  },
+  {
+    "name": "Bag",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "open_cart_on_add",
+        "label": "Open the bag after adding a product",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Links",
+    "settings": [
+      {
+        "type": "text",
+        "id": "amazon_url",
+        "label": "Elitlux store on Amazon UK",
+        "default": "https://www.amazon.co.uk/stores/ELITLUX/page/55AA96B4-19C7-4C92-A084-5BA4C4CFC58A"
+      }
+    ]
+  }
+]

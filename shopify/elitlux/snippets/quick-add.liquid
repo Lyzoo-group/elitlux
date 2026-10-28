@@ -1,0 +1,22 @@
+{%- comment -%} Quick add sheet + toast. Filled by elitlux.js from /products/{handle}.js. {%- endcomment -%}
+<div id="QuickAdd" class="dialog qk" hidden>
+  <div class="qk__scrim" data-close></div>
+  <div class="qk__panel" role="dialog" aria-modal="true" aria-labelledby="quick-title">
+    <div class="qk__head">
+      <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" class="qk__img" data-qk-img width="72" height="82">
+      <div class="qk__t">
+        <p class="ey" data-qk-range></p>
+        <h2 id="quick-title" class="qk__title" data-qk-title></h2>
+        <p class="qk__muted">Choose a <span data-qk-opt>size</span> to add it to your bag.</p>
+      </div>
+      <button type="button" class="qk__close" aria-label="Close size picker" data-close data-autofocus>{% render 'icon', i: 'close', s: 22, w: 1.5 %}</button>
+    </div>
+    <ul role="list" class="qk__opts" data-qk-opts></ul>
+    <p class="qk__err" role="alert" data-qk-error hidden></p>
+    <a href="#" class="qk__more" data-qk-link data-close>See full details</a>
+  </div>
+</div>
+<div class="toast" role="status" data-toast hidden>
+  <span class="toast__t" data-toast-text></span>
+  <button type="button" class="toast__b" data-open="CartDrawer">View bag</button>
+</div>

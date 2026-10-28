@@ -1,0 +1,36 @@
+{%- comment -%} Best-seller card (navy section). Photo: product image number from custom.card_photos.best, else the featured image. {%- endcomment -%}
+{%- liquid
+  assign im = product.featured_image
+  assign cpi = product.metafields.custom.card_photos.value.best
+  if cpi != blank
+    assign im = product.images[cpi]
+  endif
+  if im == blank
+    assign im = product.featured_image
+  endif
+  assign multi = true
+  if product.has_only_default_variant or product.variants.size == 1
+    assign multi = false
+  endif
+  assign opt = product.options.first | downcase
+-%}
+<li class="bsc">
+  <a href="{{ product.url }}" class="bsc__img" tabindex="-1" aria-hidden="true">
+    {%- if im -%}{{ im | image_url: width: 1000 | image_tag: loading: 'lazy', alt: '', class: 'zoom', widths: '360, 540, 720, 1000', sizes: '(min-width: 1000px) 22vw, (min-width: 640px) 33vw, 50vw' }}{%- endif -%}
+    <span class="bsc__tag">{{ tag }}</span>
+  </a>
+  <div class="bsc__b">
+    <div class="bsc__t">
+      <p class="ey ey--11">{{ product.metafields.custom.range }}</p>
+      <h3 class="bsc__h"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    </div>
+    <div class="bsc__row">
+      <p class="bsc__p">{% if product.price_varies %}From {% endif %}{{ product.price_min | money }}</p>
+      {%- if multi -%}
+        <button type="button" class="bsc__btn" aria-label="Choose an option for {{ product.title | escape }}" data-quick="{{ product.handle }}" data-range="{{ product.metafields.custom.range | escape }}" data-option="{{ opt }}">Choose {{ opt }}</button>
+      {%- else -%}
+        <button type="button" class="bsc__btn" aria-label="Add to bed: {{ product.title | escape }}" data-add-id="{{ product.selected_or_first_available_variant.id }}">Add to bed</button>
+      {%- endif -%}
+    </div>
+  </div>
+</li>

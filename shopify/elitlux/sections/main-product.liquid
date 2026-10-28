@@ -1,0 +1,225 @@
+{%- liquid
+  assign s = section.settings
+  assign mf = product.metafields.custom
+  assign pc = collections[mf.primary_collection.value]
+  if pc == blank or pc.id == blank
+    for c in product.collections
+      unless c.handle == 'all' or c.handle == 'frontpage'
+        assign pc = c
+        break
+      endunless
+    endfor
+  endif
+  assign multi = true
+  if product.has_only_default_variant or product.variants.size == 1
+    assign multi = false
+  endif
+  assign opt = product.options.first
+  assign opt_l = opt | downcase
+  assign dims = mf.dims.value
+  assign badges = mf.badges.value | split: ','
+  assign features = mf.features.value
+  assign specs = mf.specs.value
+  assign care = mf.care.value
+  assign n = product.images.size
+  assign pair = nil
+  if mf.pairs_with != blank
+    assign pair = all_products[mf.pairs_with.value]
+  endif
+  assign cur = product.selected_variant
+  if multi == false
+    assign cur = product.selected_or_first_available_variant
+  endif
+  capture range_price
+    if product.price_varies
+      echo product.price_min | money | append: ' – ' | append: product.price_max | money
+    else
+      echo product.price_min | money
+    endif
+  endcapture
+  assign shown_price = range_price
+  if cur
+    assign shown_price = cur.price | money
+  endif
+  assign save = ''
+  if product.compare_at_price_max > product.price_min
+    assign pct = product.price_min | times: 100.0 | divided_by: product.compare_at_price_max
+    assign pct = 100 | minus: pct | round
+    assign save = 'Save ' | append: pct | append: '%'
+  endif
+  assign size_rows = 0
+  if opt != 'Pack'
+    for v in product.variants
+      assign vt = v.title
+      if dims[vt] != blank
+        assign size_rows = size_rows | plus: 1
+      endif
+    endfor
+  endif
+  assign form_id = 'product-form-' | append: section.id
+  assign show_rating = false
+  if settings.rating != blank and s.rating_product != blank and s.rating_product.id == product.id
+    assign show_rating = true
+  endif
+-%}
+<div class="pdp" data-product data-section="{{ section.id }}" style="z-index:{{ section.index }}">
+  <div class="pdp__crumbs">
+    <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="{{ routes.root_url }}">{{ s.home_label }}</a></li><li aria-hidden="true">/</li>{%- if pc != blank and pc.id != blank -%}<li><a href="{{ pc.url }}">{{ pc.title }}</a></li><li aria-hidden="true">/</li>{%- endif -%}<li aria-current="page" class="crumbs__cur">{{ product.title }}</li></ol></nav>
+  </div>
+  <section class="pdp__main" aria-labelledby="pdp-title">
+    <div class="pdp__gal" data-gallery>
+      <div class="pdp__stage">
+        {%- for im in product.images -%}
+          <div class="pdp__slide" data-slide="{{ forloop.index0 }}"{% unless forloop.first %} hidden{% endunless %}>{{ im | image_url: width: 1600 | image_tag: loading: 'lazy', class: 'pdp__img', widths: '500, 800, 1100, 1400, 1600', sizes: '(min-width: 1000px) 45vw, 100vw' }}</div>
+        {%- endfor -%}
+        {%- if n > 1 -%}
+          <div class="pdp__nav">
+            <span class="pdp__count" data-gallery-count>1 / {{ n }}</span>
+            <button type="button" class="pdp__arrow" aria-label="Previous image" data-gallery-prev>{% render 'icon', i: 'prev', s: 20, w: 1.5 %}</button>
+            <button type="button" class="pdp__arrow" aria-label="Next image" data-gallery-next>{% render 'icon', i: 'next', s: 20, w: 1.5 %}</button>
+          </div>
+        {%- endif -%}
+      </div>
+      {%- if n > 1 -%}
+        <ul role="list" aria-label="Product images" class="pdp__thumbs">
+          {%- for im in product.images -%}
+            <li><button type="button" class="pdp__thumb" aria-label="Show image {{ forloop.index }} of {{ n }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}" data-thumb="{{ forloop.index0 }}">{{ im | image_url: width: 200 | image_tag: loading: 'lazy', alt: '', widths: '160, 200', sizes: '80px' }}</button></li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+    <div class="pdp__info">
+      <div class="pdp__top">
+        <div class="pdp__tags">
+          <p class="ey">{{ mf.range }}</p>
+          {%- for b in badges -%}{%- assign bb = b | strip -%}{%- if bb != blank -%}<span class="pdp__badge">{{ bb }}</span>{%- endif -%}{%- endfor -%}
+        </div>
+        <h1 id="pdp-title" class="pdp__h">{{ product.title }}</h1>
+        <p class="pdp__spec">{{ mf.spec_line }}</p>
+        {%- if show_rating -%}
+          {%- assign rl = 'Rated ' | append: settings.rating | append: ' out of 5' -%}
+          {%- assign rpct = settings.rating | times: 20 -%}
+          <a href="#reviews" class="pdp__rating" data-scroll-to="reviews">{% render 'stars', w: 90, h: 18, base: '#E3E9F2', pct: rpct, label: rl %}<span><strong>{{ settings.rating }}</strong>{% if settings.review_count != blank %} · {{ settings.review_count }} reviews on Amazon UK{% endif %}</span></a>
+        {%- endif -%}
+      </div>
+      <div class="pdp__prices">
+        <p class="pdp__price" aria-live="polite" data-price data-range="{{ range_price | escape }}">{{ shown_price }}</p>
+        {%- if save != blank -%}
+          <s class="pdp__was"><span class="vh">Was </span>{{ product.compare_at_price_max | money }}</s>
+          <span class="pdp__save">{{ save }}</span>
+        {%- endif -%}
+      </div>
+      {%- if mf.lead != blank -%}<p class="pdp__lead">{{ mf.lead }}</p>{%- endif -%}
+      {%- if features != blank -%}
+        <ul role="list" class="pdp__feats">{%- for f in features -%}<li>{% render 'icon', i: 'check', s: 20, w: 1.5 %}<span>{{ f }}</span></li>{%- endfor -%}</ul>
+      {%- endif -%}
+      {%- form 'product', product, id: form_id, class: 'pdp__form' -%}
+        {%- if multi -%}
+          <fieldset class="pdp__opts" data-options>
+            <legend class="pdp__legend">{{ opt }}: <span data-selected-label>{% if cur %}{{ cur.title }}{% else %}Choose one{% endif %}</span></legend>
+            <div class="pdp__grid">
+              {%- for v in product.variants -%}
+                {%- assign vt = v.title -%}
+                <input type="radio" class="pdp__radio" name="id" id="{{ form_id }}-{{ v.id }}" value="{{ v.id }}" required{% if cur and cur.id == v.id %} checked{% endif %}{% unless v.available %} disabled{% endunless %} data-price="{{ v.price }}" data-label="{{ v.title | escape }}">
+                <label for="{{ form_id }}-{{ v.id }}" class="pdp__opt"><span class="pdp__opt-l">{{ v.title }}</span>{%- if dims[vt] != blank -%}<span class="pdp__opt-s">{{ dims[vt] }}</span>{%- endif -%}</label>
+              {%- endfor -%}
+            </div>
+            <p role="alert" class="pdp__need" data-need-size hidden>Choose a {{ opt_l }} to continue.</p>
+          </fieldset>
+        {%- else -%}
+          <input type="hidden" name="id" value="{{ cur.id }}" data-price="{{ cur.price }}">
+        {%- endif -%}
+        <div class="pdp__buy">
+          <div role="group" aria-label="Quantity" class="qty qty--52">
+            <button type="button" class="qty__b" aria-label="Decrease quantity" data-qty="-1">{% render 'icon', i: 'minus', s: 18, w: 1.5 %}</button>
+            <input type="number" name="quantity" value="1" min="1" max="20" class="qty__n" aria-label="Quantity" inputmode="numeric" data-qty-input>
+            <button type="button" class="qty__b" aria-label="Increase quantity" data-qty="1">{% render 'icon', i: 'plus', s: 18, w: 1.5 %}</button>
+          </div>
+          <button type="submit" class="pdp__add" data-add data-label="{{ s.add_label | escape }}">{{ s.add_label }}{% if cur %} · {{ cur.price | money }}{% endif %}</button>
+        </div>
+        <button type="button" class="pdp__now" data-buy-now>{{ s.buy_now_label }}</button>
+        <p class="pdp__err" role="alert" data-form-error hidden></p>
+      {%- endform -%}
+      <ul role="list" class="pdp__assure">
+        {%- if s.assure_1 != blank -%}<li>{% render 'icon', i: 'truck', s: 22, w: 1.5, cls: 'ico--gold' %}<div>{{ s.assure_1 }}</div></li>{%- endif -%}
+        {%- if s.assure_2 != blank -%}<li>{% render 'icon', i: 'chat', s: 22, w: 1.5, cls: 'ico--gold' %}<div>{{ s.assure_2 }}</div></li>{%- endif -%}
+        {%- if s.assure_3 != blank -%}<li>{% render 'icon', i: 'returns', s: 22, w: 1.5, cls: 'ico--navy' %}<div>{{ s.assure_3 }}</div></li>{%- endif -%}
+      </ul>
+      {%- if pair != blank and pair.id != blank -%}
+        <a href="{{ pair.url }}" class="pdp__pair">
+          {%- if pair.featured_image -%}{{ pair.featured_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: '', class: 'pdp__pair-img', widths: '128, 200', sizes: '64px' }}{%- endif -%}
+          <span class="pdp__pair-t"><span class="ey">{{ s.pair_label }}</span><span class="pdp__pair-h">{{ pair.title }}</span><span class="pdp__pair-p">{% if pair.price_varies %}From {% endif %}{{ pair.price_min | money }}</span></span>
+          {% render 'icon', i: 'arrow', s: 20, w: 1.5, cls: 'ico--navy' %}
+        </a>
+      {%- endif -%}
+      <div class="acc">
+        <div class="acc__it">
+          <h2 class="acc__h"><button type="button" class="acc__b" aria-expanded="true" aria-controls="acc-desc-{{ section.id }}" data-acc>{{ s.desc_label }}{% render 'icon', i: 'chev', s: 20, w: 1.5 %}</button></h2>
+          <div id="acc-desc-{{ section.id }}" class="acc__p acc__p--text">{{ product.description }}</div>
+        </div>
+        {%- if specs != blank -%}
+          <div class="acc__it">
+            <h2 class="acc__h"><button type="button" class="acc__b" aria-expanded="false" aria-controls="acc-specs-{{ section.id }}" data-acc>{{ s.specs_label }}{% render 'icon', i: 'chev', s: 20, w: 1.5 %}</button></h2>
+            <dl id="acc-specs-{{ section.id }}" class="acc__dl acc__dl--mb" hidden>{%- for r in specs -%}<dt>{{ r[0] }}</dt><dd>{{ r[1] }}</dd>{%- endfor -%}</dl>
+          </div>
+        {%- endif -%}
+        {%- if size_rows > 0 -%}
+          <div class="acc__it">
+            <h2 class="acc__h"><button type="button" class="acc__b" aria-expanded="false" aria-controls="acc-size-{{ section.id }}" data-acc>{{ s.size_label }}{% render 'icon', i: 'chev', s: 20, w: 1.5 %}</button></h2>
+            <div id="acc-size-{{ section.id }}" class="acc__size" hidden>
+              <dl class="acc__dl">{%- for v in product.variants -%}{%- assign vt = v.title -%}{%- if dims[vt] != blank -%}<dt>{{ v.title }}</dt><dd>{{ dims[vt] }}</dd>{%- endif -%}{%- endfor -%}</dl>
+              <p class="acc__note">{{ s.size_note_before }} <a href="{{ s.ask_link }}">{{ s.size_note_link }}</a>{{ s.size_note_after }}</p>
+            </div>
+          </div>
+        {%- endif -%}
+        {%- if care != blank -%}
+          <div class="acc__it">
+            <h2 class="acc__h"><button type="button" class="acc__b" aria-expanded="false" aria-controls="acc-care-{{ section.id }}" data-acc>{{ s.care_label }}{% render 'icon', i: 'chev', s: 20, w: 1.5 %}</button></h2>
+            <ul id="acc-care-{{ section.id }}" class="acc__ul" hidden>{%- for c in care -%}<li>{{ c }}</li>{%- endfor -%}</ul>
+          </div>
+        {%- endif -%}
+        <div class="acc__it">
+          <h2 class="acc__h"><button type="button" class="acc__b" aria-expanded="false" aria-controls="acc-deliv-{{ section.id }}" data-acc>{{ s.deliv_label }}{% render 'icon', i: 'chev', s: 20, w: 1.5 %}</button></h2>
+          <div id="acc-deliv-{{ section.id }}" class="acc__p acc__p--15" hidden>
+            {{ s.deliv_text }}
+            {%- if shop.refund_policy != blank -%}<a href="{{ shop.refund_policy.url }}" class="acc__link">{{ s.policy_link }}</a>{%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="pdp__spacer" aria-hidden="true"></div>
+  <div class="sticky-atc" data-sticky-atc>
+    <div class="sticky-atc__t"><p class="sticky-atc__name">{{ product.title }}</p><p class="sticky-atc__price" data-sticky-price>{{ shown_price }}</p></div>
+    <button type="button" class="sticky-atc__b" data-sticky-add>{{ s.sticky_label }}</button>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product",
+  "class": "pdp-sec",
+  "settings": [
+    { "type": "text", "id": "home_label", "label": "Breadcrumb home label", "default": "Home" },
+    { "type": "product", "id": "rating_product", "label": "Show the rating line on this product", "info": "Shown only when a rating is filled in under Theme settings → Ratings." },
+    { "type": "text", "id": "add_label", "label": "Add button", "default": "Add to bed" },
+    { "type": "text", "id": "buy_now_label", "label": "Buy now button", "default": "Buy it now" },
+    { "type": "richtext", "id": "assure_1", "label": "Assurance 1 (truck)", "default": "<p><strong>Free UK delivery</strong> on every order</p>" },
+    { "type": "richtext", "id": "assure_2", "label": "Assurance 2 (chat)", "default": "<p><strong>Help, 24/7</strong> with sizing, washing or returns. <a href=\"/pages/contact\">Contact us</a></p>" },
+    { "type": "richtext", "id": "assure_3", "label": "Assurance 3 (returns)", "default": "<p><strong>Returns</strong> on unused items in their original packaging. <a href=\"/pages/contact\">How returns work</a></p>" },
+    { "type": "text", "id": "pair_label", "label": "Pairs well with label", "default": "Pairs well with" },
+    { "type": "text", "id": "desc_label", "label": "Description heading", "default": "Description" },
+    { "type": "text", "id": "specs_label", "label": "Specifications heading", "default": "Specifications" },
+    { "type": "text", "id": "size_label", "label": "Size guide heading", "default": "Size guide" },
+    { "type": "text", "id": "size_note_before", "label": "Size guide note, before the link", "default": "Measurements shown where confirmed. Not sure which size you need?" },
+    { "type": "text", "id": "size_note_link", "label": "Size guide note, link", "default": "Ask us" },
+    { "type": "url", "id": "ask_link", "label": "“Ask us” link target" },
+    { "type": "text", "id": "size_note_after", "label": "Size guide note, after the link", "default": " — we’re here 24/7." },
+    { "type": "text", "id": "care_label", "label": "Care heading", "default": "Care" },
+    { "type": "text", "id": "deliv_label", "label": "Delivery heading", "default": "Delivery & returns" },
+    { "type": "richtext", "id": "deliv_text", "label": "Delivery & returns text" },
+    { "type": "text", "id": "policy_link", "label": "Returns policy link", "default": "Read the full returns policy" },
+    { "type": "text", "id": "sticky_label", "label": "Mobile sticky button", "default": "Add to bed" }
+  ]
+}
+{% endschema %}

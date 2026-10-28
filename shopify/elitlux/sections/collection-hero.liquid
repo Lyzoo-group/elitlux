@@ -1,0 +1,72 @@
+{%- liquid
+  assign s = section.settings
+  assign cpg = collection.metafields.custom.page.value
+  assign title = cpg.title | default: collection.title
+  assign title_em = cpg.title_em
+  assign eyebrow = cpg.eyebrow | default: collection.title
+  assign intro = cpg.intro | default: collection.description | strip_html
+  assign hf = cpg.hero.file | default: s.fallback_image
+  assign halt = cpg.hero.alt | default: collection.title
+  assign hpos = cpg.hero.pos | default: 'center'
+  assign hstyle = 'object-position:' | append: hpos
+  assign chips = collection.metafields.custom.chips.value | split: '|'
+  assign lead = nil
+  if cpg.lead.handle != blank
+    assign lead = all_products[cpg.lead.handle]
+  endif
+  assign guide_title = cpg.guide.title | default: s.guide_fallback
+  assign shop_cta = cpg.shop_cta | default: s.shop_fallback
+-%}
+<section id="col-hero" class="ch" data-photo-hero aria-labelledby="col-title" style="z-index:{{ section.index }}">
+  {% render 'img', file: hf, alt: halt, class: 'ch__img', style: hstyle, loading: 'eager', priority: true %}
+  <nav aria-label="Breadcrumb" class="ch__crumbs"><ol class="ch__ol"><li><a href="{{ routes.root_url }}">{{ s.home_label }}</a></li><li aria-hidden="true">/</li><li aria-current="page" class="ch__cur">{{ collection.title }}</li></ol></nav>
+  <div class="ch__in">
+    <div class="ch__c">
+      <p class="ey ey--mist">{{ eyebrow }}</p>
+      <h1 id="col-title" class="ch__h">{{ title }}{% if title_em != blank %} <em class="em-gold">{{ title_em }}</em>{% endif %}</h1>
+      {%- if intro != blank -%}<p class="ch__p">{{ intro }}</p>{%- endif -%}
+      {%- if chips.size > 0 and chips.first != blank -%}
+        <ul role="list" class="ch__chips">{%- for ch in chips -%}<li class="ch__chip">{{ ch | strip }}</li>{%- endfor -%}</ul>
+      {%- endif -%}
+      <div class="ch__btns">
+        <button type="button" class="btn btn--white ch__b1" data-scroll-to="grid">{{ shop_cta }}{% render 'icon', i: 'arrow' %}</button>
+        {%- if cpg.guide != blank -%}<button type="button" class="btn ch__b2" data-scroll-to="guide">{{ guide_title }}</button>{%- endif -%}
+      </div>
+      <ul role="list" class="ch__trust">
+        {%- if s.trust_1 != blank -%}<li>{% render 'icon', i: 'truck', s: 20, w: 1.5 %}{{ s.trust_1 }}</li>{%- endif -%}
+        {%- if s.trust_2 != blank -%}<li>{% render 'icon', i: 'chat', s: 20, w: 1.5 %}{{ s.trust_2 }}</li>{%- endif -%}
+        {%- if s.trust_3 != blank -%}<li>{% render 'icon', i: 'tag', s: 20, w: 1.5 %}{{ s.trust_3 }}</li>{%- endif -%}
+      </ul>
+    </div>
+    {%- if lead != blank and lead.id != blank -%}
+      <div class="ch__lead-wrap">
+        <a href="{{ lead.url }}" class="ch__lead">
+          <span class="ch__lead-img">{%- if lead.featured_image -%}{{ lead.featured_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: '', class: 'cover', widths: '128, 200', sizes: '64px' }}{%- endif -%}</span>
+          <span class="ch__lead-t">
+            <span class="ey ey--11">{{ cpg.lead.label }}</span>
+            <span class="ch__lead-h">{{ lead.title }}</span>
+            <span class="ch__lead-p">{% if lead.price_varies %}From {% endif %}{{ lead.price_min | money }}</span>
+          </span>
+          {% render 'icon', i: 'arrow' %}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection hero",
+  "class": "ch-sec",
+  "settings": [
+    { "type": "paragraph", "content": "Photo, heading, intro, chips, lead product and button text come from the collection's metafields (custom.page and custom.chips)." },
+    { "type": "text", "id": "fallback_image", "label": "Photo filename when the collection has none", "default": "elt-room-wide.jpg" },
+    { "type": "text", "id": "home_label", "label": "Breadcrumb home label", "default": "Home" },
+    { "type": "text", "id": "shop_fallback", "label": "Shop button when the collection has none", "default": "Shop the range" },
+    { "type": "text", "id": "guide_fallback", "label": "Guide button when the collection has none", "default": "Find your size" },
+    { "type": "text", "id": "trust_1", "label": "Trust line 1 (truck)", "default": "Free UK delivery" },
+    { "type": "text", "id": "trust_2", "label": "Trust line 2 (chat)", "default": "Help, 24/7" },
+    { "type": "text", "id": "trust_3", "label": "Trust line 3 (tag)", "default": "10% off your first order" }
+  ]
+}
+{% endschema %}

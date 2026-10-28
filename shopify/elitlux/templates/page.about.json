@@ -1,0 +1,283 @@
+{
+  "sections": {
+    "intro": {
+      "type": "about-intro",
+      "settings": {
+        "eyebrow": "About Elitlux",
+        "heading": "Comfort is",
+        "heading_em": "not a luxury.",
+        "text": "Elitlux is a UK bedding brand founded on a simple belief: everyone deserves to sleep the way they do in a good hotel — without paying hotel prices for it. We design duvets, pillows, protectors, toppers and cushions that bring that feeling home."
+      }
+    },
+    "photos": {
+      "type": "about-photos",
+      "settings": {
+        "image_1": "u-reading-sage.jpg",
+        "image_1_alt": "Woman reading in bed, supported by a U-shape pillow",
+        "image_2": "bed-morning-light.jpg",
+        "image_2_alt": "Unmade white bed in soft morning light",
+        "image_3": "v-shape-sleeping-sage.jpg",
+        "image_3_alt": "Woman asleep on a V-shape pillow in a sage bedroom"
+      }
+    },
+    "values": {
+      "type": "about-values",
+      "blocks": {
+        "v1": {
+          "type": "value",
+          "settings": {
+            "title": "Considered comfort",
+            "text": "Every product starts with how it feels: plump fills, smooth covers and quilting that keeps its shape."
+          }
+        },
+        "v2": {
+          "type": "value",
+          "settings": {
+            "title": "Honest quality",
+            "text": "We tell you exactly what’s in it — the fill, the fabric, the size — and never promise more than a pillow can do."
+          }
+        },
+        "v3": {
+          "type": "value",
+          "settings": {
+            "title": "Care in the detail",
+            "text": "Machine-washable fills and covers, so keeping your bed fresh is easy."
+          }
+        },
+        "v4": {
+          "type": "value",
+          "settings": {
+            "title": "Restorative calm",
+            "text": "Hotel-quality comfort for every home, without the big spend."
+          }
+        }
+      },
+      "block_order": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "settings": {
+        "eyebrow": "Our values",
+        "heading": "What we stand for"
+      }
+    },
+    "for": {
+      "type": "about-for",
+      "blocks": {
+        "f1": {
+          "type": "row",
+          "settings": {
+            "title": "Refreshing a tired bed",
+            "text": "A Mattress Topper adds 10cm of even softness — no new mattress needed.",
+            "collection": "toppers",
+            "link_label": "Shop toppers →"
+          }
+        },
+        "f2": {
+          "type": "row",
+          "settings": {
+            "title": "Back, neck, bump or nursing",
+            "text": "U and V-shape pillows that hold you, from bump to baby.",
+            "collection": "bump-and-baby",
+            "link_label": "Shop Support Pillows →"
+          }
+        },
+        "f3": {
+          "type": "row",
+          "settings": {
+            "title": "Sleeping with allergies",
+            "text": "Hypoallergenic fills and 100% waterproof protectors, with every material stated plainly.",
+            "collection": "protectors",
+            "link_label": "Shop protectors →"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "settings": {
+        "eyebrow": "Who we make it for",
+        "heading": "Made for the way",
+        "heading_em": "you sleep"
+      }
+    },
+    "reviews": {
+      "type": "reviews",
+      "blocks": {
+        "r1_1": {
+          "type": "review",
+          "settings": {
+            "row": "1",
+            "title": "Very good buy",
+            "text": "If you want an extra layer of the mattress, this is the protector you need to get. It came in the right size as I wanted and also thick as well. Its winter now and you need all the heat protection as possible, this did it for me. I highly recommend it.",
+            "name": "Ade",
+            "meta": "Verified purchase · Double"
+          }
+        },
+        "r1_2": {
+          "type": "review",
+          "settings": {
+            "row": "1",
+            "title": "Excellent Mattress Protector",
+            "text": "Excellent. Great quality and deep sides/corners so it doesn't slip off.",
+            "name": "JD",
+            "meta": "Verified purchase · King"
+          }
+        },
+        "r1_3": {
+          "type": "review",
+          "settings": {
+            "row": "1",
+            "title": "Great for protecting mattress",
+            "text": "Excellent for keeping stains off of your mattress. Been using for about 6 months, washes well, need to hang it out as it drips. Overall great for protecting mattress",
+            "name": "Amazon Customer",
+            "meta": "Verified purchase · Small Double"
+          }
+        },
+        "r1_4": {
+          "type": "review",
+          "settings": {
+            "row": "1",
+            "title": "Good product",
+            "text": "Great product, fits well and more importantly....stays where it should!",
+            "name": "harrygilfillan",
+            "meta": "Verified purchase · King"
+          }
+        },
+        "r1_5": {
+          "type": "review",
+          "settings": {
+            "row": "1",
+            "title": "Quilted mattress cover",
+            "text": "Very good value and so comfortable. One happy customer.",
+            "name": "Amazon Customer",
+            "meta": "Verified purchase · Double"
+          }
+        },
+        "r2_1": {
+          "type": "review",
+          "settings": {
+            "row": "2",
+            "title": "Mattress protector",
+            "text": "Great item. Very good quality. Great fit.",
+            "name": "Coffee lover",
+            "meta": "Verified purchase · King"
+          }
+        },
+        "r2_2": {
+          "type": "review",
+          "settings": {
+            "row": "2",
+            "title": "Good quality",
+            "text": "Good quality, does the job and looks nice.",
+            "name": "J.Harris",
+            "meta": "Verified purchase · Double"
+          }
+        },
+        "r2_3": {
+          "type": "review",
+          "settings": {
+            "row": "2",
+            "title": "Well delivered",
+            "text": "Good quality easy to fit",
+            "name": "scottie",
+            "meta": "Verified purchase · King"
+          }
+        },
+        "r2_4": {
+          "type": "review",
+          "settings": {
+            "row": "2",
+            "title": "Order the correct size.",
+            "text": "I found this item perfect and delivery was excellent.",
+            "name": "Charles Wood",
+            "meta": "Verified purchase · Double"
+          }
+        },
+        "r2_5": {
+          "type": "review",
+          "settings": {
+            "row": "2",
+            "title": "Fits well.",
+            "text": "As described.",
+            "name": "Barbara Boscott",
+            "meta": "Verified purchase · Double"
+          }
+        }
+      },
+      "block_order": [
+        "r1_1",
+        "r1_2",
+        "r1_3",
+        "r1_4",
+        "r1_5",
+        "r2_1",
+        "r2_2",
+        "r2_3",
+        "r2_4",
+        "r2_5"
+      ],
+      "settings": {
+        "overlap": false,
+        "rounded": true,
+        "anchor": "reviews",
+        "eyebrow": "What customers say · Amazon UK",
+        "heading": "“Stays where",
+        "heading_em": "it should!",
+        "heading_after": "”",
+        "rating_text": "out of 5 on Amazon UK",
+        "row_1_label": "Customer reviews",
+        "row_2_label": "More customer reviews",
+        "link_label": "All reviews on Amazon"
+      }
+    },
+    "find": {
+      "type": "about-find",
+      "blocks": {
+        "p1": {
+          "type": "place",
+          "settings": {
+            "title": "elitlux.co.uk",
+            "text": "Free UK delivery on every order, and help at any hour.",
+            "link_label": "Shop all",
+            "link": "/collections/all",
+            "use_amazon": false
+          }
+        },
+        "p2": {
+          "type": "place",
+          "settings": {
+            "title": "Amazon.co.uk",
+            "text": "The full range is also available through the Elitlux store on Amazon UK.",
+            "link_label": "Visit the Elitlux store",
+            "link": "/collections/all",
+            "use_amazon": true
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2"
+      ],
+      "settings": {
+        "overlap": true,
+        "rounded": false,
+        "eyebrow": "Find us",
+        "heading": "Shop us",
+        "heading_em": "your way"
+      }
+    }
+  },
+  "order": [
+    "intro",
+    "photos",
+    "values",
+    "for",
+    "reviews",
+    "find"
+  ]
+}

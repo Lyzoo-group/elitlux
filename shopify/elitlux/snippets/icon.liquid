@@ -1,0 +1,26 @@
+{%- comment -%} SVG icons copied verbatim from the prototype. Params: i (name), s (size px), w (stroke width), cls (extra class). {%- endcomment -%}
+{%- liquid
+  assign sz = s | default: 18
+  assign sw = w | default: 1.6
+-%}
+{%- case i -%}
+  {%- when 'arrow' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+  {%- when 'chev' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M6 9l6 6 6-6"></path></svg>
+  {%- when 'prev' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M15 6l-6 6 6 6"></path></svg>
+  {%- when 'next' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M9 6l6 6-6 6"></path></svg>
+  {%- when 'search' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2"></path></svg>
+  {%- when 'bag' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M5 8h14l-1 12H6L5 8z"></path><path d="M9 8V6.5a3 3 0 0 1 6 0V8"></path></svg>
+  {%- when 'bag2' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M5 8h14l-1 12H6L5 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>
+  {%- when 'menu' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+  {%- when 'close' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+  {%- when 'star4' -%}<svg class="{{ cls }}" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M12 1C12.9 7.6 16.4 11.1 23 12C16.4 12.9 12.9 16.4 12 23C11.1 16.4 7.6 12.9 1 12C7.6 11.1 11.1 7.6 12 1Z"></path></svg>
+  {%- when 'truck' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M3 7h11v9H3z"></path><path d="M14 10h4l3 3v3h-7"></path><circle cx="7" cy="17.5" r="1.5"></circle><circle cx="17" cy="17.5" r="1.5"></circle></svg>
+  {%- when 'chat' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M5 5h14v10H9l-4 4V5z"></path></svg>
+  {%- when 'tag' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M3.5 12.5V4h8.5l8.5 8.5-8 8z"></path><circle cx="8" cy="8.5" r="1.4"></circle></svg>
+  {%- when 'returns' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M9 7L5 11l4 4"></path><path d="M5 11h9a5 5 0 0 1 0 10h-2"></path></svg>
+  {%- when 'check' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+  {%- when 'minus' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M6 12h12"></path></svg>
+  {%- when 'plus' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M12 6v12M6 12h12"></path></svg>
+  {%- when 'plus-faq' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M12 5v14M5 12h14"></path></svg>
+  {%- when 'plus-acc' -%}<svg class="ico {{ cls }}" viewBox="0 0 24 24" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false" stroke-width="{{ sw }}"><path d="M5 12h14"></path><path class="ico-v" d="M12 5v14"></path></svg>
+{%- endcase -%}

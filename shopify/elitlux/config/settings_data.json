@@ -1,0 +1,62 @@
+{
+  "current": {
+    "rating": "",
+    "review_count": "",
+    "care_email": "",
+    "care_phone": "",
+    "care_hours": "",
+    "bundle_discount_wording": true,
+    "open_cart_on_add": true,
+    "amazon_url": "https://www.amazon.co.uk/stores/ELITLUX/page/55AA96B4-19C7-4C92-A084-5BA4C4CFC58A",
+    "sections": {
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {
+          "title": "Your bag",
+          "empty_title": "Your bag is empty.",
+          "empty_text": "Let’s find something lovely for your bed.",
+          "empty_button": "Shop the collection",
+          "link_1": "toppers",
+          "link_2": "pillows",
+          "link_3": "protectors",
+          "link_4": "duvets",
+          "subtotal_label": "Subtotal",
+          "note": "Free UK delivery. Discount codes can be added at checkout.",
+          "checkout_label": "Checkout",
+          "view_label": "View bag"
+        }
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "rating": "",
+      "review_count": "",
+      "care_email": "",
+      "care_phone": "",
+      "care_hours": "",
+      "bundle_discount_wording": true,
+      "open_cart_on_add": true,
+      "amazon_url": "https://www.amazon.co.uk/stores/ELITLUX/page/55AA96B4-19C7-4C92-A084-5BA4C4CFC58A",
+      "sections": {
+        "cart-drawer": {
+          "type": "cart-drawer",
+          "settings": {
+            "title": "Your bag",
+            "empty_title": "Your bag is empty.",
+            "empty_text": "Let’s find something lovely for your bed.",
+            "empty_button": "Shop the collection",
+            "link_1": "toppers",
+            "link_2": "pillows",
+            "link_3": "protectors",
+            "link_4": "duvets",
+            "subtotal_label": "Subtotal",
+            "note": "Free UK delivery. Discount codes can be added at checkout.",
+            "checkout_label": "Checkout",
+            "view_label": "View bag"
+          }
+        }
+      }
+    }
+  }
+}

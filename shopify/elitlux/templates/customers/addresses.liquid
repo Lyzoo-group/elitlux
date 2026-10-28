@@ -1,0 +1,81 @@
+{%- capture country_options -%}{{ all_country_option_tags }}{%- endcapture -%}
+<section class="page-width section">
+  <div class="account">
+    <div class="stack-12">
+      <p class="small"><a href="{{ routes.account_url }}">← Your account</a></p>
+      <h1 class="h1">Addresses</h1>
+    </div>
+    {%- paginate customer.addresses by 10 -%}
+      {%- for address in customer.addresses -%}
+        <div class="panel stack-16">
+          <p>{{ address | format_address }}</p>
+          {%- if address == customer.default_address -%}<p class="eyebrow">Default address</p>{%- endif -%}
+          <details>
+            <summary class="small" style="cursor:pointer;font-weight:600">Edit this address</summary>
+            {%- form 'customer_address', address, class: 'form' -%}
+              {%- if form.errors -%}<div class="form-errors" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+              <div class="form-row">
+                <div class="field"><label for="First-{{ address.id }}">First name</label><input id="First-{{ address.id }}" class="input" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name"></div>
+                <div class="field"><label for="Last-{{ address.id }}">Last name</label><input id="Last-{{ address.id }}" class="input" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name"></div>
+              </div>
+              <div class="field"><label for="Address1-{{ address.id }}">Address</label><input id="Address1-{{ address.id }}" class="input" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1"></div>
+              <div class="field"><label for="Address2-{{ address.id }}">Flat, suite or building (optional)</label><input id="Address2-{{ address.id }}" class="input" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2"></div>
+              <div class="form-row">
+                <div class="field"><label for="City-{{ address.id }}">Town or city</label><input id="City-{{ address.id }}" class="input" name="address[city]" value="{{ form.city }}" autocomplete="address-level2"></div>
+                <div class="field"><label for="Zip-{{ address.id }}">Postcode</label><input id="Zip-{{ address.id }}" class="input" name="address[zip]" value="{{ form.zip }}" autocomplete="postal-code"></div>
+              </div>
+              <div class="form-row">
+                <div class="field"><label for="Country-{{ address.id }}">Country</label><select id="Country-{{ address.id }}" class="input" name="address[country]" data-default="{{ form.country }}" autocomplete="country">{{ country_options }}</select></div>
+                <div class="field"><label for="Province-{{ address.id }}">County (optional)</label><input id="Province-{{ address.id }}" class="input" name="address[province]" value="{{ form.province }}"></div>
+              </div>
+              <div class="field"><label for="Phone-{{ address.id }}">Phone (optional)</label><input id="Phone-{{ address.id }}" class="input" type="tel" name="address[phone]" value="{{ form.phone }}" autocomplete="tel"></div>
+              <label class="checkbox">{{ form.set_as_default_checkbox }} Use as my default address</label>
+              <div class="form-actions"><button type="submit" class="btn btn--primary">Save address</button></div>
+            {%- endform -%}
+          </details>
+          <form method="post" action="{{ address.url }}">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" class="text-btn">Delete this address</button>
+          </form>
+        </div>
+      {%- endfor -%}
+      {%- if paginate.pages > 1 -%}
+        <nav class="pagination" aria-label="Pages">
+          {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">Previous</a>{%- endif -%}
+          {%- if paginate.next -%}<a href="{{ paginate.next.url }}">Next</a>{%- endif -%}
+        </nav>
+      {%- endif -%}
+    {%- endpaginate -%}
+
+    <div class="panel stack-16">
+      <h2 class="serif-24">Add a new address</h2>
+      {%- form 'customer_address', customer.new_address, class: 'form' -%}
+        {%- if form.errors -%}<div class="form-errors" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+        <div class="form-row">
+          <div class="field"><label for="NewFirst">First name</label><input id="NewFirst" class="input" name="address[first_name]" autocomplete="given-name"></div>
+          <div class="field"><label for="NewLast">Last name</label><input id="NewLast" class="input" name="address[last_name]" autocomplete="family-name"></div>
+        </div>
+        <div class="field"><label for="NewAddress1">Address</label><input id="NewAddress1" class="input" name="address[address1]" autocomplete="address-line1"></div>
+        <div class="field"><label for="NewAddress2">Flat, suite or building (optional)</label><input id="NewAddress2" class="input" name="address[address2]" autocomplete="address-line2"></div>
+        <div class="form-row">
+          <div class="field"><label for="NewCity">Town or city</label><input id="NewCity" class="input" name="address[city]" autocomplete="address-level2"></div>
+          <div class="field"><label for="NewZip">Postcode</label><input id="NewZip" class="input" name="address[zip]" autocomplete="postal-code"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="NewCountry">Country</label><select id="NewCountry" class="input" name="address[country]" data-default="United Kingdom" autocomplete="country">{{ country_options }}</select></div>
+          <div class="field"><label for="NewProvince">County (optional)</label><input id="NewProvince" class="input" name="address[province]"></div>
+        </div>
+        <div class="field"><label for="NewPhone">Phone (optional)</label><input id="NewPhone" class="input" type="tel" name="address[phone]" autocomplete="tel"></div>
+        <label class="checkbox">{{ form.set_as_default_checkbox }} Use as my default address</label>
+        <div class="form-actions"><button type="submit" class="btn btn--primary">Add address</button></div>
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+<script>
+  document.querySelectorAll('select[data-default]').forEach(function (s) {
+    var v = s.getAttribute('data-default');
+    if (!v) return;
+    Array.prototype.forEach.call(s.options, function (o) { if (o.value === v || o.text === v) o.selected = true; });
+  });
+</script>

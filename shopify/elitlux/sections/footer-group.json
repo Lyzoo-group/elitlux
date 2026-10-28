@@ -1,0 +1,35 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "overlap": true,
+        "brand_text": "Elitlux is a UK bedding brand founded on a simple belief: everyone deserves to sleep the way they do in a good hotel — without paying hotel prices for it.",
+        "social_text": "Follow us on Instagram · Facebook · X",
+        "social_handle": "@elitlux",
+        "offer_eyebrow": "Welcome offer",
+        "offer_title": "10% off",
+        "offer_title_em": "your first order.",
+        "offer_text": "Join our list on the homepage and we’ll email your code straight away.",
+        "offer_button": "Get 10% off",
+        "menu_1_title": "Shop",
+        "menu_1": "footer",
+        "menu_2_title": "Help",
+        "menu_2": "footer-help",
+        "menu_3_title": "Elitlux",
+        "menu_3": "footer-elitlux",
+        "care_title": "Help, 24/7",
+        "company_title": "Company",
+        "company_name": "Elitlux Ltd",
+        "company_reg": "Registered in Scotland, company no. SC855958",
+        "company_address": "55 Newton Grove, Newton Mearns\nGlasgow G77 5QJ",
+        "copyright": "© 2026 Elitlux. All rights reserved.",
+        "privacy_label": "Privacy policy",
+        "refund_label": "Refund & returns policy"
+      }
+    }
+  },
+  "order": ["footer"]
+}

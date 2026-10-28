@@ -1,0 +1,34 @@
+{%- comment -%} Collection grid card (aspect 430/491). Photo: product image number from custom.card_photos.grid, else the featured image. {%- endcomment -%}
+{%- liquid
+  assign im = product.featured_image
+  assign cpi = product.metafields.custom.card_photos.value.grid
+  if cpi != blank
+    assign im = product.images[cpi]
+  endif
+  if im == blank
+    assign im = product.featured_image
+  endif
+  assign multi = true
+  if product.has_only_default_variant or product.variants.size == 1
+    assign multi = false
+  endif
+  assign opt = product.options.first | downcase
+  assign badge = product.metafields.custom.badges.value | split: ',' | first | strip
+-%}
+<li class="gc" data-reveal>
+  <a href="{{ product.url }}" class="gc__img">
+    {%- if im -%}{{ im | image_url: width: 1000 | image_tag: loading: 'lazy', alt: im.alt, class: 'zoom', widths: '360, 540, 720, 1000', sizes: '(min-width: 1200px) 23vw, (min-width: 820px) 31vw, 48vw' }}{%- endif -%}
+    {%- if badge != blank -%}<span class="gc__badge">{{ badge }}</span>{%- endif -%}
+  </a>
+  <div class="gc__t">
+    <p class="ey">{{ product.metafields.custom.range }}</p>
+    <h3 class="gc__h"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    <p class="gc__spec">{{ product.metafields.custom.spec_line }}</p>
+    <p class="gc__price">{% if product.price_varies %}From {% endif %}{{ product.price_min | money }}{% if product.compare_at_price_max > product.price_min %}<s>{{ product.compare_at_price_max | money }}</s>{% endif %}</p>
+  </div>
+  {%- if multi -%}
+    <button type="button" class="gc__btn" aria-label="Choose an option for {{ product.title | escape }}" data-quick="{{ product.handle }}" data-range="{{ product.metafields.custom.range | escape }}" data-option="{{ opt }}">Choose {{ opt }}</button>
+  {%- else -%}
+    <button type="button" class="gc__btn" aria-label="Add to bed: {{ product.title | escape }}" data-add-id="{{ product.selected_or_first_available_variant.id }}">Add to bed</button>
+  {%- endif -%}
+</li>

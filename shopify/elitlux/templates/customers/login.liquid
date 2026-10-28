@@ -1,0 +1,38 @@
+<section class="page-width section">
+  <div class="account account--narrow">
+    <div class="panel stack-24">
+      <h1 class="h2">Log in</h1>
+      {%- form 'customer_login', class: 'form' -%}
+        {%- if form.errors -%}<div class="form-errors" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+        <div class="field">
+          <label for="LoginEmail">Email</label>
+          <input id="LoginEmail" class="input" type="email" name="customer[email]" autocomplete="email" required>
+        </div>
+        {%- if form.password_needed -%}
+          <div class="field">
+            <label for="LoginPassword">Password</label>
+            <input id="LoginPassword" class="input" type="password" name="customer[password]" autocomplete="current-password" required>
+          </div>
+        {%- endif -%}
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary">Log in</button>
+          <a href="{{ routes.account_register_url }}" class="small">Create an account</a>
+        </div>
+      {%- endform -%}
+    </div>
+    <div class="panel stack-16" id="recover">
+      <h2 class="serif-24">Forgotten your password?</h2>
+      {%- form 'recover_customer_password', class: 'form' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="form-status" role="status">We’ve emailed you a link to reset your password.</p>
+        {%- endif -%}
+        {%- if form.errors -%}<div class="form-errors" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+        <div class="field">
+          <label for="RecoverEmail">Email</label>
+          <input id="RecoverEmail" class="input" type="email" name="email" autocomplete="email" required>
+        </div>
+        <div class="form-actions"><button type="submit" class="btn btn--secondary">Send reset link</button></div>
+      {%- endform -%}
+    </div>
+  </div>
+</section>

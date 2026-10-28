@@ -1,0 +1,40 @@
+{%- liquid
+  assign s = section.settings
+  assign bf = s.image
+  assign pos = 'object-position:' | append: s.focus
+-%}
+<section class="band"{% if s.overlap %} data-ovl{% elsif s.rounded %} data-round{% endif %} aria-label="{{ s.heading | escape }} {{ s.heading_em | escape }}" style="z-index:{{ section.index }}">
+  {% render 'img', file: bf, alt: s.image_alt, class: 'cover zoom', style: pos %}
+  <div aria-hidden="true" class="band__shade"></div>
+  <div class="band__wrap">
+    <div class="band__in">
+      <div class="band__c" data-reveal>
+        <p class="ey ey--gold">{{ s.eyebrow }}</p>
+        <p class="band__h">{{ s.heading }} <em class="em-mist">{{ s.heading_em }}</em></p>
+        <p class="band__p">{{ s.text }}</p>
+        {%- if s.button_label != blank -%}<a href="{{ s.button_link }}" class="btn btn--white">{{ s.button_label }}{% render 'icon', i: 'arrow' %}</a>{%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Photo band",
+  "class": "band-sec",
+  "settings": [
+    { "type": "checkbox", "id": "overlap", "label": "Overlap the section above with a rounded top", "default": false },
+    { "type": "checkbox", "id": "rounded", "label": "Rounded top corners (without overlapping)", "default": true },
+    { "type": "text", "id": "image", "label": "Photo filename (Content → Files)", "default": "elt-pillow-coffee.jpg" },
+    { "type": "text", "id": "image_alt", "label": "Photo description", "default": "Hand resting on a soft white pillow beside a morning coffee" },
+    { "type": "text", "id": "focus", "label": "Photo focus (CSS object-position)", "default": "center" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Duck Feather Pillows" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Hotel nights," },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part", "default": "every night." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Natural duck feather and down in a double-stitched cotton cover, sold in pairs." },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Shop pillows" },
+    { "type": "url", "id": "button_link", "label": "Button link", "default": "/collections" }
+  ],
+  "presets": [{ "name": "Photo band" }]
+}
+{% endschema %}

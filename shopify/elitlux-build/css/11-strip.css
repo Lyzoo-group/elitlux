@@ -1,0 +1,15 @@
+/* ===== Moving strip ===== */
+.strip{position:relative;background:#FFFFFF;border-bottom:1px solid rgba(31,45,77,0.08)}
+.strip__vp{overflow:hidden;padding:clamp(18px,2vw,26px) 0;mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);-webkit-mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%)}
+.strip__track{display:flex;width:max-content;animation:elo-marquee-left 40s linear infinite}
+@media (min-width:1000px){.strip__track{animation-duration:60s}}
+.strip__track:hover{animation-play-state:paused}
+.strip__list{list-style:none;margin:0;padding:0;display:flex;align-items:center}
+.strip__it{flex:0 0 auto;display:flex;align-items:center;gap:clamp(28px,3vw,44px);padding-right:clamp(28px,3vw,44px)}
+.strip__btn{padding:0;border:0;background:none;font-family:Inter,Arial,sans-serif;font-size:clamp(16px,1.3vw,19px);font-weight:500;color:#141B2D;white-space:nowrap;cursor:pointer;text-decoration:underline;text-decoration-color:rgba(31,45,77,0.3);text-underline-offset:4px}
+.strip__btn:hover{text-decoration-color:#1F2D4D}
+.strip__txt{font-size:clamp(16px,1.3vw,19px);font-weight:500;color:#141B2D;white-space:nowrap}
+.strip__star{flex:0 0 auto;display:block;fill:#1F2D4D}
+/* The header's strip hides when the page has its own strip under the hero */
+body:has(#MainContent .strip) .hdr-strip-wrap .strip,
+body:has(#MainContent .strip) .shopify-section-group-header-group .strip{display:none}

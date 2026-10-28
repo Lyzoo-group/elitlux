@@ -1,0 +1,12 @@
+{%- comment -%}
+  Rating stars from the prototype: a base row plus a gold row clipped to pct% width.
+  Params: w (width px), h (height px), base (base fill colour), pct (fill %, default 100), tag ('span' | 'div'), label (aria-label; omit for decorative)
+{%- endcomment -%}
+{%- liquid
+  assign t = tag | default: 'span'
+  assign p = pct | default: 100
+-%}
+<{{ t }} class="stars"{% if label != blank %} role="img" aria-label="{{ label | escape }}"{% else %} aria-hidden="true"{% endif %} style="width:{{ w }}px; height:{{ h }}px">
+  <svg viewBox="0 0 120 24" width="{{ w }}" height="{{ h }}" aria-hidden="true" class="stars__base" style="fill:{{ base }}">{%- render 'star-paths' -%}</svg>
+  <span class="stars__fill" style="width:{{ p }}%"><svg viewBox="0 0 120 24" width="{{ w }}" height="{{ h }}" aria-hidden="true">{%- render 'star-paths' -%}</svg></span>
+</{{ t }}>

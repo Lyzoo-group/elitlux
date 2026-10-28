@@ -1,0 +1,23 @@
+<section class="page-width section">
+  <div class="account account--narrow">
+    <div class="panel stack-24">
+      <h1 class="h2">Activate your account</h1>
+      <p class="muted">Choose a password to finish setting up your account.</p>
+      {%- form 'activate_customer_password', class: 'form' -%}
+        {%- if form.errors -%}<div class="form-errors" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+        <div class="field">
+          <label for="ActivatePassword">Password</label>
+          <input id="ActivatePassword" class="input" type="password" name="customer[password]" autocomplete="new-password" required>
+        </div>
+        <div class="field">
+          <label for="ActivateConfirm">Confirm password</label>
+          <input id="ActivateConfirm" class="input" type="password" name="customer[password_confirmation]" autocomplete="new-password" required>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary">Activate account</button>
+          <button type="submit" name="decline" class="text-btn">No thanks</button>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</section>

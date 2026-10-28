@@ -1,0 +1,92 @@
+{%- liquid
+  assign count = cart.item_count
+-%}
+<div id="CartDrawer" class="dialog drw" hidden>
+  <div class="drw__scrim" data-close></div>
+  <aside class="drw__panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+    <div class="drw__inner" data-drawer-inner data-count="{{ count }}">
+      <div class="drw__head">
+        <h2 id="drawer-title" class="drw__title">{{ section.settings.title }} <span class="drw__n">({{ count }})</span></h2>
+        <button type="button" class="drw__close" aria-label="Close bag" data-close data-autofocus>{% render 'icon', i: 'close', s: 22, w: 1.5 %}</button>
+      </div>
+      {%- if cart.item_count == 0 -%}
+        <div class="drw__empty">
+          <p class="drw__empty-h">{{ section.settings.empty_title }}</p>
+          <p class="drw__muted">{{ section.settings.empty_text }}</p>
+          <a href="{{ routes.all_products_collection_url }}" class="drw__shop">{{ section.settings.empty_button }}</a>
+          <ul role="list" class="drw__links">
+            {%- for i in (1..4) -%}
+              {%- liquid
+                assign key = 'link_' | append: i
+                assign c = section.settings[key]
+              -%}
+              {%- if c != blank -%}<li><a href="{{ c.url }}">{{ c.title }}</a></li>{%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- else -%}
+        <ul role="list" class="drw__lines">
+          {%- for item in cart.items -%}
+            {%- liquid
+              assign opt = item.product.options.first
+              assign has_variant = true
+              if item.product.has_only_default_variant or item.product.variants.size == 1
+                assign has_variant = false
+              endif
+            -%}
+            <li class="drw__line" data-line-index="{{ forloop.index }}">
+              <a href="{{ item.url }}" class="drw__img" data-close>
+                {%- if item.image -%}{{ item.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '', widths: '160, 240', sizes: '80px' }}{%- endif -%}
+              </a>
+              <div class="drw__info">
+                <div class="drw__row">
+                  <a href="{{ item.url }}" class="drw__name" data-close>{{ item.product.title }}</a>
+                  <p class="drw__total">{{ item.original_line_price | money }}</p>
+                </div>
+                {%- if has_variant -%}<p class="drw__muted">{{ opt }}: {{ item.variant.title }}</p>{%- endif -%}
+                <div class="drw__ctrl">
+                  <div role="group" aria-label="Quantity" class="qty qty--44">
+                    <button type="button" class="qty__b qty__b--plain" aria-label="Decrease quantity of {{ item.product.title | escape }}" data-cart-change data-line="{{ forloop.index }}" data-quantity="{{ item.quantity | minus: 1 | at_least: 1 }}">{% render 'icon', i: 'minus', s: 16, w: 1.5 %}</button>
+                    <span class="qty__n">{{ item.quantity }}</span>
+                    <button type="button" class="qty__b qty__b--plain" aria-label="Increase quantity of {{ item.product.title | escape }}" data-cart-change data-line="{{ forloop.index }}" data-quantity="{{ item.quantity | plus: 1 | at_most: 20 }}">{% render 'icon', i: 'plus', s: 16, w: 1.5 %}</button>
+                  </div>
+                  <button type="button" class="rm" aria-label="Remove {{ item.product.title | escape }} from your bag" data-cart-change data-line="{{ forloop.index }}" data-quantity="0">Remove</button>
+                </div>
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+        <form action="{{ routes.cart_url }}" method="post" class="drw__foot" id="CartDrawerForm">
+          {%- for app in cart.discount_applications -%}
+            <div class="drw__disc"><span>{{ app.title }}</span><span class="drw__b">−{{ app.total_allocated_amount | money }}</span></div>
+          {%- endfor -%}
+          <div class="drw__sub"><span>{{ section.settings.subtotal_label }}</span><span class="drw__b">{{ cart.total_price | money }}</span></div>
+          <p class="drw__muted">{{ section.settings.note }}</p>
+          <button type="submit" name="checkout" class="drw__checkout">{{ section.settings.checkout_label }}</button>
+          <a href="{{ routes.cart_url }}" class="drw__view">{{ section.settings.view_label }}</a>
+          <p class="drw__err" role="alert" data-drawer-error hidden></p>
+        </form>
+      {%- endif -%}
+    </div>
+  </aside>
+</div>
+
+{% schema %}
+{
+  "name": "Bag drawer",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Your bag" },
+    { "type": "text", "id": "empty_title", "label": "Empty heading", "default": "Your bag is empty." },
+    { "type": "text", "id": "empty_text", "label": "Empty text", "default": "Let’s find something lovely for your bed." },
+    { "type": "text", "id": "empty_button", "label": "Empty button", "default": "Shop the collection" },
+    { "type": "collection", "id": "link_1", "label": "Empty bag link 1" },
+    { "type": "collection", "id": "link_2", "label": "Empty bag link 2" },
+    { "type": "collection", "id": "link_3", "label": "Empty bag link 3" },
+    { "type": "collection", "id": "link_4", "label": "Empty bag link 4" },
+    { "type": "text", "id": "subtotal_label", "label": "Subtotal label", "default": "Subtotal" },
+    { "type": "text", "id": "note", "label": "Note", "default": "Free UK delivery. Discount codes can be added at checkout." },
+    { "type": "text", "id": "checkout_label", "label": "Checkout button", "default": "Checkout" },
+    { "type": "text", "id": "view_label", "label": "View bag link", "default": "View bag" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,28 @@
+{%- liquid
+  assign s = section.settings
+  assign rel = product.metafields.custom.related.value
+-%}
+{%- if rel != blank -%}
+<section class="rel"{% if s.overlap %} data-ovl{% elsif s.rounded %} data-round{% endif %} aria-labelledby="related-title" style="z-index:{{ section.index }}">
+  <h2 id="related-title" class="rel__h">{{ s.heading }}</h2>
+  <ul role="list" class="rel__grid">
+    {%- for h in rel limit: 4 -%}
+      {%- assign x = all_products[h] -%}
+      {%- if x.id != blank -%}{% render 'card-small', product: x %}{%- endif -%}
+    {%- endfor -%}
+  </ul>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "You may also like",
+  "class": "rel-sec",
+  "settings": [
+    { "type": "paragraph", "content": "Products come from custom.related." },
+    { "type": "checkbox", "id": "overlap", "label": "Overlap the section above with a rounded top", "default": true },
+    { "type": "checkbox", "id": "rounded", "label": "Rounded top corners (without overlapping)", "default": false },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "You may also like" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,96 @@
+{%- liquid
+  assign s = section.settings
+  assign cpg = collection.metafields.custom.page.value
+  assign g = cpg.guide
+-%}
+{%- if g != blank -%}
+{%- liquid
+  assign gf = g.file
+  assign rows_count = 0
+  if g.rows_from != blank
+    assign rp = all_products[g.rows_from]
+    assign dims = rp.metafields.custom.dims.value
+    assign rows_count = rp.variants.size
+  else
+    assign rows_count = g.rows.size
+  endif
+  assign two = false
+  if rows_count > 6
+    assign two = true
+  endif
+-%}
+<section id="guide" class="guide" aria-labelledby="guide-title" style="z-index:{{ section.index }}">
+  <div class="guide__panel">
+    <div class="guide__media" data-reveal>
+      <div class="guide__img">{% render 'img', file: gf, alt: g.alt, class: 'cover zoom', sizes: '(min-width: 1000px) 45vw, 100vw' %}</div>
+    </div>
+    <div class="guide__c" data-reveal>
+      <p class="ey">{{ g.eyebrow }}</p>
+      <h2 id="guide-title" class="h2x">{{ g.title }}</h2>
+      <p class="guide__intro">{{ g.intro }}</p>
+      <ul role="list" class="guide__rows{% if two %} guide__rows--2{% endif %}">
+        {%- if g.rows_from != blank -%}
+          {%- for v in rp.variants -%}
+            {%- assign vt = v.title -%}
+            <li class="guide__row"><span class="guide__a">{{ v.title }}</span><span class="guide__c2">{{ v.price | money }}</span><span class="guide__b">{{ dims[vt] }}</span></li>
+          {%- endfor -%}
+        {%- else -%}
+          {%- for r in g.rows -%}
+            {%- liquid
+              assign price = ''
+              assign href = ''
+              assign link_text = ''
+              if r.product != blank
+                assign x = all_products[r.product]
+                if x.id != blank
+                  assign href = x.url
+                  assign link_text = s.product_link
+                  capture price
+                    if x.price_varies
+                      echo 'From '
+                    endif
+                    echo x.price_min | money
+                  endcapture
+                endif
+              elsif r.collection != blank
+                assign xc = collections[r.collection]
+                if xc.id != blank
+                  assign href = xc.url
+                  assign link_text = s.collection_link | append: ' ' | append: xc.title
+                  assign minp = 999999999
+                  for p in xc.products limit: 50
+                    if p.price_min < minp
+                      assign minp = p.price_min
+                    endif
+                  endfor
+                  if minp < 999999999
+                    assign price = minp | money | prepend: 'From '
+                  endif
+                endif
+              endif
+            -%}
+            <li class="guide__row"><span class="guide__a">{{ r.name }}</span><span class="guide__c2">{{ price }}</span><span class="guide__b">{{ r.detail }}</span>{%- if href != blank -%}<a href="{{ href }}" class="guide__link">{{ link_text }}</a>{%- endif -%}</li>
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
+      <p class="guide__ask">{{ s.ask_before }} <a href="{{ s.ask_link }}">{{ s.ask_link_text }}</a>{{ s.ask_after }}</p>
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Collection guide",
+  "class": "guide-sec",
+  "settings": [
+    { "type": "paragraph", "content": "Heading, photo and rows come from the collection's custom.page metafield (guide)." },
+    { "type": "text", "id": "product_link", "label": "Row link to a product", "default": "View product" },
+    { "type": "text", "id": "collection_link", "label": "Row link to a collection (collection name is added)", "default": "Shop" },
+    { "type": "text", "id": "ask_before", "label": "Help line, before the link", "default": "Not sure?" },
+    { "type": "text", "id": "ask_link_text", "label": "Help line, link", "default": "Ask us" },
+    { "type": "url", "id": "ask_link", "label": "Help line, link target" },
+    { "type": "text", "id": "ask_after", "label": "Help line, after the link", "default": ", we’re here 24/7." }
+  ]
+}
+{% endschema %}

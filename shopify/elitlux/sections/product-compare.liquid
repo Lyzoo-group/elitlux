@@ -1,0 +1,54 @@
+{%- liquid
+  assign s = section.settings
+  assign cmp = product.metafields.custom.compare.value
+  assign ovl = false
+  if s.overlap and product.metafields.custom.benefits != blank
+    assign ovl = true
+  endif
+-%}
+{%- if cmp != blank and cmp.cols.size > 1 -%}
+<section class="cmp"{% if ovl %} data-ovl{% else %} data-round{% endif %} aria-labelledby="cmp-title" style="z-index:{{ section.index }}">
+  <div class="cmp__head"><p class="ey">{{ s.eyebrow }}</p><h2 id="cmp-title" class="h2m">{{ cmp.title }}</h2></div>
+  <div class="cmp__scroll">
+    <table class="cmp__t">
+      <thead><tr><th scope="col" class="cmp__corner"><span class="vh">Product</span></th>
+        {%- for h in cmp.cols -%}
+          {%- assign x = all_products[h] -%}
+          <th scope="col" class="cmp__col">
+            <a href="{{ x.url }}" class="cmp__a">
+              <span class="cmp__img{% if x.id == product.id %} is-cur{% endif %}">{%- if x.featured_image -%}{{ x.featured_image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '', class: 'cover', widths: '176, 240', sizes: '88px' }}{%- endif -%}</span>
+              <span class="cmp__name">{{ x.title }}</span>
+              <span class="cmp__tag">{% if x.id == product.id %}{{ s.current_label }}{% else %}From {{ x.price_min | money }}{% endif %}</span>
+            </a>
+          </th>
+        {%- endfor -%}
+      </tr></thead>
+      <tbody>
+        {%- for r in cmp.rows -%}
+          <tr><th scope="row" class="cmp__k">{{ r.k }}</th>
+            {%- for h in cmp.cols -%}
+              {%- assign x = all_products[h] -%}
+              <td class="cmp__v{% if x.id == product.id %} is-cur{% endif %}">
+                {%- if r.price -%}{% if x.price_varies %}From {% endif %}{{ x.price_min | money }}{%- else -%}{{ r.v[forloop.index0] }}{%- endif -%}
+              </td>
+            {%- endfor -%}
+          </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Compare products",
+  "class": "cmp-sec",
+  "settings": [
+    { "type": "paragraph", "content": "Shows when the product has a comparison (custom.compare). Prices are live." },
+    { "type": "checkbox", "id": "overlap", "label": "Overlap the section above with a rounded top (only when “Why choose it” shows)", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Choosing between them" },
+    { "type": "text", "id": "current_label", "label": "Label under this product", "default": "You’re viewing" }
+  ]
+}
+{% endschema %}

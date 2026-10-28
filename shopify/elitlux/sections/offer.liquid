@@ -1,0 +1,55 @@
+{%- liquid
+  assign s = section.settings
+  assign bf = s.image
+  assign fid = 'offer-email-' | append: section.id
+-%}
+<section id="{{ s.anchor | default: 'offer' }}" class="offer"{% if s.overlap %} data-ovl{% elsif s.rounded %} data-round{% endif %} aria-labelledby="offer-title-{{ section.id }}" style="z-index:{{ section.index }}" data-offer>
+  <div class="offer__in">
+    <div class="offer__c" data-reveal>
+      <p class="ey ey--gold">{{ s.eyebrow }}</p>
+      <h2 id="offer-title-{{ section.id }}" class="h2x offer__h">{{ s.heading }} <em class="em-gold">{{ s.heading_em }}</em></h2>
+      <p class="offer__p">{{ s.text }}</p>
+      {%- assign form_id = 'offer-form-' | append: section.id -%}
+      {%- form 'customer', id: form_id, class: 'offer__form' -%}
+        {%- if form.posted_successfully? -%}
+          {%- assign done = s.success | escape | replace: '[email]', '<span data-offer-email>your inbox</span>' -%}
+          <p role="status" class="offer__done" data-offer-done>{{ done }}</p>
+        {%- else -%}
+          <input type="hidden" name="contact[tags]" value="newsletter, welcome-10">
+          <div class="offer__row">
+            <label for="{{ fid }}" class="vh">Email address</label>
+            <input id="{{ fid }}" type="email" name="contact[email]" autocomplete="email" placeholder="{{ s.placeholder | escape }}" class="offer__input" aria-describedby="{{ fid }}-err" required>
+            <button type="submit" class="btn btn--white">{{ s.button_label }}</button>
+          </div>
+          <p id="{{ fid }}-err" role="alert" class="offer__err"{% if form.errors == blank %} hidden{% endif %} data-offer-err>{{ s.error }}</p>
+          <p class="offer__small">{{ s.small_print }}</p>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+    <div class="offer__media" data-reveal><div class="offer__arch">{% render 'img', file: bf, alt: s.image_alt, class: 'cover zoom', sizes: '(min-width: 1000px) 45vw, 100vw' %}</div></div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Offer sign-up",
+  "class": "offer-sec",
+  "settings": [
+    { "type": "checkbox", "id": "overlap", "label": "Overlap the section above with a rounded top", "default": false },
+    { "type": "checkbox", "id": "rounded", "label": "Rounded top corners (without overlapping)", "default": true },
+    { "type": "text", "id": "anchor", "label": "Anchor id", "default": "offer" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Welcome to Elitlux" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "10% off" },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part", "default": "your first order." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Join our list and we’ll email your code straight away, plus new ranges and care tips now and then." },
+    { "type": "text", "id": "placeholder", "label": "Email placeholder", "default": "Email address" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Get 10% off" },
+    { "type": "text", "id": "error", "label": "Error message", "default": "Please enter a valid email address." },
+    { "type": "text", "id": "small_print", "label": "Small print", "default": "One code per customer, for your first order. Unsubscribe any time." },
+    { "type": "text", "id": "success", "label": "Thank-you message ([email] = the address they entered)", "default": "Thank you. Your code is on its way to [email].", "info": "The welcome email with the code is sent by Shopify Email (Marketing → Automations → Welcome new subscribers)." },
+    { "type": "text", "id": "image", "label": "Photo filename (Content → Files)", "default": "elx-comfort-room.png" },
+    { "type": "text", "id": "image_alt", "label": "Photo description", "default": "Bright bedroom with a navy throw on a white bed" }
+  ],
+  "presets": [{ "name": "Offer sign-up" }]
+}
+{% endschema %}

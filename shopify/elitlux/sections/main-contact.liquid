@@ -1,0 +1,103 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="pg-intro" aria-labelledby="contact-title" style="z-index:{{ section.index }}">
+  <p class="ey">{{ s.eyebrow }}</p>
+  <h1 id="contact-title" class="pg-h1">{{ s.heading }} <em class="em-navy">{{ s.heading_em }}</em></h1>
+  <p class="pg-intro__p">{{ s.text }}</p>
+</section>
+<section class="ct" style="z-index:{{ section.index }}">
+  <div class="ct__card">
+    {%- form 'contact', id: 'ContactForm', class: 'ct__form' -%}
+      {%- if form.posted_successfully? -%}
+        <div role="status" class="ct__done">
+          <p class="ct__done-h">{{ s.done_title }}<span data-cf-name></span>.</p>
+          <p class="ct__muted">{{ s.done_text }}<span data-cf-email></span>.</p>
+          <a href="{{ request.path }}" class="ct__again">{{ s.again_label }}</a>
+        </div>
+      {%- else -%}
+        <h2 class="ct__h">{{ s.form_title }}</h2>
+        {%- if form.errors -%}<p class="ct__err" role="alert">{{ form.errors | default_errors }}</p>{%- endif -%}
+        <div class="ct__pair">
+          <div class="ct__f">
+            <label for="f-name" class="ct__l">Name</label>
+            <input id="f-name" name="contact[name]" autocomplete="name" class="ct__in" aria-describedby="f-name-err" data-req="name">
+            <p id="f-name-err" class="ct__err" hidden>Please tell us your name.</p>
+          </div>
+          <div class="ct__f">
+            <label for="f-email" class="ct__l">Email</label>
+            <input id="f-email" type="email" name="contact[email]" autocomplete="email" class="ct__in" aria-describedby="f-email-err" data-req="email">
+            <p id="f-email-err" class="ct__err" hidden>Please enter a valid email address.</p>
+          </div>
+        </div>
+        <div class="ct__pair">
+          <div class="ct__f">
+            <label for="f-order" class="ct__l">Order number <span class="ct__opt">(optional)</span></label>
+            <input id="f-order" name="contact[Order number]" class="ct__in ct__in--soft">
+          </div>
+          <div class="ct__f">
+            <label for="f-topic" class="ct__l">What’s it about?</label>
+            <select id="f-topic" name="contact[Topic]" class="ct__in ct__in--soft ct__sel">
+              <option value="">Choose a topic</option>
+              <option value="Sizing">Sizing</option>
+              <option value="Washing and care">Washing and care</option>
+              <option value="A return or exchange">A return or exchange</option>
+              <option value="Damaged or faulty item">Damaged or faulty item</option>
+              <option value="Something else">Something else</option>
+            </select>
+          </div>
+        </div>
+        <div class="ct__f">
+          <label for="f-message" class="ct__l">Message</label>
+          <textarea id="f-message" name="contact[body]" rows="5" class="ct__in ct__ta" aria-describedby="f-message-err" data-req="message"></textarea>
+          <p id="f-message-err" class="ct__err" hidden>Please add a little more detail so we can help.</p>
+        </div>
+        <div class="ct__send">
+          <button type="submit" class="ct__btn" data-label="{{ s.send_label | escape }}">{{ s.send_label }}</button>
+          <p class="ct__muted">{{ s.privacy_note }}</p>
+        </div>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+  <div class="ct__side">
+    <div class="ct__block">
+      <h2 class="ct__h">{{ s.touch_title }}</h2>
+      <dl class="ct__dl">
+        {%- if settings.care_email != blank -%}<dt>Email</dt><dd><a href="mailto:{{ settings.care_email }}">{{ settings.care_email }}</a></dd>{%- endif -%}
+        {%- if settings.care_phone != blank -%}<dt>Phone</dt><dd>{{ settings.care_phone }}</dd>{%- endif -%}
+        {%- if settings.care_hours != blank -%}<dt>Hours</dt><dd>{{ settings.care_hours }}</dd>{%- endif -%}
+        <dt>Address</dt><dd>{{ s.address | newline_to_br }}{% if s.registration != blank %}<br><span class="ct__muted0">{{ s.registration }}</span>{% endif %}</dd>
+      </dl>
+    </div>
+    <div class="ct__block ct__block--line">
+      <h2 class="ct__h">{{ s.returns_title }}</h2>
+      <div class="ct__rich">{{ s.returns_text }}</div>
+      {%- if shop.refund_policy != blank -%}<a href="{{ shop.refund_policy.url }}" class="ct__policy">{{ s.policy_link }}</a>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact page",
+  "class": "ct-sec",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Help, 24/7" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Real answers," },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part", "default": "any hour." },
+    { "type": "textarea", "id": "text", "label": "Intro" },
+    { "type": "text", "id": "form_title", "label": "Form heading", "default": "Send us a message" },
+    { "type": "text", "id": "send_label", "label": "Send button", "default": "Send message" },
+    { "type": "text", "id": "privacy_note", "label": "Note by the button", "default": "We’ll only use your details to reply to you." },
+    { "type": "text", "id": "done_title", "label": "Thank-you heading (name is added)", "default": "Thank you" },
+    { "type": "text", "id": "done_text", "label": "Thank-you text (email is added)", "default": "We’ve got your message and will reply to" },
+    { "type": "text", "id": "again_label", "label": "Send another button", "default": "Send another message" },
+    { "type": "text", "id": "touch_title", "label": "Details heading", "default": "Get in touch", "info": "Email, phone and hours show only when filled in under Theme settings → Contact details." },
+    { "type": "textarea", "id": "address", "label": "Address", "default": "Elitlux Ltd\n55 Newton Grove, Newton Mearns\nGlasgow G77 5QJ" },
+    { "type": "text", "id": "registration", "label": "Registration line", "default": "Registered in Scotland, SC855958" },
+    { "type": "text", "id": "returns_title", "label": "Returns heading", "default": "Delivery & returns" },
+    { "type": "richtext", "id": "returns_text", "label": "Returns text" },
+    { "type": "text", "id": "policy_link", "label": "Policy link", "default": "Read the full returns policy" }
+  ]
+}
+{% endschema %}

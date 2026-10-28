@@ -1,0 +1,65 @@
+{%- liquid
+  assign s = section.settings
+  assign f1 = s.image_1
+  assign f2 = s.image_2
+  assign f3 = s.image_3
+-%}
+<section class="story"{% if s.overlap %} data-ovl{% elsif s.rounded %} data-round{% endif %} aria-labelledby="story-title-{{ section.id }}" style="z-index:{{ section.index }}">
+  <div class="story__in">
+    <div class="story__pics" data-reveal>
+      <div class="story__tall">{% render 'img', file: f1, alt: s.image_1_alt, class: 'cover zoom', sizes: '(min-width: 1000px) 30vw, 60vw' %}</div>
+      <div class="story__col">
+        <figure class="story__fig"><span class="story__sq">{% render 'img', file: f2, alt: s.image_2_alt, class: 'cover zoom', sizes: '(min-width: 1000px) 20vw, 40vw' %}</span><figcaption class="ey ey--11">{{ s.image_2_caption }}</figcaption></figure>
+        <figure class="story__fig"><span class="story__wide">{% render 'img', file: f3, alt: s.image_3_alt, class: 'cover zoom', sizes: '(min-width: 1000px) 20vw, 40vw' %}</span><figcaption class="ey ey--11">{{ s.image_3_caption }}</figcaption></figure>
+      </div>
+    </div>
+    <div class="story__txt" data-reveal>
+      <div class="story__ey"><span aria-hidden="true" class="story__rule"></span><p class="ey">{{ s.eyebrow }}</p></div>
+      <h2 id="story-title-{{ section.id }}" class="h2x">{{ s.heading }} <em class="em-navy">{{ s.heading_em }}</em></h2>
+      <p class="story__lead">{{ s.lead }}</p>
+      <p class="story__p">{{ s.text }}</p>
+      {%- if section.blocks.size > 0 -%}
+        <ol role="list" class="story__vals">
+          {%- for block in section.blocks -%}
+            <li class="story__val" {{ block.shopify_attributes }}><span class="story__n">{{ forloop.index | prepend: '0' }}</span><div class="story__vt"><p class="story__vh">{{ block.settings.title }}</p><p class="story__vp">{{ block.settings.text }}</p></div></li>
+          {%- endfor -%}
+        </ol>
+      {%- endif -%}
+      {%- if s.button_label != blank -%}<a href="{{ s.button_link }}" class="story__btn">{{ s.button_label }}{% render 'icon', i: 'arrow' %}</a>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Our story",
+  "class": "story-sec",
+  "settings": [
+    { "type": "checkbox", "id": "overlap", "label": "Overlap the section above with a rounded top", "default": true },
+    { "type": "checkbox", "id": "rounded", "label": "Rounded top corners (without overlapping)", "default": false },
+    { "type": "text", "id": "image_1", "label": "Tall photo filename", "default": "elx-quilted-pillows.png" },
+    { "type": "text", "id": "image_1_alt", "label": "Tall photo description", "default": "Woman asleep in crisp white Elitlux bedding" },
+    { "type": "text", "id": "image_2", "label": "Square photo filename", "default": "pillow-fabric-detail.jpg" },
+    { "type": "text", "id": "image_2_alt", "label": "Square photo description", "default": "Close-up of a pillow corner and seam" },
+    { "type": "text", "id": "image_2_caption", "label": "Square photo caption", "default": "Honest quality" },
+    { "type": "text", "id": "image_3", "label": "Wide photo filename", "default": "elt-duvet-folds.jpg" },
+    { "type": "text", "id": "image_3_alt", "label": "Wide photo description", "default": "Soft folds of a white duvet" },
+    { "type": "text", "id": "image_3_caption", "label": "Wide photo caption", "default": "Considered comfort" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our story" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Rest," },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part", "default": "elevated." },
+    { "type": "textarea", "id": "lead", "label": "Lead (italic)" },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "About Elitlux" },
+    { "type": "url", "id": "button_link", "label": "Button link", "default": "/collections" }
+  ],
+  "blocks": [
+    { "type": "value", "name": "Value", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "Considered comfort" },
+      { "type": "text", "id": "text", "label": "Text", "default": "It starts with how it feels." }
+    ] }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Our story" }]
+}
+{% endschema %}

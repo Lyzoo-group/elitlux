@@ -1,0 +1,618 @@
+{
+  "sections": {
+    "hero": {
+      "type": "home-hero",
+      "settings": {
+        "image": "elt-hero.jpg",
+        "image_alt": "Woman reading on a freshly made Elitlux bed in a bright bedroom",
+        "focus_desktop": "62% 38%",
+        "focus_mobile": "58% 30%",
+        "eyebrow": "Hotel-quality bedding",
+        "heading": "Sleep better.",
+        "heading_em": "Live better.",
+        "text": "Hotel-quality duvets, pillows and protectors — made for every home.",
+        "button_1_label": "Shop the collection",
+        "button_1_link": "/collections/all",
+        "button_2_label": "Find your topper",
+        "button_2_link": "/collections/toppers",
+        "rating_text": "by Mattress Protector customers on Amazon UK",
+        "chip_product": "cloud-topper",
+        "chip_image": "topper-floor.jpg",
+        "chip_label": "Hero range"
+      }
+    },
+    "strip": {
+      "type": "strip",
+      "blocks": {
+        "s1": {
+          "type": "item",
+          "settings": {
+            "text": "Free UK delivery on every order",
+            "opens_offer": false
+          }
+        },
+        "s2": {
+          "type": "item",
+          "settings": {
+            "text": "Help, 24/7 on sizing and care",
+            "opens_offer": false
+          }
+        },
+        "s3": {
+          "type": "item",
+          "settings": {
+            "text": "Machine washable for a fresh bed",
+            "opens_offer": false
+          }
+        },
+        "s4": {
+          "type": "item",
+          "settings": {
+            "text": "10% off your first order",
+            "opens_offer": true
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "overlap": true,
+        "label": "Why shop with Elitlux"
+      }
+    },
+    "ranges": {
+      "type": "ranges",
+      "blocks": {
+        "range_1": {
+          "type": "range",
+          "settings": {
+            "collection": "toppers",
+            "image": "topper-sleeping.jpg",
+            "focus": "center",
+            "label": "Toppers",
+            "title": "Mattress Toppers",
+            "need": "Mattress too firm, or tired? Add 10cm of softness."
+          }
+        },
+        "range_2": {
+          "type": "range",
+          "settings": {
+            "collection": "pillows",
+            "image": "elt-pillows-press.jpg",
+            "focus": "center",
+            "label": "Pillows",
+            "title": "Pillows",
+            "need": "Hotel nights, every night. Duck feather and down, in pairs."
+          }
+        },
+        "range_3": {
+          "type": "range",
+          "settings": {
+            "collection": "bump-and-baby",
+            "image": "elt-support-u-phone.jpg",
+            "focus": "center",
+            "label": "Support",
+            "title": "Support Pillows",
+            "need": "Back, neck, bump or nursing? U and V-shape pillows that hold you."
+          }
+        },
+        "range_4": {
+          "type": "range",
+          "settings": {
+            "collection": "protectors",
+            "image": "elt-protector-room.jpg",
+            "focus": "center",
+            "label": "Protection",
+            "title": "Mattress Protectors",
+            "need": "Spills, sweat or allergies? 100% waterproof, still breathable."
+          }
+        },
+        "range_5": {
+          "type": "range",
+          "settings": {
+            "collection": "duvets",
+            "image": "elt-duvet-throw.jpg",
+            "focus": "center",
+            "label": "Duvets",
+            "title": "Duvets",
+            "need": "Too warm, or too cold? Light as a cloud, warm as you need."
+          }
+        },
+        "range_6": {
+          "type": "range",
+          "settings": {
+            "collection": "cushions",
+            "image": "elt-cushions-rug.jpg",
+            "focus": "center",
+            "label": "Living room",
+            "title": "Cushions",
+            "need": "Sofa cushions gone flat? The plump they’re missing."
+          }
+        }
+      },
+      "block_order": [
+        "range_1",
+        "range_2",
+        "range_3",
+        "range_4",
+        "range_5",
+        "range_6"
+      ],
+      "settings": {
+        "overlap": false,
+        "eyebrow": "Shop by range",
+        "heading": "Six ways to",
+        "heading_em": "a better night",
+        "link_label": "Shop all",
+        "link": "/collections/all"
+      }
+    },
+    "topper": {
+      "type": "topper-story",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "10cm deep",
+            "body": "10cm of plump, even softness on top of the mattress you already have.",
+            "image": "topper-bed-marble.jpg",
+            "alt": "Quilted Mattress Topper on a bed in warm evening light",
+            "focus": "center"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Quilted to stay even",
+            "body": "Box quilting keeps the 1100–1200 GSM microfibre fill even across the whole bed.",
+            "image": "topper-hand-press.jpg",
+            "alt": "Hand pressing into the quilted microfibre fill",
+            "focus": "center 70%"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Stays put",
+            "body": "Elastic corner straps give it a secure, non-slip fit.",
+            "image": "topper-strap-fit.png",
+            "alt": "Fitting the topper’s elastic strap under the mattress",
+            "focus": "center"
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Breathable and washable",
+            "body": "Breathable and hypoallergenic, so heat doesn’t build up while you sleep. Machine washable when it needs a refresh.",
+            "image": "topper-sleeping.jpg",
+            "alt": "Woman asleep on the Mattress Topper",
+            "focus": "center"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "settings": {
+        "overlap": false,
+        "rounded": true,
+        "eyebrow": "Mattress Topper · Hero range",
+        "heading": "Your bed,",
+        "heading_em": "made new.",
+        "product": "cloud-topper",
+        "button_label": "Shop the topper",
+        "price_text": "Single to Super King, from"
+      }
+    },
+    "best": {
+      "type": "best-sellers",
+      "blocks": {
+        "tab_1": {
+          "type": "tab",
+          "settings": {
+            "label": "All",
+            "collection": "all",
+            "products": [
+              "guard-mattress-protector",
+              "v-shape-pillow",
+              "duck-feather-pillows",
+              "luxury-hollowfibre-10-5-tog"
+            ],
+            "first_tag": "No. 1 best seller",
+            "shop_label": "Shop all products"
+          }
+        },
+        "tab_2": {
+          "type": "tab",
+          "settings": {
+            "label": "Pillows",
+            "collection": "pillows",
+            "products": [
+              "duck-feather-pillows",
+              "v-shape-pillow",
+              "u-shape-pillow",
+              "bolster-pillow"
+            ],
+            "first_tag": "No. 1 in pillows",
+            "shop_label": "Shop all pillows"
+          }
+        },
+        "tab_3": {
+          "type": "tab",
+          "settings": {
+            "label": "Duvets",
+            "collection": "duvets",
+            "products": [
+              "luxury-hollowfibre-10-5-tog",
+              "luxury-hollowfibre-13-5-tog",
+              "luxury-microfibre-13-5-tog",
+              "luxury-hollowfibre-4-5-tog"
+            ],
+            "first_tag": "No. 1 in duvets",
+            "shop_label": "Shop all duvets"
+          }
+        },
+        "tab_4": {
+          "type": "tab",
+          "settings": {
+            "label": "Protectors",
+            "collection": "protectors",
+            "products": [
+              "guard-mattress-protector",
+              "terry-waterproof-protector"
+            ],
+            "first_tag": "No. 1 in protectors",
+            "shop_label": "Shop all protectors"
+          }
+        },
+        "tab_5": {
+          "type": "tab",
+          "settings": {
+            "label": "Support pillows",
+            "collection": "bump-and-baby",
+            "products": [
+              "v-shape-pillow",
+              "u-shape-pillow"
+            ],
+            "first_tag": "No. 1 in support pillows",
+            "shop_label": "Shop all support pillows"
+          }
+        }
+      },
+      "block_order": [
+        "tab_1",
+        "tab_2",
+        "tab_3",
+        "tab_4",
+        "tab_5"
+      ],
+      "settings": {
+        "overlap": true,
+        "eyebrow": "Most loved",
+        "heading": "Best sellers",
+        "tabs_label": "Best sellers by category"
+      }
+    },
+    "bundle": {
+      "type": "bundle",
+      "blocks": {
+        "layer_1": {
+          "type": "layer",
+          "settings": {
+            "layer": "Topper",
+            "products": [
+              "cloud-topper"
+            ],
+            "tog_labels": "4.5 tog|10.5 tog|13.5 tog",
+            "tog_group_label": "Duvet tog",
+            "default_tog": 1,
+            "default_size": 3,
+            "x": 11,
+            "y": 46
+          }
+        },
+        "layer_2": {
+          "type": "layer",
+          "settings": {
+            "layer": "Pillows",
+            "products": [
+              "duck-feather-pillows"
+            ],
+            "tog_labels": "4.5 tog|10.5 tog|13.5 tog",
+            "tog_group_label": "Duvet tog",
+            "default_tog": 1,
+            "default_size": 1,
+            "x": 17,
+            "y": 33
+          }
+        },
+        "layer_3": {
+          "type": "layer",
+          "settings": {
+            "layer": "Duvet",
+            "products": [
+              "luxury-hollowfibre-4-5-tog",
+              "luxury-hollowfibre-10-5-tog",
+              "luxury-hollowfibre-13-5-tog"
+            ],
+            "tog_labels": "4.5 tog|10.5 tog|13.5 tog",
+            "tog_group_label": "Duvet tog",
+            "default_tog": 2,
+            "default_size": 2,
+            "x": 72,
+            "y": 62
+          }
+        }
+      },
+      "block_order": [
+        "layer_1",
+        "layer_2",
+        "layer_3"
+      ],
+      "settings": {
+        "overlap": true,
+        "space_above": true,
+        "only_marked": false,
+        "image": "elt-duvet-floor.jpg",
+        "image_alt": "White duvet and duck feather pillows on a bed with a quilted topper",
+        "eyebrow": "Build your bed",
+        "heading": "The whole bed,",
+        "heading_em": "10% off",
+        "text": "Pick a size for the topper, pillows and duvet. Add all three to your bag and we take 10% off.",
+        "bundle_label": "Bundle price",
+        "save_text": "You save",
+        "hint_text": "Add all three to save 10%",
+        "heading_plain": "The whole bed, in one go",
+        "text_plain": "Pick a size for the topper, pillows and duvet, then add them to your bag together.",
+        "total_label": "Total",
+        "cta_all": "Add all 3 to bag",
+        "cta_some": "Add [n] items to bag",
+        "cta_one": "Add 1 item to bag",
+        "cta_none": "Choose at least one"
+      }
+    },
+    "band": {
+      "type": "photo-band",
+      "settings": {
+        "overlap": false,
+        "rounded": true,
+        "image": "elt-pillow-coffee.jpg",
+        "image_alt": "Hand resting on a soft white pillow beside a morning coffee",
+        "focus": "center",
+        "eyebrow": "Duck Feather Pillows",
+        "heading": "Hotel nights,",
+        "heading_em": "every night.",
+        "text": "Natural duck feather and down in a double-stitched cotton cover, sold in pairs.",
+        "button_label": "Shop pillows",
+        "button_link": "/collections/pillows"
+      }
+    },
+    "reviews": {
+      "type": "reviews",
+      "blocks": {
+        "r1_1": {
+          "type": "review",
+          "settings": {
+            "row": "1",
+            "title": "Very good buy",
+            "text": "If you want an extra layer of the mattress, this is the protector you need to get. It came in the right size as I wanted and also thick as well. Its winter now and you need all the heat protection as possible, this did it for me. I highly recommend it.",
+            "name": "Ade",
+            "meta": "Verified purchase · Double"
+          }
+        },
+        "r1_2": {
+          "type": "review",
+          "settings": {
+            "row": "1",
+            "title": "Excellent Mattress Protector",
+            "text": "Excellent. Great quality and deep sides/corners so it doesn't slip off.",
+            "name": "JD",
+            "meta": "Verified purchase · King"
+          }
+        },
+        "r1_3": {
+          "type": "review",
+          "settings": {
+            "row": "1",
+            "title": "Great for protecting mattress",
+            "text": "Excellent for keeping stains off of your mattress. Been using for about 6 months, washes well, need to hang it out as it drips. Overall great for protecting mattress",
+            "name": "Amazon Customer",
+            "meta": "Verified purchase · Small Double"
+          }
+        },
+        "r1_4": {
+          "type": "review",
+          "settings": {
+            "row": "1",
+            "title": "Good product",
+            "text": "Great product, fits well and more importantly....stays where it should!",
+            "name": "harrygilfillan",
+            "meta": "Verified purchase · King"
+          }
+        },
+        "r1_5": {
+          "type": "review",
+          "settings": {
+            "row": "1",
+            "title": "Quilted mattress cover",
+            "text": "Very good value and so comfortable. One happy customer.",
+            "name": "Amazon Customer",
+            "meta": "Verified purchase · Double"
+          }
+        },
+        "r2_1": {
+          "type": "review",
+          "settings": {
+            "row": "2",
+            "title": "Mattress protector",
+            "text": "Great item. Very good quality. Great fit.",
+            "name": "Coffee lover",
+            "meta": "Verified purchase · King"
+          }
+        },
+        "r2_2": {
+          "type": "review",
+          "settings": {
+            "row": "2",
+            "title": "Good quality",
+            "text": "Good quality, does the job and looks nice.",
+            "name": "J.Harris",
+            "meta": "Verified purchase · Double"
+          }
+        },
+        "r2_3": {
+          "type": "review",
+          "settings": {
+            "row": "2",
+            "title": "Well delivered",
+            "text": "Good quality easy to fit",
+            "name": "scottie",
+            "meta": "Verified purchase · King"
+          }
+        },
+        "r2_4": {
+          "type": "review",
+          "settings": {
+            "row": "2",
+            "title": "Order the correct size.",
+            "text": "I found this item perfect and delivery was excellent.",
+            "name": "Charles Wood",
+            "meta": "Verified purchase · Double"
+          }
+        },
+        "r2_5": {
+          "type": "review",
+          "settings": {
+            "row": "2",
+            "title": "Fits well.",
+            "text": "As described.",
+            "name": "Barbara Boscott",
+            "meta": "Verified purchase · Double"
+          }
+        }
+      },
+      "block_order": [
+        "r1_1",
+        "r1_2",
+        "r1_3",
+        "r1_4",
+        "r1_5",
+        "r2_1",
+        "r2_2",
+        "r2_3",
+        "r2_4",
+        "r2_5"
+      ],
+      "settings": {
+        "overlap": true,
+        "rounded": false,
+        "anchor": "reviews",
+        "eyebrow": "Mattress Protector reviews · Amazon UK",
+        "heading": "“Stays where",
+        "heading_em": "it should!",
+        "heading_after": "”",
+        "rating_text": "out of 5 on Amazon UK",
+        "row_1_label": "Customer reviews",
+        "row_2_label": "More customer reviews",
+        "link_label": "All reviews on Amazon"
+      }
+    },
+    "story": {
+      "type": "story",
+      "blocks": {
+        "value_1": {
+          "type": "value",
+          "settings": {
+            "title": "Considered comfort",
+            "text": "It starts with how it feels."
+          }
+        },
+        "value_2": {
+          "type": "value",
+          "settings": {
+            "title": "Honest quality",
+            "text": "Fill, fabric and size, stated plainly."
+          }
+        },
+        "value_3": {
+          "type": "value",
+          "settings": {
+            "title": "Care in the detail",
+            "text": "Made to be washed and kept fresh at home."
+          }
+        },
+        "value_4": {
+          "type": "value",
+          "settings": {
+            "title": "Restorative calm",
+            "text": "A bed that feels like a good hotel’s."
+          }
+        }
+      },
+      "block_order": [
+        "value_1",
+        "value_2",
+        "value_3",
+        "value_4"
+      ],
+      "settings": {
+        "overlap": true,
+        "rounded": false,
+        "image_1": "elx-quilted-pillows.png",
+        "image_1_alt": "Woman asleep in crisp white Elitlux bedding",
+        "image_2": "pillow-fabric-detail.jpg",
+        "image_2_alt": "Close-up of a pillow corner and seam",
+        "image_2_caption": "Honest quality",
+        "image_3": "elt-duvet-folds.jpg",
+        "image_3_alt": "Soft folds of a white duvet",
+        "image_3_caption": "Considered comfort",
+        "eyebrow": "Our story",
+        "heading": "Rest,",
+        "heading_em": "elevated.",
+        "lead": "Elitlux is a UK bedding brand founded on a simple belief: everyone deserves to sleep the way they do in a good hotel — without paying hotel prices for it.",
+        "text": "We design duvets, pillows, protectors, toppers and cushions that bring that feeling home.",
+        "button_label": "About Elitlux",
+        "button_link": "/pages/about"
+      }
+    },
+    "offer": {
+      "type": "offer",
+      "settings": {
+        "overlap": false,
+        "rounded": true,
+        "anchor": "offer",
+        "eyebrow": "Welcome to Elitlux",
+        "heading": "10% off",
+        "heading_em": "your first order.",
+        "text": "Join our list and we’ll email your code straight away, plus new ranges and care tips now and then.",
+        "placeholder": "Email address",
+        "button_label": "Get 10% off",
+        "error": "Please enter a valid email address.",
+        "small_print": "One code per customer, for your first order. Unsubscribe any time.",
+        "success": "Thank you. Your code is on its way to [email].",
+        "image": "elx-comfort-room.png",
+        "image_alt": "Bright bedroom with a navy throw on a white bed"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "strip",
+    "ranges",
+    "topper",
+    "best",
+    "bundle",
+    "band",
+    "reviews",
+    "story",
+    "offer"
+  ]
+}

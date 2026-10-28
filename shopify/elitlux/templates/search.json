@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-search",
+      "settings": {
+        "title": "Search",
+        "placeholder": "Search toppers, pillows, protectors…",
+        "suggestions": "Mattress topper, U-shape pillow, Waterproof protector, 13.5 tog duvet, Cushion pad",
+        "none_text": "Try a simpler word like topper, pillow, protector or duvet, or ask us. We’re here 24/7.",
+        "none_button": "Contact us",
+        "none_link": "/pages/contact"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

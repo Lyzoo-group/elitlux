@@ -1,0 +1,25 @@
+<section class="pg" style="z-index:{{ section.index }}">
+  <h1 class="cart__h">{{ section.settings.heading }}</h1>
+  <ul role="list" class="srch__grid">
+    {%- for c in collections -%}
+      {%- unless c.handle == 'frontpage' -%}
+        {%- assign card = c.metafields.custom.page.value.card -%}
+        {%- assign cf = card.file | default: c.metafields.custom.page.value.hero.file -%}
+        <li class="sc">
+          <a href="{{ c.url }}" class="sc__img">{% render 'img', file: cf, alt: '', class: 'cover zoom', sizes: '(min-width: 1000px) 23vw, 48vw' %}</a>
+          <div class="sc__t"><h2 class="sc__h"><a href="{{ c.url }}">{{ c.title }}</a></h2></div>
+        </li>
+      {%- endunless -%}
+    {%- endfor -%}
+  </ul>
+</section>
+
+{% schema %}
+{
+  "name": "All collections",
+  "class": "pg-sec",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by range" }
+  ]
+}
+{% endschema %}

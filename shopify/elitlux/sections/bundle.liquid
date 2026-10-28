@@ -1,0 +1,176 @@
+{%- liquid
+  assign s = section.settings
+  assign show = true
+  if s.only_marked
+    assign show = false
+    if collection != blank and collection.metafields.custom.page.value.bundle == true
+      assign show = true
+    endif
+  endif
+  assign wording = settings.bundle_discount_wording
+  assign bf = s.image
+-%}
+{%- if show and section.blocks.size > 0 -%}
+<section id="bundle-{{ section.id }}" class="bdl{% if s.space_above %} bdl--top{% endif %}"{% if s.overlap %} data-ovl{% endif %} aria-labelledby="bdl-title-{{ section.id }}" style="z-index:{{ section.index }}" data-bundle data-wording="{{ wording }}">
+  <div class="bdl__in">
+    <div class="bdl__panel">
+      <div class="bdl__photo" data-reveal>
+        <div class="bdl__photo-in">{% render 'img', file: bf, alt: s.image_alt, class: 'cover', sizes: '(min-width: 1000px) 50vw, 100vw' %}</div>
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign i = forloop.index0
+            assign first = block.settings.products.first
+            assign tipside = 'l'
+            if block.settings.x >= 55
+              assign tipside = 'r'
+            endif
+          -%}
+          {%- if first != blank -%}
+          <div class="bdl__spot" style="left:{{ block.settings.x }}%; top:{{ block.settings.y }}%" data-spot="{{ i }}">
+            <button type="button" class="bdl__dot" aria-expanded="false" aria-label="{{ block.settings.layer | escape }}: {{ first.title | escape }}" data-dot="{{ i }}">
+              <span aria-hidden="true" class="bdl__pulse"></span>
+              <span aria-hidden="true" class="bdl__num">{{ forloop.index }}</span>
+            </button>
+            <div class="bdl__tip bdl__tip--{{ tipside }}" hidden data-tip>
+              <span class="ey">{{ block.settings.layer }}</span>
+              <a href="{{ first.url }}" class="bdl__tip-t" data-b-link>{{ first.title }}</a>
+              <span class="bdl__tip-p" data-b-price></span>
+            </div>
+          </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <div class="bdl__body" data-reveal>
+        <div class="bdl__head">
+          <p class="ey">{{ s.eyebrow }}</p>
+          {%- if wording -%}
+            <h2 id="bdl-title-{{ section.id }}" class="bdl__h">{{ s.heading }} <em class="em-navy">{{ s.heading_em }}</em></h2>
+            <p class="bdl__p">{{ s.text }}</p>
+          {%- else -%}
+            <h2 id="bdl-title-{{ section.id }}" class="bdl__h">{{ s.heading_plain }}</h2>
+            <p class="bdl__p">{{ s.text_plain }}</p>
+          {%- endif -%}
+        </div>
+        <ol role="list" class="bdl__rows">
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign i = forloop.index0
+              assign plist = block.settings.products
+              assign pcount = 0
+              for x in plist
+                assign pcount = pcount | plus: 1
+              endfor
+              assign togs = block.settings.tog_labels | split: '|'
+              assign dt = block.settings.default_tog | minus: 1
+              assign dv = block.settings.default_size | minus: 1
+            -%}
+            {%- if pcount > 0 -%}
+            <li class="bdl__row is-on" data-row="{{ i }}" data-default-tog="{{ dt }}" {{ block.shopify_attributes }}>
+              <label class="bdl__check"><input type="checkbox" checked data-check aria-label="Include {{ plist.first.title | escape }}"></label>
+              {%- for x in plist -%}
+                {%- liquid
+                  assign k = forloop.index0
+                  assign im = x.featured_image
+                  assign multi = true
+                  if x.has_only_default_variant or x.variants.size == 1
+                    assign multi = false
+                  endif
+                  assign pick = dv
+                  if pick >= x.variants.size
+                    assign pick = x.variants.size | minus: 1
+                  endif
+                -%}
+                <div class="bdl__prod" data-prod="{{ k }}" data-title="{{ x.title | escape }}" data-url="{{ x.url }}"{% unless k == dt or pcount == 1 %} hidden{% endunless %}>
+                  <a href="{{ x.url }}" class="bdl__thumb" tabindex="-1" aria-hidden="true">{%- if im -%}{{ im | image_url: width: 400 | image_tag: loading: 'lazy', alt: '', widths: '180, 270, 400', sizes: '88px' }}{%- endif -%}<span class="bdl__badge">{{ forloop.parentloop.index }}</span></a>
+                  <div class="bdl__info">
+                    <div class="bdl__top">
+                      <div class="bdl__name"><span class="ey">{{ block.settings.layer }}</span><a href="{{ x.url }}" class="bdl__title">{{ x.title }}</a></div>
+                      <span class="bdl__price" data-row-price></span>
+                    </div>
+                    {%- if pcount > 1 -%}
+                      <div role="group" aria-label="{{ block.settings.tog_group_label | escape }}" class="bdl__chips">
+                        {%- for t in togs -%}
+                          <button type="button" class="chip" aria-pressed="{% if forloop.index0 == k %}true{% else %}false{% endif %}" data-tog="{{ forloop.index0 }}">{{ t | strip }}</button>
+                        {%- endfor -%}
+                      </div>
+                    {%- endif -%}
+                    {%- if multi -%}
+                      <div role="group" aria-label="{{ block.settings.layer | escape }} {{ x.options.first | downcase | escape }}" class="bdl__chips">
+                        {%- for v in x.variants -%}
+                          <button type="button" class="chip" aria-pressed="{% if forloop.index0 == pick %}true{% else %}false{% endif %}" data-v="{{ v.id }}" data-price="{{ v.price }}"{% unless v.available %} disabled{% endunless %}>{{ v.title }}</button>
+                        {%- endfor -%}
+                      </div>
+                    {%- else -%}
+                      <span hidden><button type="button" class="chip" aria-pressed="true" data-v="{{ x.variants.first.id }}" data-price="{{ x.variants.first.price }}">{{ x.variants.first.title }}</button></span>
+                    {%- endif -%}
+                  </div>
+                </div>
+              {%- endfor -%}
+            </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ol>
+        <div class="bdl__total">
+          <div class="bdl__sum">
+            <span class="bdl__sum-l" data-total-label>{{ s.total_label }}</span>
+            <span class="bdl__sum-r"><span class="bdl__pay" data-pay></span><s class="bdl__full" data-full hidden></s></span>
+            <span class="bdl__note" data-note{% unless wording %} hidden{% endunless %}></span>
+          </div>
+          <button type="button" class="bdl__cta" data-bundle-add><span data-cta>{{ s.cta_all }}</span>{% render 'icon', i: 'bag2', s: 20 %}</button>
+        </div>
+        <p class="bdl__err" role="alert" data-bundle-error hidden></p>
+        <span hidden data-copy data-total="{{ s.total_label | escape }}" data-bundle-label="{{ s.bundle_label | escape }}" data-save="{{ s.save_text | escape }}" data-hint="{{ s.hint_text | escape }}" data-cta-all="{{ s.cta_all | escape }}" data-cta-some="{{ s.cta_some | escape }}" data-cta-one="{{ s.cta_one | escape }}" data-cta-none="{{ s.cta_none | escape }}"></span>
+      </div>
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Build your bed",
+  "class": "bdl-sec",
+  "settings": [
+    { "type": "checkbox", "id": "overlap", "label": "Overlap the section above with a rounded top", "default": false },
+    { "type": "checkbox", "id": "space_above", "label": "Space above the panel", "default": true, "info": "Off on collection pages, where the banner above already adds space." },
+    { "type": "checkbox", "id": "only_marked", "label": "On collection pages, show only for collections marked for the bundle", "default": false, "info": "Reads \"bundle\": true in the collection's custom.page metafield (Toppers, Pillows, Duvets)." },
+    { "type": "text", "id": "image", "label": "Photo filename (Content → Files)", "default": "elt-duvet-floor.jpg" },
+    { "type": "text", "id": "image_alt", "label": "Photo description", "default": "White duvet and duck feather pillows on a bed with a quilted topper" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Build your bed" },
+    { "type": "header", "content": "Copy with the 10% bundle offer", "info": "Used while Theme settings → Bundle offer → Show the 10% wording is on." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The whole bed," },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part", "default": "10% off" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Pick a size for the topper, pillows and duvet. Add all three to your bag and we take 10% off." },
+    { "type": "text", "id": "bundle_label", "label": "Total label when all three are ticked", "default": "Bundle price" },
+    { "type": "text", "id": "save_text", "label": "Saving line (£ amount is added)", "default": "You save" },
+    { "type": "text", "id": "hint_text", "label": "Hint when not all three are ticked", "default": "Add all three to save 10%" },
+    { "type": "header", "content": "Copy without the offer" },
+    { "type": "text", "id": "heading_plain", "label": "Heading", "default": "The whole bed, in one go" },
+    { "type": "textarea", "id": "text_plain", "label": "Text", "default": "Pick a size for the topper, pillows and duvet, then add them to your bag together." },
+    { "type": "header", "content": "Total and button" },
+    { "type": "text", "id": "total_label", "label": "Total label", "default": "Total" },
+    { "type": "text", "id": "cta_all", "label": "Button, all three ticked", "default": "Add all 3 to bag" },
+    { "type": "text", "id": "cta_some", "label": "Button, some ticked ([n] = count)", "default": "Add [n] items to bag" },
+    { "type": "text", "id": "cta_one", "label": "Button, one ticked", "default": "Add 1 item to bag" },
+    { "type": "text", "id": "cta_none", "label": "Button, none ticked", "default": "Choose at least one" }
+  ],
+  "blocks": [
+    {
+      "type": "layer",
+      "name": "Layer",
+      "settings": [
+        { "type": "text", "id": "layer", "label": "Layer name", "default": "Topper" },
+        { "type": "product_list", "id": "products", "label": "Product (add several for tog choices)", "limit": 4 },
+        { "type": "text", "id": "tog_labels", "label": "Choice labels, one per product, separated by |", "default": "4.5 tog|10.5 tog|13.5 tog" },
+        { "type": "text", "id": "tog_group_label", "label": "Accessible name for the choices", "default": "Duvet tog" },
+        { "type": "number", "id": "default_tog", "label": "Product chosen at first (1 = first)", "default": 1 },
+        { "type": "number", "id": "default_size", "label": "Size chosen at first (1 = first)", "default": 1 },
+        { "type": "range", "id": "x", "label": "Hotspot from the left", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 50 },
+        { "type": "range", "id": "y", "label": "Hotspot from the top", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 50 }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [{ "name": "Build your bed" }]
+}
+{% endschema %}

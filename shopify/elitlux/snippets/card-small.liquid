@@ -1,0 +1,16 @@
+{%- comment -%} Small product card (photo 3/2): "You may also like", bag suggestions, search results. {%- endcomment -%}
+{%- liquid
+  assign im = product.featured_image
+  assign badge = product.metafields.custom.badges.value | split: ',' | first | strip
+-%}
+<li class="sc" data-reveal>
+  <a href="{{ product.url }}" class="sc__img">
+    {%- if im -%}{{ im | image_url: width: 900 | image_tag: loading: 'lazy', alt: im.alt, class: 'zoom', widths: '360, 540, 720, 900', sizes: '(min-width: 1000px) 23vw, 48vw' }}{%- endif -%}
+    {%- if badge != blank -%}<span class="gc__badge">{{ badge }}</span>{%- endif -%}
+  </a>
+  <div class="sc__t">
+    <p class="ey ey--11">{{ product.metafields.custom.range }}</p>
+    <h3 class="sc__h"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    <p class="sc__price">{% if product.price_varies %}From {% endif %}{{ product.price_min | money }}{% if product.compare_at_price_max > product.price_min %}<s>{{ product.compare_at_price_max | money }}</s>{% endif %}</p>
+  </div>
+</li>

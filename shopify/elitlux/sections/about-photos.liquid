@@ -1,0 +1,29 @@
+{%- liquid
+  assign s = section.settings
+  assign f1 = s.image_1
+  assign f2 = s.image_2
+  assign f3 = s.image_3
+-%}
+<div class="ab-pics" style="z-index:{{ section.index }}">
+  <div class="ab-pics__grid">
+    <div class="ab-pics__arch">{% render 'img', file: f1, alt: s.image_1_alt, class: 'cover zoom', sizes: '(min-width: 760px) 33vw, 100vw' %}</div>
+    <div class="ab-pics__mid">{% render 'img', file: f2, alt: s.image_2_alt, class: 'cover zoom', sizes: '(min-width: 760px) 33vw, 100vw' %}</div>
+    <div class="ab-pics__arch">{% render 'img', file: f3, alt: s.image_3_alt, class: 'cover zoom', sizes: '(min-width: 760px) 33vw, 100vw' %}</div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Three photos (arches)",
+  "class": "ab-pics-sec",
+  "settings": [
+    { "type": "text", "id": "image_1", "label": "Left photo filename", "default": "u-reading-sage.jpg" },
+    { "type": "text", "id": "image_1_alt", "label": "Left photo description", "default": "Woman reading in bed, supported by a U-shape pillow" },
+    { "type": "text", "id": "image_2", "label": "Middle photo filename", "default": "bed-morning-light.jpg" },
+    { "type": "text", "id": "image_2_alt", "label": "Middle photo description", "default": "Unmade white bed in soft morning light" },
+    { "type": "text", "id": "image_3", "label": "Right photo filename", "default": "v-shape-sleeping-sage.jpg" },
+    { "type": "text", "id": "image_3_alt", "label": "Right photo description", "default": "Woman asleep on a V-shape pillow in a sage bedroom" }
+  ],
+  "presets": [{ "name": "Three photos (arches)" }]
+}
+{% endschema %}

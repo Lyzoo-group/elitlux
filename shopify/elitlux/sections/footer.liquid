@@ -1,0 +1,110 @@
+{%- liquid
+  assign ovl = false
+  if section.settings.overlap
+    if template.name == 'index' or template.name == 'collection'
+      assign ovl = true
+    endif
+  endif
+  assign m1 = linklists[section.settings.menu_1]
+  assign m2 = linklists[section.settings.menu_2]
+  assign m3 = linklists[section.settings.menu_3]
+  assign has_care = false
+  if settings.care_email != blank or settings.care_phone != blank or settings.care_hours != blank
+    assign has_care = true
+  endif
+-%}
+<footer class="ft"{% if ovl %} data-ovl{% else %} data-round{% endif %}>
+  <img src="{{ 'elitlux-emblem-navy.png' | asset_url }}" alt="" aria-hidden="true" class="ft__mark" width="620" height="620" loading="lazy">
+  <div class="ft__in">
+    <div class="ft__top">
+      <div class="ft__brand">
+        <img src="{{ 'elitlux-logo-navy.png' | asset_url }}" alt="{{ shop.name | escape }}" class="ft__logo" width="400" height="89" loading="lazy">
+        <p class="ft__muted">{{ section.settings.brand_text }}</p>
+        <p class="ft__muted">{{ section.settings.social_text }} <span class="ft__ink">{{ section.settings.social_handle }}</span></p>
+      </div>
+      <div class="ft__offer">
+        <p class="ey ey--gold">{{ section.settings.offer_eyebrow }}</p>
+        <p class="ft__offer-h">{{ section.settings.offer_title }} <em class="em-navy">{{ section.settings.offer_title_em }}</em></p>
+        <p class="ft__muted">{{ section.settings.offer_text }}</p>
+        <button type="button" class="ft__offer-btn" data-go-offer>{{ section.settings.offer_button }}{% render 'icon', i: 'arrow' %}</button>
+      </div>
+    </div>
+    <div class="ft__cols">
+      {%- if m1.links.size > 0 -%}
+        <nav aria-label="{{ section.settings.menu_1_title | escape }}" class="ft__col">
+          <p class="ey ey--gold">{{ section.settings.menu_1_title }}</p>
+          {%- for link in m1.links -%}<a href="{{ link.url }}" class="ft__a"{% if link.url contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ link.title }}</a>{%- endfor -%}
+        </nav>
+      {%- endif -%}
+      {%- if m2.links.size > 0 -%}
+        <nav aria-label="{{ section.settings.menu_2_title | escape }}" class="ft__col">
+          <p class="ey ey--gold">{{ section.settings.menu_2_title }}</p>
+          {%- for link in m2.links -%}<a href="{{ link.url }}" class="ft__a"{% if link.url contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ link.title }}</a>{%- endfor -%}
+        </nav>
+      {%- endif -%}
+      {%- if m3.links.size > 0 -%}
+        <nav aria-label="{{ section.settings.menu_3_title | escape }}" class="ft__col">
+          <p class="ey ey--gold">{{ section.settings.menu_3_title }}</p>
+          {%- for link in m3.links -%}<a href="{{ link.url }}" class="ft__a"{% if link.url contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ link.title }}</a>{%- endfor -%}
+        </nav>
+      {%- endif -%}
+      {%- if has_care -%}
+        <div class="ft__col ft__col--txt">
+          <p class="ey ey--gold">{{ section.settings.care_title }}</p>
+          {%- if settings.care_email != blank -%}<p><a href="mailto:{{ settings.care_email }}" class="ft__a">{{ settings.care_email }}</a></p>{%- endif -%}
+          {%- if settings.care_phone != blank -%}<p>{{ settings.care_phone }}</p>{%- endif -%}
+          {%- if settings.care_hours != blank -%}<p class="ft__muted0">{{ settings.care_hours }}</p>{%- endif -%}
+        </div>
+      {%- endif -%}
+      <address class="ft__col ft__col--txt ft__addr">
+        <p class="ey ey--gold">{{ section.settings.company_title }}</p>
+        <p>{{ section.settings.company_name }}</p>
+        <p class="ft__muted0">{{ section.settings.company_reg }}</p>
+        <p class="ft__muted0">{{ section.settings.company_address | newline_to_br }}</p>
+      </address>
+    </div>
+    <div class="ft__bar">
+      <p>{{ section.settings.copyright }}</p>
+      <div class="ft__legal">
+        {%- if shop.privacy_policy != blank -%}<a href="{{ shop.privacy_policy.url }}">{{ section.settings.privacy_label }}</a>{%- endif -%}
+        {%- if shop.refund_policy != blank -%}<a href="{{ shop.refund_policy.url }}">{{ section.settings.refund_label }}</a>{%- endif -%}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "class": "ft-sec",
+  "settings": [
+    { "type": "checkbox", "id": "overlap", "label": "Overlap the section above with a rounded top on home and collection pages", "default": true, "info": "Other pages keep the rounded top without overlapping, as in the design." },
+    { "type": "textarea", "id": "brand_text", "label": "Brand text", "default": "Elitlux is a UK bedding brand founded on a simple belief: everyone deserves to sleep the way they do in a good hotel — without paying hotel prices for it." },
+    { "type": "text", "id": "social_text", "label": "Social line", "default": "Follow us on Instagram · Facebook · X" },
+    { "type": "text", "id": "social_handle", "label": "Social handle", "default": "@elitlux" },
+    { "type": "header", "content": "Welcome offer" },
+    { "type": "text", "id": "offer_eyebrow", "label": "Eyebrow", "default": "Welcome offer" },
+    { "type": "text", "id": "offer_title", "label": "Heading", "default": "10% off" },
+    { "type": "text", "id": "offer_title_em", "label": "Heading, italic part", "default": "your first order." },
+    { "type": "text", "id": "offer_text", "label": "Text", "default": "Join our list on the homepage and we’ll email your code straight away." },
+    { "type": "text", "id": "offer_button", "label": "Button", "default": "Get 10% off" },
+    { "type": "header", "content": "Link columns" },
+    { "type": "text", "id": "menu_1_title", "label": "Column 1 heading", "default": "Shop" },
+    { "type": "link_list", "id": "menu_1", "label": "Column 1 menu", "default": "footer" },
+    { "type": "text", "id": "menu_2_title", "label": "Column 2 heading", "default": "Help" },
+    { "type": "link_list", "id": "menu_2", "label": "Column 2 menu" },
+    { "type": "text", "id": "menu_3_title", "label": "Column 3 heading", "default": "Elitlux" },
+    { "type": "link_list", "id": "menu_3", "label": "Column 3 menu" },
+    { "type": "text", "id": "care_title", "label": "Customer care heading", "default": "Help, 24/7", "info": "Shown only when an email, phone or hours are filled in under Theme settings → Contact details." },
+    { "type": "header", "content": "Company" },
+    { "type": "text", "id": "company_title", "label": "Heading", "default": "Company" },
+    { "type": "text", "id": "company_name", "label": "Name", "default": "Elitlux Ltd" },
+    { "type": "text", "id": "company_reg", "label": "Registration", "default": "Registered in Scotland, company no. SC855958" },
+    { "type": "textarea", "id": "company_address", "label": "Address", "default": "55 Newton Grove, Newton Mearns\nGlasgow G77 5QJ" },
+    { "type": "header", "content": "Bottom bar" },
+    { "type": "text", "id": "copyright", "label": "Copyright", "default": "© 2026 Elitlux. All rights reserved." },
+    { "type": "text", "id": "privacy_label", "label": "Privacy policy link", "default": "Privacy policy", "info": "Links to the policy in Settings → Policies; hidden until that policy is written." },
+    { "type": "text", "id": "refund_label", "label": "Refund policy link", "default": "Refund & returns policy" }
+  ]
+}
+{% endschema %}

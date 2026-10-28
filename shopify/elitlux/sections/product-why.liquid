@@ -1,0 +1,34 @@
+{%- liquid
+  assign s = section.settings
+  assign benefits = product.metafields.custom.benefits.value
+  assign wim = product.images[1] | default: product.featured_image
+  assign why_title = product.title | replace: ' & ', ' and '
+-%}
+{%- if benefits != blank -%}
+<section class="why"{% if s.overlap %} data-ovl{% elsif s.rounded %} data-round{% endif %} aria-labelledby="why-title" style="z-index:{{ section.index }}">
+  <div class="why__in">
+    <div class="why__img">{%- if wim -%}{{ wim | image_url: width: 1400 | image_tag: loading: 'lazy', class: 'cover', widths: '500, 800, 1100, 1400', sizes: '(min-width: 900px) 45vw, 100vw' }}{%- endif -%}</div>
+    <div class="why__c">
+      <div class="why__head"><p class="ey">{{ s.eyebrow }}</p><h2 id="why-title" class="h2m">{{ why_title }}</h2></div>
+      <ol class="why__list">
+        {%- for b in benefits -%}
+          <li class="why__it"><span aria-hidden="true" class="why__n">{{ forloop.index | prepend: '0' }}</span><div class="why__t"><h3 class="why__h">{{ b[0] }}</h3><p class="why__p">{{ b[1] }}</p></div></li>
+        {%- endfor -%}
+      </ol>
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Why choose it",
+  "class": "why-sec",
+  "settings": [
+    { "type": "paragraph", "content": "Shows when the product has benefits (custom.benefits). Photo = the product's second image." },
+    { "type": "checkbox", "id": "overlap", "label": "Overlap the section above with a rounded top", "default": false },
+    { "type": "checkbox", "id": "rounded", "label": "Rounded top corners (without overlapping)", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why choose it" }
+  ]
+}
+{% endschema %}

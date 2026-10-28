@@ -1,0 +1,38 @@
+{% layout none %}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>Your {{ gift_card.initial_value | money }} gift card · {{ shop.name }}</title>
+    <link rel="icon" type="image/png" href="{{ 'elitlux-leaf.png' | asset_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Lora:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap">
+    {{ 'elitlux.css' | asset_url | stylesheet_tag }}
+    {% render 'css-variables' %}
+    {{ content_for_header }}
+  </head>
+  <body>
+    <main class="page-width section stack-24 gift">
+      <img src="{{ 'elitlux-logo.png' | asset_url }}" alt="{{ shop.name | escape }}" width="108" height="73">
+      <h1 class="h1">Here’s your {{ gift_card.initial_value | money }} <em>gift card.</em></h1>
+      {%- if gift_card.enabled == false or gift_card.expired -%}
+        <p class="form-errors">This gift card can no longer be used.</p>
+      {%- endif -%}
+      <p class="lede">Balance: <strong>{{ gift_card.balance | money }}</strong></p>
+      <p class="gift__code">{{ gift_card.code | format_code }}</p>
+      {%- if gift_card.expires_on -%}
+        <p class="muted">Use it by {{ gift_card.expires_on | date: '%d %B %Y' }}.</p>
+      {%- endif -%}
+      <div class="btn-row">
+        <a href="{{ shop.url }}" class="btn btn--primary">Start shopping</a>
+        <button type="button" class="btn btn--secondary" onclick="window.print()">Print</button>
+      </div>
+      {%- if gift_card.pass_url -%}
+        <a href="{{ gift_card.pass_url }}"><img src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="Add to Apple Wallet" loading="lazy"></a>
+      {%- endif -%}
+    </main>
+  </body>
+</html>

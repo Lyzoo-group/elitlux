@@ -1,0 +1,124 @@
+{%- liquid
+  assign menu = linklists[section.settings.menu]
+  assign right = linklists[section.settings.right_menu]
+  assign mshop = linklists[section.settings.mobile_menu]
+  assign mmore = linklists[section.settings.mobile_more_menu]
+  assign cp = section.settings.card_product
+  assign logo_alt = shop.name | escape
+  assign count = cart.item_count
+  capture bag_label
+    echo 'Bag, ' | append: count
+    if count == 1
+      echo ' item'
+    else
+      echo ' items'
+    endif
+  endcapture
+-%}
+<header class="hdr" data-header>
+  <div class="hdr__in">
+    <a href="{{ routes.root_url }}" class="hdr__logo hdr--wide" aria-label="{{ logo_alt }}, home" data-mega-close><img src="{{ 'elitlux-logo-linen.png' | asset_url }}" alt="{{ logo_alt }}" width="400" height="89"></a>
+    <nav class="hdr__nav hdr--wide" aria-label="Primary">
+      {%- for link in menu.links -%}
+        {%- if link.links.size > 0 -%}
+          <button type="button" class="hdr__shop" aria-expanded="false" aria-controls="mega-menu" data-mega>{{ link.title }}{% render 'icon', i: 'chev', s: 16, w: 1.5 %}</button>
+        {%- else -%}
+          <a href="{{ link.url }}" class="hdr__link" data-mega-close>{{ link.title }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+    <div class="hdr__right hdr--wide" data-mega-close>
+      {%- for link in right.links -%}<a href="{{ link.url }}" class="hdr__txt">{{ link.title }}</a>{%- endfor -%}
+      <a href="{{ routes.search_url }}" class="hdr__ico" aria-label="Search">{% render 'icon', i: 'search', s: 22, w: 1.5 %}</a>
+      <a href="{{ routes.cart_url }}" class="hdr__ico hdr__bag" aria-label="{{ bag_label }}" data-open="CartDrawer" data-cart-link>{% render 'icon', i: 'bag', s: 22, w: 1.5 %}<span class="hdr__count" aria-hidden="true" data-cart-count{% if count == 0 %} hidden{% endif %}>{{ count }}</span></a>
+    </div>
+    <button type="button" class="hdr__menu hdr--narrow" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav" data-open="mobile-nav">{% render 'icon', i: 'menu', s: 24, w: 1.5 %}</button>
+    <a href="{{ routes.root_url }}" class="hdr__mlogo hdr--narrow" aria-label="{{ logo_alt }}, home"><img src="{{ 'elitlux-logo-linen.png' | asset_url }}" alt="{{ logo_alt }}" width="400" height="89"></a>
+    <div class="hdr__mright hdr--narrow">
+      <a href="{{ routes.search_url }}" class="hdr__mico" aria-label="Search">{% render 'icon', i: 'search', s: 22, w: 1.5 %}</a>
+      <a href="{{ routes.cart_url }}" class="hdr__mico hdr__bag" aria-label="{{ bag_label }}" data-open="CartDrawer" data-cart-link>{% render 'icon', i: 'bag', s: 22, w: 1.5 %}<span class="hdr__count" aria-hidden="true" data-cart-count{% if count == 0 %} hidden{% endif %}>{{ count }}</span></a>
+    </div>
+  </div>
+  {%- for link in menu.links -%}
+    {%- if link.links.size > 0 -%}
+      <div id="mega-menu" class="mega" hidden>
+        <div class="mega__in">
+          {%- for col in link.links -%}
+            <div class="mega__col">
+              <p class="ey">{{ col.title }}</p>
+              <ul class="mega__list">
+                {%- for l in col.links -%}
+                  {%- liquid
+                    assign strong = false
+                    if l.type == 'collection_link' or l.type == 'catalog_link' or l.type == 'collections_link'
+                      assign strong = true
+                    endif
+                    assign gap = false
+                    if l.url == '/collections/all' or l.type == 'catalog_link'
+                      assign gap = true
+                    endif
+                  -%}
+                  <li{% if gap %} class="mega__gap"{% endif %}><a href="{{ l.url }}" class="{% if strong %}mega__all{% else %}mega__a{% endif %}">{{ l.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endfor -%}
+          {%- if cp != blank -%}
+            {%- assign card_file = section.settings.card_image -%}
+            <a href="{{ cp.url }}" class="mega__card">
+              {% render 'img', file: card_file, alt: '', class: 'mega__card-img', sizes: '112px', widths: '224, 336' %}
+              <span class="mega__card-t">
+                <span class="ey">{{ section.settings.card_eyebrow }}</span>
+                <span class="mega__card-h">{{ section.settings.card_title }} <em class="em-navy">{{ section.settings.card_title_em }}</em></span>
+                <span class="mega__card-p">{{ section.settings.card_line }} {{ cp.price_min | money }}</span>
+              </span>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+</header>
+
+<div id="mobile-nav" class="dialog mnav" hidden>
+  <div class="mnav__scrim" data-close></div>
+  <div class="mnav__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="mnav__top">
+      <img src="{{ 'elitlux-logo-navy.png' | asset_url }}" alt="{{ logo_alt }}" width="400" height="89">
+      <button type="button" class="mnav__close" aria-label="Close menu" data-close data-autofocus>{% render 'icon', i: 'close', s: 22, w: 1.5 %}</button>
+    </div>
+    <nav class="mnav__nav" aria-label="Mobile">
+      <p class="ey mnav__label">{{ section.settings.mobile_shop_label }}</p>
+      {%- for link in mshop.links -%}<a href="{{ link.url }}" class="mnav__big">{{ link.title }}</a>{%- endfor -%}
+      <p class="ey mnav__label mnav__label--2">{{ section.settings.mobile_more_label }}</p>
+      {%- for link in mmore.links -%}<a href="{{ link.url }}" class="mnav__small"{% if link.url contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ link.title }}</a>{%- endfor -%}
+    </nav>
+    <div class="mnav__note"><p>{{ section.settings.mobile_note_1 }}</p><p class="mnav__note2">{{ section.settings.mobile_note_2 }}</p></div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "hdr-sec",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Main menu (an item with sub-items opens the mega menu)", "default": "main-menu" },
+    { "type": "link_list", "id": "right_menu", "label": "Links before search and bag" },
+    { "type": "header", "content": "Mega menu card" },
+    { "type": "product", "id": "card_product", "label": "Product" },
+    { "type": "text", "id": "card_image", "label": "Photo filename (Content → Files)", "default": "topper-sleeping.jpg" },
+    { "type": "text", "id": "card_eyebrow", "label": "Eyebrow", "default": "Hero range" },
+    { "type": "text", "id": "card_title", "label": "Title", "default": "Your bed," },
+    { "type": "text", "id": "card_title_em", "label": "Title, italic part", "default": "made new." },
+    { "type": "text", "id": "card_line", "label": "Line before the price", "default": "Mattress Topper · from" },
+    { "type": "header", "content": "Mobile menu" },
+    { "type": "text", "id": "mobile_shop_label", "label": "First heading", "default": "Shop" },
+    { "type": "link_list", "id": "mobile_menu", "label": "First menu", "default": "footer" },
+    { "type": "text", "id": "mobile_more_label", "label": "Second heading", "default": "Elitlux" },
+    { "type": "link_list", "id": "mobile_more_menu", "label": "Second menu" },
+    { "type": "text", "id": "mobile_note_1", "label": "Footer note", "default": "Free UK delivery on every order" },
+    { "type": "text", "id": "mobile_note_2", "label": "Footer note, second line", "default": "Help, 24/7" }
+  ]
+}
+{% endschema %}

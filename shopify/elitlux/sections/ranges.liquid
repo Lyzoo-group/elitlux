@@ -1,0 +1,81 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="rng" aria-labelledby="rng-title-{{ section.id }}" style="z-index:{{ section.index }}"{% if s.overlap %} data-ovl{% endif %}>
+  <div class="rng__in">
+    <div class="sec-head">
+      <div class="sec-head__t">
+        <p class="ey">{{ s.eyebrow }}</p>
+        <h2 id="rng-title-{{ section.id }}" class="h2x">{{ s.heading }} <em class="em-navy">{{ s.heading_em }}</em></h2>
+      </div>
+      {%- if s.link_label != blank -%}<a href="{{ s.link }}" class="alink">{{ s.link_label }}{% render 'icon', i: 'arrow' %}</a>{%- endif -%}
+    </div>
+    <ul role="list" class="rng__list" data-reveal data-ranges>
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign c = block.settings.collection
+          assign url = '#'
+          if c != blank
+            assign url = c.url
+          endif
+          assign minp = 999999999
+          if c != blank
+            for p in c.products limit: 50
+              if p.price_min < minp
+                assign minp = p.price_min
+              endif
+            endfor
+          endif
+          assign num = forloop.index | prepend: '0'
+          assign bf = block.settings.image
+          assign pos = 'object-position:' | append: block.settings.focus
+        -%}
+        <li class="rng__it{% if forloop.first %} is-on{% endif %}" data-range {{ block.shopify_attributes }}>
+          <a href="{{ url }}" class="rng__a">
+            {% render 'img', file: bf, alt: '', class: 'rng__img', style: pos, sizes: '(min-width: 900px) 50vw, 100vw' %}
+            <span aria-hidden="true" class="rng__grad"></span>
+            <span aria-hidden="true" class="rng__dim"></span>
+            <span aria-hidden="true" class="rng__lab"><span class="rng__lab-n">{{ num }}</span><span class="rng__lab-t">{{ block.settings.title }}</span></span>
+            <span class="rng__det">
+              <span class="ey ey--mist">{{ num }} · {{ block.settings.label }}</span>
+              <span class="rng__det-t">{{ block.settings.title }}</span>
+              <span class="rng__det-p">{{ block.settings.need }}</span>
+              <span class="rng__det-b">{% if minp < 999999999 %}From {{ minp | money }}{% endif %}{% render 'icon', i: 'arrow' %}</span>
+            </span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Shop by range",
+  "class": "rng-sec",
+  "settings": [
+    { "type": "checkbox", "id": "overlap", "label": "Overlap the section above with a rounded top", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop by range" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Six ways to" },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part", "default": "a better night" },
+    { "type": "text", "id": "link_label", "label": "Link", "default": "Shop all" },
+    { "type": "url", "id": "link", "label": "Link target", "default": "/collections/all" }
+  ],
+  "blocks": [
+    {
+      "type": "range",
+      "name": "Range panel",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "image", "label": "Photo filename (Content → Files)" },
+        { "type": "text", "id": "focus", "label": "Photo focus (CSS object-position)", "default": "center" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Toppers" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Mattress Toppers" },
+        { "type": "textarea", "id": "need", "label": "Line shown when open" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "Shop by range" }]
+}
+{% endschema %}

@@ -1,0 +1,23 @@
+{%- comment -%}
+  Loads a photo by filename. First looks in Content → Files (images[file]); falls back to a theme asset of the same name.
+  Params: file (filename), alt, class, style, loading ('lazy' | 'eager'), sizes, widths, priority (true for the hero).
+  Compute any dynamic values in a variable before calling: {% render 'img', file: f, alt: a %}
+{%- endcomment -%}
+{%- liquid
+  assign f = file | strip
+  assign im = images[f]
+  assign ld = loading | default: 'lazy'
+  assign w = widths | default: '480, 800, 1200, 1600, 2000, 2400'
+  assign sz = sizes | default: '100vw'
+  assign fp = 'auto'
+  if priority
+    assign fp = 'high'
+  endif
+-%}
+{%- if f != blank -%}
+  {%- if im != blank -%}
+    {{- im | image_url: width: 2400 | image_tag: loading: ld, class: class, alt: alt, style: style, widths: w, sizes: sz, decoding: 'async', fetchpriority: fp -}}
+  {%- else -%}
+    <img src="{{ f | asset_url }}" alt="{{ alt | escape }}" loading="{{ ld }}" decoding="async"{% if class != blank %} class="{{ class }}"{% endif %}{% if style != blank %} style="{{ style }}"{% endif %}>
+  {%- endif -%}
+{%- endif -%}

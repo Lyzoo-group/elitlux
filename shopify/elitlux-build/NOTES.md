@@ -1,0 +1,42 @@
+# Elitlux Shopify build notes (working file)
+
+Store: Elitlux (elitlux.co.uk), GBP, Basic, GMT. Online Store publication gid://shopify/Publication/224633782484 (POS 224633815252).
+Found 28 Oct: 0 products, 0 files, 0 metafield definitions; collection "Home page" (frontpage, gid 511866405076, default, empty); page Contact gid://shopify/Page/165508055252 (handle contact, suffix contact); menus main-menu gid://shopify/Menu/273987535060 (Home, Catalog, Contact), footer gid://shopify/Menu/273987567828 (Search); themes Horizon MAIN 188701933780, "Copy of Elitlux" UNPUBLISHED 189505765588.
+API 2026-10: Collection.ruleSet deprecated (use sources) — check collectionCreate input via schema; Publication.name deprecated (catalog.title).
+
+Prototype map (Elitlux Storefront.dc.html): header 41–134 · home 135–270 · collection 271–435 · product 436–618 · about 619–680 · contact 681–765 · cart 766–829 · search 830–855 · footer + overlays 856–1031 · logic 1033–1704. Lines >1900 chars: 145,162,170,182,194,225,226,318,353,368,399,400,467,588,666,667 (225/226 = the two review rows, identical on every page).
+Extracted data: shopify/elitlux-build/_proto-data.json (PNG, AM, ORDER, RG, NEED, CATS, BDL, TC, STRIP, BEST_BY, BS_TABS, BS_PIC, BEST_IMG, PRODUCTS, COLLECTIONS).
+Reusable from old Elovela theme: shopify/theme/ (assets/elovela.js cart drawer/product form/quick add; sections main-product, cart-drawer, main-cart; snippets pic, product-card).
+
+Done 28 Oct (via API)
+- 16 metafield definitions (product custom.range, spec_line, lead, badges, features, specs, care, benefits, faqs, compare, related, dims, pairs_with, short_name; collection custom.page, custom.chips).
+- Collections (smart, published to Online Store): all 513715568852 (price > 0) · toppers 513715601620 · pillows 513715634388 · bump-and-baby 513715699924 (Support Pillows) · protectors 513715732692 · duvets 513715765460 · cushions 513715798228. custom.page JSON = shopify/elitlux-build/collection-pages.json; chips pipe-separated. sortOrder CREATED (check order after import).
+- Pages: about 166773817556 (suffix about, new) · contact 165508055252 (suffix contact, existing).
+- Menus: main-menu (Shop → 4 columns with product links as /products/… HTTP + All X collection links; then Toppers, Pillows, Support Pillows, Protectors, Duvets) · footer = "Footer: Shop" (Shop all … Cushions; also the mobile Shop list) · footer-help · footer-elitlux · header-links (About, Help) · mobile-more (About Elitlux, Help & contact, Amazon).
+- Card photo overrides: collection grid duck pillows → images[2] pillow-fabric-detail (BEST_IMG); best sellers BS_PIC indexes. Plan: product json metafield custom.card_photos {grid, best}.
+
+Decisions
+- Theme files written so far (shopify/elitlux): layout/theme.liquid; snippets img, icon (i: arrow chev prev next search bag bag2 menu close star4 truck chat tag returns check minus plus plus-faq plus-acc; s size, w stroke), stars (w,h,base,pct,tag,label), star-paths, card-best (data-quick/data-range/data-option or data-add-id), quick-add (#QuickAdd dialog + toast); sections header (+#mobile-nav dialog, mega #mega-menu from main-menu item with children; promo card), strip (blocks item text/opens_offer; data-go-offer), footer (+ overlap only index/collection), cart-drawer (#CartDrawer, data-drawer-inner, data-cart-change data-line data-quantity, discount_applications rows), home-hero (data-photo-hero, --pos-d/--pos-m), ranges (data-ranges, li[data-range].is-on), topper-story (data-topper-story, .tp[data-mode idle|run|off], li.tp__step.is-on, img.tp__img.is-on, button[data-tp-step]), best-sellers (data-tabs, [role=tab], panels bs-panel-<block.id>, a[data-tab-for]), bundle (data-bundle, data-wording, li[data-row] .is-on/.is-act, .bdl__prod[data-prod] hidden, chips [data-tog] [data-v data-price], [data-check], spots [data-spot] [data-dot] [data-tip] [data-b-link] [data-b-price], [data-row-price], [data-pay] [data-full] [data-note] [data-total-label] [data-cta] [data-bundle-add], span[data-copy] with data-total/bundle-label/save/hint/cta-*), photo-band, reviews (blocks review row 1|2; uses settings.rating, settings.amazon_url), story (blocks value), offer (customer form, [data-offer], success [email] → span[data-offer-email]); header-group.json, footer-group.json.
+- CSS written: build/css 00-base, 10-header, 11-strip, 20-home, 30-collection, 80-overlays, 90-footer.
+- Product sections written: main-product (data-product, .pdp__form, radios .pdp__radio name=id required + data-price/data-label, [data-selected-label], [data-need-size], [data-qty] + input[data-qty-input], [data-add] data-label, [data-buy-now], [data-form-error], [data-gallery] .pdp__slide[data-slide] hidden, [data-gallery-count/prev/next], [data-thumb], [data-acc] aria-controls, [data-sticky-atc] [data-sticky-price] [data-sticky-add], [data-price] data-range), product-why, product-compare (custom.compare {title, cols:[handles], rows:[{k, v:[...]}|{k,price:true}]}), product-faq (custom.faqs [{q,a}]), product-related (custom.related handles). Uses custom.primary_collection (NEW definition needed) and custom.card_photos (NEW json {grid, best}). CSS 40-product.
+- Pages written: about-intro, about-photos, about-values, about-for, about-find, main-contact (form 'contact' #ContactForm, [data-req=name|email|message], [data-cf-name]/[data-cf-email] after success), main-cart (#CartPageForm, discount_applications), main-search. CSS for these still to write (50-pages): .pg-h1 .pg-intro .ab-* .h2s .ct* .cart* .srch*.
+ collection-hero (data-photo-hero, [data-scroll-to=grid|guide]), main-collection (#grid, select[data-sort], few rows with data-add-id), collection-guide (#guide), collection-banner, collection-cross; snippets card-grid (custom.card_photos.grid), card-small (.sc). Reviews/offer/bundle reuse home sections (bundle only_marked).
+- Theme settings needed: rating, review_count, amazon_url, care_email, care_phone, care_hours, bundle_discount_wording, open_cart_on_add, topper_review.
+- Theme source: shopify/elitlux/ (text only + 4 brand PNGs). CSS written per section in shopify/elitlux-build/css/*.css, concatenated to assets/elitlux.css.
+- Overlap: section root gets data-ovl when its "overlap" checkbox is on (margin-top -R, radius top R). Extra bottom padding on the section above via `.shopify-section:has(+ .shopify-section [data-ovl])` and `:has(+ .shopify-section:empty + .shopify-section [data-ovl])` → --ovl:R. Sections that don't render must output nothing ({%- -%}).
+- z-index: each section root `position:relative; z-index:{{ section.index }}`; footer z 100; header 40; drawers 60–81.
+- Strip: section "strip" in header group (setting: hide on home + collection) and in index.json / collection.json under the hero with overlap on.
+- Footer overlap: Liquid condition template.name == 'index' or 'collection'.
+- Product tags = collection handles (toppers, pillows, bump-and-baby, protectors, duvets, cushions). Smart collections by tag; "all" = smart collection price > 0, handle all.
+- Product metafields (custom.*): range, spec_line, lead, badges (single line, comma), features, specs, care, benefits, faqs, compare, related (json), dims (json: variant title → dims), pairs_with (handle), short_name.
+- Collection metafields: custom.page (json), custom.chips (single line).
+
+## Status at pause (28 Oct)
+Done: store data (16 metafield definitions, 7 collections + custom.page, About page, 6 menus); inventory; theme source in shopify/elitlux (layout, all sections, snippets, templates JSON, config, locales, JS); CSS parts in build/css.
+Left, in order:
+1. Create metafield definitions custom.primary_collection (single_line_text) and custom.card_photos (json {grid, best}).
+2. Copy brand PNGs img/brand/* to shopify/elitlux/assets/; concatenate build/css/*.css → shopify/elitlux/assets/elitlux.css.
+3. Validator script (JSON parse, schema per section, settings/blocks used in templates exist, block_order, resource defaults, url defaults, Liquid tag balance); check main-password.liquid / customers templates reference no missing snippets.
+4. Zip text files + 4 brand PNGs; stagedUploadsCreate → POST → themeCreate "Elitlux v1 by Claude".
+5. Product CSV from elitlux-products.js (+ metafields: range, spec_line, lead, badges, features, specs, care, benefits, faqs, compare, related, dims, pairs_with, short_name, primary_collection, card_photos), fresh public image URLs; photo zip packs ≤15 for Content → Files.
+6. Audit vs _notes/section-inventory.md; responsive check; report; ask owner about the 10% wording.

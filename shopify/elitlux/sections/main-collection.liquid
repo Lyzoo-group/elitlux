@@ -1,0 +1,86 @@
+{%- liquid
+  assign s = section.settings
+  assign cpg = collection.metafields.custom.page.value
+  assign grid_title = cpg.grid_title | default: collection.title
+  assign n = collection.products_count
+  assign many = false
+  if n > 2
+    assign many = true
+  endif
+  assign sort = collection.sort_by | default: collection.default_sort_by
+-%}
+<section id="grid" class="grid" aria-labelledby="grid-title" style="z-index:{{ section.index }}">
+  <div class="grid__head">
+    <div class="grid__t">
+      <p class="ey" aria-live="polite">{{ n }} {% if n == 1 %}product{% else %}products{% endif %}</p>
+      <h2 id="grid-title" class="grid__h">{{ grid_title }}</h2>
+    </div>
+    {%- if many -%}
+      <label class="grid__sort"><span class="grid__sort-l">{{ s.sort_label }}</span>
+        <select data-sort class="grid__select">
+          <option value="{{ collection.default_sort_by }}"{% if sort == collection.default_sort_by %} selected{% endif %}>Featured</option>
+          <option value="price-ascending"{% if sort == 'price-ascending' %} selected{% endif %}>Price, low to high</option>
+          <option value="price-descending"{% if sort == 'price-descending' %} selected{% endif %}>Price, high to low</option>
+          <option value="title-ascending"{% if sort == 'title-ascending' %} selected{% endif %}>A–Z</option>
+        </select>
+      </label>
+    {%- endif -%}
+  </div>
+  {%- paginate collection.products by 48 -%}
+    {%- if many -%}
+      <ul role="list" class="grid__list">
+        {%- for product in collection.products -%}
+          {% render 'card-grid', product: product %}
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <ul role="list" class="few">
+        {%- for product in collection.products -%}
+          {%- liquid
+            assign multi = true
+            if product.has_only_default_variant or product.variants.size == 1
+              assign multi = false
+            endif
+            assign opt = product.options.first | downcase
+            assign badge = product.metafields.custom.badges.value | split: ',' | first | strip
+          -%}
+          <li class="few__it" data-reveal>
+            <a href="{{ product.url }}" class="few__img">
+              {%- if product.featured_image -%}{{ product.featured_image | image_url: width: 1400 | image_tag: loading: 'lazy', class: 'zoom', widths: '500, 800, 1100, 1400', sizes: '(min-width: 1000px) 40vw, 100vw' }}{%- endif -%}
+              {%- if badge != blank -%}<span class="few__badge">{{ badge }}</span>{%- endif -%}
+            </a>
+            <div class="few__c">
+              <p class="ey">{{ product.metafields.custom.range }}</p>
+              <h3 class="few__h"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+              <p class="few__spec">{{ product.metafields.custom.spec_line }}</p>
+              <p class="few__lead">{{ product.metafields.custom.lead }}</p>
+              <p class="few__price">{% if product.price_varies %}From {% endif %}{{ product.price_min | money }}{% if product.compare_at_price_max > product.price_min %}<s>{{ product.compare_at_price_max | money }}</s>{% endif %}</p>
+              {%- if multi -%}<p class="few__choose">Choose a {{ opt }} to add it to your bag</p>{%- endif -%}
+              <ul role="list" class="few__opts">
+                {%- for v in product.variants -%}
+                  <li><button type="button" class="few__opt" aria-label="Add {{ product.title | escape }}{% if multi %}, {{ v.title | escape }}{% endif %} to your bag" data-add-id="{{ v.id }}"{% unless v.available %} disabled{% endunless %}><span class="few__opt-l">{% if multi %}{{ v.title }}{% else %}Add to bed{% endif %}</span><span class="few__opt-p">{{ v.price | money }}</span></button></li>
+                {%- endfor -%}
+              </ul>
+              <a href="{{ product.url }}" class="alink">{{ s.details_label }}{% render 'icon', i: 'arrow' %}</a>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+    {%- if paginate.pages > 1 -%}
+      <nav class="grid__pages" aria-label="Pages">{{ paginate | default_pagination }}</nav>
+    {%- endif -%}
+  {%- endpaginate -%}
+</section>
+
+{% schema %}
+{
+  "name": "Collection products",
+  "class": "grid-sec",
+  "settings": [
+    { "type": "paragraph", "content": "More than two products show as a grid with sorting; one or two show as large rows with size buttons, as in the design." },
+    { "type": "text", "id": "sort_label", "label": "Sort label", "default": "Sort" },
+    { "type": "text", "id": "details_label", "label": "Large rows: details link", "default": "View full details" }
+  ]
+}
+{% endschema %}

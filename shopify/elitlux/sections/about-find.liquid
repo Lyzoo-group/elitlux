@@ -1,0 +1,45 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="ab-find"{% if s.overlap %} data-ovl{% elsif s.rounded %} data-round{% endif %} aria-labelledby="find-title-{{ section.id }}" style="z-index:{{ section.index }}">
+  <div class="ab-find__head"><p class="ey">{{ s.eyebrow }}</p><h2 id="find-title-{{ section.id }}" class="h2s">{{ s.heading }} <em class="em-navy">{{ s.heading_em }}</em></h2></div>
+  <div class="ab-find__grid">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign href = block.settings.link
+        if block.settings.use_amazon and settings.amazon_url != blank
+          assign href = settings.amazon_url
+        endif
+      -%}
+      <div class="ab-find__it" {{ block.shopify_attributes }}>
+        <h3 class="ab-find__h">{{ block.settings.title }}</h3>
+        <p class="ab-find__p">{{ block.settings.text }}</p>
+        {%- if block.settings.link_label != blank -%}<a href="{{ href }}" class="ab-find__a"{% if href contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ block.settings.link_label }}</a>{%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Where to buy",
+  "class": "ab-find-sec",
+  "settings": [
+    { "type": "checkbox", "id": "overlap", "label": "Overlap the section above with a rounded top", "default": true },
+    { "type": "checkbox", "id": "rounded", "label": "Rounded top corners (without overlapping)", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Find us" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop us" },
+    { "type": "text", "id": "heading_em", "label": "Heading, italic part", "default": "your way" }
+  ],
+  "blocks": [
+    { "type": "place", "name": "Place", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "elitlux.co.uk" },
+      { "type": "textarea", "id": "text", "label": "Text" },
+      { "type": "text", "id": "link_label", "label": "Link text", "default": "Shop all" },
+      { "type": "url", "id": "link", "label": "Link", "default": "/collections/all" },
+      { "type": "checkbox", "id": "use_amazon", "label": "Link to the Amazon store (Theme settings)", "default": false }
+    ] }
+  ],
+  "presets": [{ "name": "Where to buy" }]
+}
+{% endschema %}

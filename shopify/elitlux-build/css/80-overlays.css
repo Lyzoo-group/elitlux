@@ -1,0 +1,71 @@
+/* ===== Bag drawer ===== */
+.drw__scrim{position:fixed;inset:0;z-index:70;background:rgba(31,45,77,0.45)}
+.drw__panel{position:fixed;top:0;right:0;bottom:0;z-index:71;width:min(440px, 100vw);background:#FFFFFF;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(31,45,77,0.18)}
+.drw__inner{display:flex;flex-direction:column;flex:1 1 auto;min-height:0}
+.drw__inner.is-loading{opacity:.6;pointer-events:none}
+.drw__head{flex:0 0 auto;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 12px 0 24px;border-bottom:1px solid rgba(31,45,77,0.14)}
+.drw__title{font-family:Lora,Georgia,serif;font-weight:500;font-size:24px}
+.drw__n{font-family:Inter,Arial,sans-serif;font-size:15px;font-weight:400;color:#5F6878}
+.drw__close{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;border:0;background:transparent;color:#1F2D4D;cursor:pointer}
+.drw__close:hover{background:#EFE7DA}
+.drw__empty{padding:40px 24px;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.drw__empty-h{font-family:Lora,Georgia,serif;font-size:26px;line-height:1.2}
+.drw__muted{font-size:15px;color:#5F6878}
+.drw__empty .drw__muted{font-size:16px}
+.drw__shop{margin-top:8px;display:inline-flex;align-items:center;min-height:52px;padding:0 28px;border-radius:999px;background:#1F2D4D;color:#FBF8F3;font-weight:500;text-decoration:none}
+.drw__shop:hover{background:#141B2D;color:#FBF8F3}
+.drw__links{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:12px;font-size:15px}
+.drw__lines{flex:1 1 auto;overflow-y:auto;list-style:none;margin:0;padding:0 24px}
+.drw__line{display:grid;grid-template-columns:80px minmax(0,1fr);gap:16px;padding:20px 0;border-bottom:1px solid rgba(31,45,77,0.14)}
+.drw__img{display:block;aspect-ratio:430/491;border-radius:12px;overflow:hidden;background:#FFFFFF}
+.drw__img img{width:100%;height:100%;object-fit:cover}
+.drw__info{display:flex;flex-direction:column;gap:4px;min-width:0}
+.drw__row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.drw__name{font-family:Lora,Georgia,serif;font-size:17px;line-height:1.3;color:#141B2D;text-decoration:none}
+.drw__total{font-size:15px;font-weight:600;white-space:nowrap}
+.drw__ctrl{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px}
+.drw__foot{flex:0 0 auto;padding:20px 24px 24px;border-top:1px solid rgba(31,45,77,0.14);background:#FFFFFF;display:flex;flex-direction:column;gap:12px}
+.drw__disc{display:flex;justify-content:space-between;gap:12px;font-size:15px;color:#1F2D4D}
+.drw__sub{display:flex;justify-content:space-between;font-size:16px}
+.drw__b{font-weight:600}
+.drw__checkout{min-height:52px;padding:0 28px;border-radius:999px;border:0;background:#1F2D4D;color:#FBF8F3;font-size:16px;font-weight:500;cursor:pointer;transition:background-color .2s ease}
+.drw__checkout:hover{background:#141B2D}
+.drw__view{align-self:center;padding:8px;font-size:15px;font-weight:500;color:#1F2D4D}
+.drw__err{font-size:15px;color:#B5624C;text-align:center}
+/* Quantity steppers and remove (bag drawer, bag page, product page) */
+.qty{display:inline-flex;align-items:center;border:1px solid rgba(31,45,77,0.14);border-radius:999px;background:#FFFFFF}
+.qty--44{height:44px}
+.qty--52{height:52px}
+.qty__b{display:flex;align-items:center;justify-content:center;width:44px;height:42px;border:0;border-radius:999px;background:none;color:#1F2D4D;cursor:pointer}
+.qty__b:hover{background:#EFE7DA}
+.qty__b--plain:hover{background:none}
+.qty--52 .qty__b{width:48px;height:50px}
+.qty__n{min-width:24px;text-align:center;font-size:15px;font-weight:600}
+.qty--52 .qty__n{min-width:28px;font-size:16px;border:0;background:none;padding:0;-moz-appearance:textfield;appearance:textfield}
+.qty--52 .qty__n::-webkit-inner-spin-button,.qty--52 .qty__n::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.rm{padding:10px 0;border:0;background:none;font-size:15px;color:#5F6878;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.rm:hover{color:#141B2D}
+.drw .rm:hover{color:#5F6878}
+
+/* ===== Quick add sheet ===== */
+.qk__scrim{position:fixed;inset:0;z-index:80;background:rgba(31,45,77,0.45)}
+.qk__panel{position:fixed;z-index:81;left:50%;top:auto;bottom:0;transform:translateX(-50%);width:min(520px, 100vw);max-height:86vh;overflow-y:auto;padding:24px;border-radius:24px 24px 0 0;background:#FFFFFF;box-shadow:0 24px 64px rgba(31,45,77,0.18)}
+@media (min-width:768px){.qk__panel{top:50%;bottom:auto;transform:translate(-50%, -50%);border-radius:24px}}
+.qk__head{display:flex;align-items:flex-start;gap:16px}
+.qk__img{flex:0 0 auto;width:72px;height:82px;object-fit:cover;border-radius:12px;background:#FFFFFF}
+.qk__t{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:4px}
+.qk__title{font-family:Lora,Georgia,serif;font-weight:500;font-size:22px;line-height:1.25}
+.qk__muted{font-size:15px;color:#5F6878}
+.qk__close{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin:-8px -8px 0 0;border:0;border-radius:999px;background:transparent;color:#1F2D4D;cursor:pointer}
+.qk__close:hover{background:#EFE7DA}
+.qk__opts{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));gap:8px}
+.qk__opt{width:100%;min-height:60px;padding:10px 14px;display:flex;flex-direction:column;justify-content:center;gap:2px;border:1px solid rgba(31,45,77,0.14);border-radius:12px;background:#FFFFFF;color:#141B2D;text-align:left;cursor:pointer;transition:border-color .15s ease}
+.qk__opt:hover{border-color:#1F2D4D}
+.qk__opt:disabled{opacity:.5;cursor:not-allowed}
+.qk__opt-l{font-size:15px;font-weight:500}
+.qk__opt-p{font-size:14px;color:#5F6878}
+.qk__more{display:inline-block;margin-top:16px;font-size:15px;font-weight:600}
+.qk__err{margin-top:12px;font-size:15px;color:#B5624C}
+.toast{position:fixed;right:24px;bottom:24px;z-index:65;display:flex;align-items:center;gap:16px;max-width:calc(100vw - 48px);padding:16px 20px;border-radius:12px;background:#1F2D4D;color:#FBF8F3;box-shadow:0 24px 64px rgba(31,45,77,0.18)}
+.toast__t{font-size:15px}
+.toast__b{padding:4px 0;border:0;background:none;color:#FBF8F3;font-size:15px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
